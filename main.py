@@ -297,20 +297,13 @@ class MyGame(arcade.Window):
                                                               self.enemies_list)
         # If the player touch an ENEMY, she respawn at starting coordinates AND loses as many hp as is written on damage property (for now is under Enemy parent class).
         if self.cur_health > 0:
-            for enemy in enemies_hit_list:
+            for _ in enemies_hit_list:
                 hp_lost = int(Enemy().damage)
                 self.cur_health -= hp_lost
                 self.player_sprite.change_x = 0
                 self.player_sprite.change_y = 0
                 self.player_sprite.center_x = PLAYER_START_X
                 self.player_sprite.center_y = PLAYER_START_Y
-
-        else:       # Your health is totally depleted: GAME OVER
-            pass
-
-
-
-
 
         # *** ITEMS TO PICK UP: WEAPONS AND CONSUMABLES THAT RESTORE HEALTH ***
         # Generate a list of all sprites from the item layer of the map that collided with the player.
@@ -324,23 +317,13 @@ class MyGame(arcade.Window):
                 hp_restored = int(item.properties['hp_restore'])
                 self.cur_health += hp_restored
                 item.remove_from_sprite_lists()
-            # If player's health is full, collision won't happen and item will stays where it is.
             elif 'hp_restore' in item.properties and self.cur_health == self.max_health:
                 print("your health is full")
-                pass
-            # If item is a weapon, add it to inventory
             elif 'weapon' in item.properties:
                 my_weapon = int(item.properties['weapon'])
                 if my_weapon == 1:
                     self.inventory.append(stuff.Sep())
                     item.remove_from_sprite_lists()
-                else:
-                    pass
-            else:
-                pass
-
-
-
         # FIXME **** BULLETS UPDATE ****
         self.bullet_list.update()
 
@@ -360,10 +343,9 @@ class MyGame(arcade.Window):
                 self.score += 1
 
             # AAAAAAAAAAAAAAAAAAARGH, silenziato momentaneamente causa ESTREMO FASTIDIO. Funge perfettamente ma continua a ripetermi che non sto usando "stuff" e ha rotto 3/4 di minchia
-            # Remove bullet if it hits an obstacle which is not an enemy: 
-            for qualsiasicazzodicosa in wall_hit_list:         # Why the hell I can put anything instead of item and it works anyway????
+            # Remove bullet if it hits an obstacle which is not an enemy:
+            for _ in wall_hit_list:
                 bullet.remove_from_sprite_lists()
-
 
             # Bullet will travel forever and will go out of screen without causing any harm. Let them be whatever they want to be.
 
