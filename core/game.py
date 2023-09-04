@@ -13,15 +13,11 @@ from core.setup import setup
 from shared_constants import *
 
 
-
-# >>>> *** Main APPLICATION CLASS ***
 class GameView(arcade.Window):
-    """
-    Main application class.
-    """
+    """Main application class"""
+
     def __init__(self):
 
-        # Call the parent class and set up the window
         super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
 
         # questi attributi andrebbero messi su PLAYER ma al momento funzionano solo se li metto qui.
@@ -37,59 +33,60 @@ class GameView(arcade.Window):
         self.text_angle = 0
         self.time_elapsed = 0.0
 
-    # -----> MANAGE WINDOW RESIZING
-    # Automatically called when the window is resized.
     def on_resize(self, width, height):
+        """Handle window resizing"""
 
         # Call the parent. Failing to do this will mess up the coordinates, and default to 0,0 at the center and the edges being -1 to 1.
         super().on_resize(width, height)
 
         print(f"Window resized to: {width}, {height}")
 
-    # -----> RENDER PLAYER HP NUMBER
     def draw_health_number(self):
-        #Draw how many hit points we have
+        """Render player HP number"""
+        # Draw how many hit points we have
         health_string = f"{self.cur_health}/{self.max_health}"
         arcade.draw_text(health_string,
-                         start_x = self.view_left + 750,
-                         start_y = self.view_bottom + 0,
-                         font_size = 12,
-                         color = arcade.color.WHITE)
+                         start_x=self.view_left + 750,
+                         start_y=self.view_bottom + 0,
+                         font_size=12,
+                         color=arcade.color.WHITE)
 
-    # -----> RENDER PLAYER HP BAR
     def draw_health_bar(self):
+        """Render player HP bar"""
         # Draw the red background of the bar
         if self.cur_health < self.max_health:
-            arcade.draw_rectangle_filled(center_x = self.view_left + 600,
-                                         center_y = self.view_bottom + 10,
-                                         width = HEALTHBAR_WIDTH,
-                                         height = 10,
-                                         color = arcade.color.RED)
+            arcade.draw_rectangle_filled(center_x=self.view_left + 600,
+                                         center_y=self.view_bottom + 10,
+                                         width=HEALTHBAR_WIDTH,
+                                         height=10,
+                                         color=arcade.color.RED)
 
         # Calculate width based on health
         health_width = HEALTHBAR_WIDTH * (self.cur_health / self.max_health)
         # Draw the green foreground of the bar
-        arcade.draw_rectangle_filled(center_x = (self.view_left + 600) - 0.5 * (HEALTHBAR_WIDTH - health_width),
-                                     center_y = self.view_bottom - 10,
-                                     width = health_width,
-                                     height = HEALTHBAR_HEIGHT,
-                                     color = arcade.color.GREEN)
+        arcade.draw_rectangle_filled(center_x=(self.view_left + 600) - 0.5 * (HEALTHBAR_WIDTH - health_width),
+                                     center_y=self.view_bottom - 10,
+                                     width=health_width,
+                                     height=HEALTHBAR_HEIGHT,
+                                     color=arcade.color.GREEN)
 
-    # -----> RENDER THE SCREEN
     def on_draw(self):
+        """Render the screen"""
         # This command has to happen before we start drawing
         arcade.start_render()
 
         for y in range(START, END, STEP):
             arcade.draw_point(0, y, arcade.color.BLUE, 5)
-            arcade.draw_text(f"{y}", 5, y, arcade.color.BLACK, 12, anchor_x="left", anchor_y="bottom")
+            arcade.draw_text(f"{y}", 5, y, arcade.color.BLACK,
+                             12, anchor_x="left", anchor_y="bottom")
 
         for i, x in enumerate(range(START + STEP, END, STEP), start=1):
             arcade.draw_point(x, 0, arcade.color.BLUE, 5)
-            arcade.draw_text(f"{x}", x, 5, arcade.color.BLACK, 12, anchor_x="left", anchor_y="bottom")
+            arcade.draw_text(f"{x}", x, 5, arcade.color.BLACK,
+                             12, anchor_x="left", anchor_y="bottom")
 
         # -----> RENDER ALL SPRITES
-        # Draw our sprites ON ORDER! Warning! If you change this order player is renderes BELOW the map. She has to be under the foreground. 
+        # Draw our sprites ON ORDER! Warning! If you change this order player is renderes BELOW the map. She has to be under the foreground.
         self.background_list.draw()
         self.wall_list.draw()
         self.items_list.draw()
@@ -107,21 +104,21 @@ class GameView(arcade.Window):
 
         # -----> RENDER THE SCORE
         # Draw our SCORE on the bottom left corner of screen, scrolling it with the viewport ARGHHH
-        #score_text = f"SCORE: {self.score}"
-        #arcade.draw_text(score_text, 200 + self.view_left, 10 + self.view_bottom,
+        # score_text = f"SCORE: {self.score}"
+        # arcade.draw_text(score_text, 200 + self.view_left, 10 + self.view_bottom,
         #                 arcade.csscolor.WHITE, 10)
-
 
         # -----> RENDER THE INVENTORY
         start_x = self.view_left + 30
         start_y = self.view_bottom + 50
         for i, item in enumerate(self.inventory, 1):
             your_stuff = f"{i}: {item.name}\n"
-            arcade.draw_text(your_stuff, start_x, start_y, arcade.csscolor.WHITE, 10, anchor_y="top")
+            arcade.draw_text(your_stuff, start_x, start_y,
+                             arcade.csscolor.WHITE, 10, anchor_y="top")
             start_y -= 20
 
-    # -----> MANAGE MOUSE BUTTONS PRESSED
     def on_mouse_press(self, x, y, button, modifiers):
+        """Handle mouse buttons pressed"""
         """ Questo serve per far muovere il giocatore al click del mouse (tasto destro)
         # FIXME funziona. Ma una volta arrivata a destinazione non si ferma!
         current_position_x = self.player_sprite.center_x
@@ -146,7 +143,8 @@ class GameView(arcade.Window):
 
             # -----> BULLETS!!!
             # Create a bullet
-            bullet = arcade.Sprite("sprite_pack/4dEuclideanCube.png", SPRITE_SCALING_CURSE)
+            bullet = arcade.Sprite(
+                "sprite_pack/4dEuclideanCube.png", SPRITE_SCALING_CURSE)
 
             # Position the bullet at the player's current location
             start_x = self.player_sprite.center_x
@@ -155,17 +153,19 @@ class GameView(arcade.Window):
             bullet.center_y = start_y
             # TODO il proiettile viene fuori dalla mano e cambia mano in base all'orientamento della sprite di lei
 
-  
             # Get from the mouse the destination location for the bullet
             # right now target's coordinates system origin is precisely the bottom left angle of the viewport. Viewport follows the player..
             # IMPORTANT! If you have a scrolling screen, you will also need to add in self.view_bottom and self.view_left. But HOW?
             target_x = x + self.view_left
             target_y = y + self.view_bottom
 
-            # FIXME
-            # Calculate how to get the bullet to the destination: the angle in radians between the start points and end points is the one the bullet will travel:
-            # 2-argument arctangent is equal the angle between the positive x axis and the ray to the point (x, y) ≠ (0, 0)
-            # In our case coordinates x and y is the difference between player position and the point aimed with the mouse cursor in our coordinates system where 0.0 is in the bottom left of the viewport
+            # Calculate how to get the bullet to the destination: the angle in
+            # radians between the start points and end points is the one the
+            # bullet will travel: 2-argument arctangent is equal the angle
+            # between the positive x axis and the ray to the point (x, y) ≠ (0, 0)
+            # In our case coordinates x and y is the difference between player
+            # position and the point aimed with the mouse cursor in our
+            # coordinates system where 0.0 is in the bottom left of the viewport
 
             x_diff = target_x - start_x
             y_diff = target_y - start_y
@@ -183,12 +183,12 @@ class GameView(arcade.Window):
             # Add the bullet to the appropriate lists
             self.bullet_list.append(bullet)
 
-    # -----> MANAGE MOUSE BUTTON RELEASE
     def on_mouse_release(self, x, y, button, modifiers):
+        """Handle mouse button release"""
         player.mouse_left_pressed = False
 
-    # -----> MANAGE KEYS PRESSED
     def on_key_press(self, key, modifiers):
+        """Handle Keys Pressed"""
         if key == arcade.key.W:
             self.player_sprite.change_y = MOVEMENT_SPEED
         elif key == arcade.key.S:
@@ -198,15 +198,15 @@ class GameView(arcade.Window):
         elif key == arcade.key.D:
             self.player_sprite.change_x = MOVEMENT_SPEED
 
-    # -----> MANAGE KEYS RELEASED
     def on_key_release(self, key, modifiers):
+        """ Handle Keys Released """
         if key in [arcade.key.W, arcade.key.S]:
             self.player_sprite.change_y = 0
         elif key in [arcade.key.A, arcade.key.D]:
             self.player_sprite.change_x = 0
 
-    # -----> MOVEMENTS AND GAME LOGIC
     def on_update(self, delta_time):
+        """ Handle movements and game logic"""
         self.physics_engine.update()
         self.player_list.update_animation()
 
@@ -228,7 +228,6 @@ class GameView(arcade.Window):
 
         # Track if we need to change the viewport
         changed_viewport = False
-
 
         # *** MANAGE SCROLLING ***
         # Scroll left
@@ -266,7 +265,6 @@ class GameView(arcade.Window):
                                 self.view_bottom,
                                 SCREEN_HEIGHT + self.view_bottom)
 
-
         # ----> FIGHT!!!!
 
         # *** SPAWN AN ENEMY WHEN A SPAWN POINT IS TRIGGERED
@@ -288,8 +286,7 @@ class GameView(arcade.Window):
             spawn_point.kill()
             print("Prepare to fight! Spawn point touched!")
 
-
-        # manage the following behavior (FIXME funziona male, la sprite si muove ma non segue proprio un cazzo, tende ad andare nell'angolo 
+        # manage the following behavior (FIXME funziona male, la sprite si muove ma non segue proprio un cazzo, tende ad andare nell'angolo
         # inferiore sx dello schermo, che è anche il punto di spawn del giocatore. sospetto che anche questo comportamento abbia a che fare
         # con la necessità di aggiungere lo scrolling ai margini nei movimenti nemici)
 
@@ -297,10 +294,9 @@ class GameView(arcade.Window):
         for enemy in self.enemies_list:
             follow_sprite(enemy, player_sprite)
 
-
         # *** BATTLE WITH AN ENEMY ***
         enemies_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
-                                                              self.enemies_list)
+                                                                self.enemies_list)
         # If the player touch an ENEMY, she respawn at starting coordinates AND loses as many hp as is written on damage property (for now is under Enemy parent class).
         if self.cur_health > 0:
             for _ in enemies_hit_list:
@@ -315,7 +311,6 @@ class GameView(arcade.Window):
         # Generate a list of all sprites from the item layer of the map that collided with the player.
         items_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
                                                               self.items_list)
-
 
         for item in items_hit_list:
             # If player's health isn't full, loop through each colliding sprite, add hp_restored propriety value (int) to hp and remove item sprite from list.
@@ -335,28 +330,29 @@ class GameView(arcade.Window):
 
         for bullet in self.bullet_list:
             # Check this bullet to see if it hit an enemy or a wall
-            enemy_hit_list = arcade.check_for_collision_with_list(bullet, self.enemies_list)
-            wall_hit_list = arcade.check_for_collision_with_list(bullet, self.wall_list)   #sempre facente parte del FASTIDIO, rimettilo
+            enemy_hit_list = arcade.check_for_collision_with_list(
+                bullet, self.enemies_list)
+            wall_hit_list = arcade.check_for_collision_with_list(
+                bullet, self.wall_list)  # sempre facente parte del FASTIDIO, rimettilo
             # If it did, get rid of the bullet
             if len(enemy_hit_list) > 0:
                 bullet.remove_from_sprite_lists()
 
             # remove enemy tile if a bullet hit him
             for enemy in enemy_hit_list:
-                #Enemy.hp -= stuff.dmg
-                #if Enemy.hp <= 0:
+                # Enemy.hp -= stuff.dmg
+                # if Enemy.hp <= 0:
                 enemy.remove_from_sprite_lists()
                 self.score += 1
 
-            # AAAAAAAAAAAAAAAAAAARGH, silenziato momentaneamente causa ESTREMO FASTIDIO. Funge perfettamente ma continua a ripetermi che non sto usando "stuff" e ha rotto 3/4 di minchia
             # Remove bullet if it hits an obstacle which is not an enemy:
             for _ in wall_hit_list:
                 bullet.remove_from_sprite_lists()
 
-            # Bullet will travel forever and will go out of screen without causing any harm. Let them be whatever they want to be.
+            # Bullet will travel forever and will go out of screen without
+            # causing any harm. Let them be whatever they want to be.
 
 
-# -----> MAIN METHOD
 def main():
     window = GameView()
     setup(window)
