@@ -4,8 +4,6 @@ import entities.player as player
 from shared_constants import *
 
 
-
-# *** GAME SETUP ***
 def setup(self):
     # Keep track of our scrolling
     self.view_bottom = 0
@@ -28,9 +26,9 @@ def setup(self):
     self.player_sprite.center_y = PLAYER_START_Y
     self.player_list.append(self.player_sprite)
     self.items_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
-                                                             self.items_list)
+                                                               self.items_list)
     self.spawn_trigger_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
-                                                             self.spawn_trigger_list)
+                                                                       self.spawn_trigger_list)
 
     # Name of map file to load
     map_name = "map.tmx"
@@ -70,4 +68,5 @@ def setup(self):
     self.scene = arcade.Scene.from_tilemap(self.tile_map)
 
     # PHYSICS ENGINE (very basic)
-    self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite, self.wall_list)
+    self.physics_engine = arcade.PhysicsEngineSimple(
+        self.player_sprite, self.wall_list)

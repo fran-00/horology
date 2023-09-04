@@ -14,6 +14,7 @@ def load_texture_pair(filename):
         arcade.load_texture(filename, flipped_horizontally=True)
     ]
 
+
 class PlayerCharacter(arcade.Sprite):
     def __init__(self):             # TODO add max_health as argument
         # Set up parent class
@@ -28,17 +29,18 @@ class PlayerCharacter(arcade.Sprite):
         self.scale = SPRITE_SCALING
 
         # Adjust the collision box. Box is centered at sprite center, (0, 0)
-        #Quadranti:      III          IV         I          II
+        # Quadranti:      III          IV         I          II
         self.points = [[-22, -52], [22, -52], [22, 28], [-22, 28]]
 
         # --- Load Textures ---
         main_path = os.path.join(os.getcwd(), "sprite_pack/pg")
 
         # Load textures for idle and fighting standing
-        self.idle_texture_pair = load_texture_pair(f"{main_path}_idlefront.png")
+        self.idle_texture_pair = load_texture_pair(
+            f"{main_path}_idlefront.png")
 
-        self.fight_texture_pair = load_texture_pair(f"{main_path}_fight_front.png")
-
+        self.fight_texture_pair = load_texture_pair(
+            f"{main_path}_fight_front.png")
 
         # Load textures for walking
         self.walk_textures = []
@@ -56,14 +58,12 @@ class PlayerCharacter(arcade.Sprite):
             texture = load_texture_pair(f"{main_path}_walkback{i}.png")
             self.walkback_textures.append(texture)
 
-
     def update_animation(self, delta_time: float = 1/60):
         # Figure out if we need to flip face left or right
         if self.change_x < 0 and self.character_face_direction == RIGHT_FACING:
             self.character_face_direction = LEFT_FACING
         elif self.change_x > 0 and self.character_face_direction == LEFT_FACING:
             self.character_face_direction = RIGHT_FACING
-
 
         if mouse_left_pressed == False:
             # Idle animation
@@ -85,7 +85,7 @@ class PlayerCharacter(arcade.Sprite):
                 elif self.change_x == 0 and self.change_y > 0:
                     self.texture = self.walkback_textures[frame][direction]
                 # Walking to E, W, NE, NW, SW or SE
-                elif self.change_x != 0: 
+                elif self.change_x != 0:
                     self.texture = self.walk_textures[frame][direction]
                 else:
                     return

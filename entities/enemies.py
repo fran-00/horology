@@ -2,14 +2,13 @@ import math
 import arcade
 
 
-
 ENEMY_SPEED = 0.5
 
-# More like AD, Artificial Dementia....
 
 class Enemy(arcade.Sprite):
     damage = 5
     hp = 10
+
 
 """
 def load_texture_pair(filename):
@@ -60,11 +59,12 @@ class Enemy(arcade.Sprite):
             self.character_face_direction = RIGHT_FACING
 
 """
+
+
 def follow_sprite(self, player_sprite):
     # This function will move the current sprite towards whatever other sprite is specified as a parameter.
     # We use the 'min' function here to get the sprite to line up with the target sprite, and not jump around if the sprite is not off
     # an exact multiple of SPRITE_SPEED.
-
 
     self.center_x += self.change_x
     self.center_y += self.change_y
@@ -73,7 +73,8 @@ def follow_sprite(self, player_sprite):
     start_y = self.center_y
 
     # Get the destination location for the bullet
-    dest_x = player_sprite.center_x         # probabilmente devi dirgli dove sta questa roba
+    # probabilmente devi dirgli dove sta questa roba
+    dest_x = player_sprite.center_x
     dest_y = player_sprite.center_y
 
     # Do math to calculate how to get the bullet to the destination. CHE CAZZO C'ENTRANO LE PALLOTTOLE???????? mmmh....

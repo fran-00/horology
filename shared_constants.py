@@ -10,7 +10,6 @@ START = 0
 END = 2000
 STEP = 50
 
-
 # Constants used to scale our sprites from their original size
 SPRITE_SCALING = 1
 TILE_SCALING = 1
@@ -40,7 +39,7 @@ LEFT_FACING = 1
 BULLET_SPEED = 10
 SPRITE_SCALING_CURSE = 0.5
 
-
+# Health bar
 HEALTHBAR_WIDTH = 300
 HEALTHBAR_HEIGHT = 50
 HEALTHBAR_OFFSET_Y = -10
