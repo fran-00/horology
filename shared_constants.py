@@ -12,6 +12,7 @@ STEP = 50
 
 # Constants used to scale our sprites from their original size
 SPRITE_SCALING = 1
+CHARACTER_SCALING = 1
 TILE_SCALING = 1
 SPRITE_NATIVE_SIZE = 64
 GRID_PIXEL_SIZE = int(SPRITE_NATIVE_SIZE * TILE_SCALING)
