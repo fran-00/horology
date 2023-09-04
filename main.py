@@ -93,7 +93,6 @@ class MyGame(arcade.Window):
         # -----> RENDER ALL SPRITES
         # Draw our sprites ON ORDER! Warning! If you change this order player is renderes BELOW the map. She has to be under the foreground. 
         self.background_list.draw()
-        self.ground_list.draw()
         self.wall_list.draw()
         self.items_list.draw()
         self.enemies_list.draw()
