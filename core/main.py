@@ -8,7 +8,7 @@ import stuff
 
 from ai import Enemy
 from ai import follow_sprite
-from setup_game import setup
+from core.setup_game import setup
 
 from shared_constants import *
 
