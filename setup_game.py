@@ -1,7 +1,8 @@
 import arcade
 
+import player
 from shared_constants import *
-from player import ChosenOne
+
 
 
 # *** GAME SETUP ***
