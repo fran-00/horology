@@ -47,9 +47,10 @@ def setup(self):
     ground_layer_name = 'Ground'
     background_layer_name = 'Background'
 
-    map_name = ":resources:C:/Users/Frances/groi/tiled_game/map.tmx"
-    my_map = arcade.tilemap.read_tmx(map_name)
-
+    # Map Path
+    current_directory = os.path.dirname(os.path.abspath(__file__))
+    map_path = os.path.join(current_directory, "map.tmx")
+    my_map = arcade.tilemap.TileMap(map_path)
 
     self.level = 1
 
