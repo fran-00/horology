@@ -1,3 +1,5 @@
+import os
+
 import arcade, random
 from shared_constants import SPRITE_SCALING, TILE_SCALING, PLAYER_START_X, PLAYER_START_Y, GRID_PIXEL_SIZE, MOVEMENT_SPEED
 from shared_constants import SCREEN_WIDTH, SCREEN_HEIGHT
