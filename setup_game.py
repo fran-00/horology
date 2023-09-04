@@ -77,6 +77,13 @@ def setup(self):
         }
     }
 
+    # Read in the tiled map
+    self.tile_map = arcade.load_tilemap(map_name, TILE_SCALING, layer_options)
+
+    # Initialize Scene with our TileMap, this will automatically add all layers
+    # from the map as SpriteLists in the scene in the proper order.
+    self.scene = arcade.Scene.from_tilemap(self.tile_map)
+
     # PHYSICS ENGINE (very basic)
     self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite, self.wall_list)
 
