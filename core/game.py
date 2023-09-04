@@ -255,7 +255,7 @@ class GameView(arcade.Window):
         if arcade.check_for_collision_with_list(self.player_sprite,
                                                 self.spawn_trigger_list):
             # for i in range(ENEMY_COUNT):                              # questo ti serve se vuoi che spawni più di un nemico
-            enemy = Enemy("sprite_pack/enemy_herman.png")
+            enemy = HermanEnemy()
             # Position the enemy at a random location
             enemy.center_x = random.randrange(SCREEN_WIDTH)
             enemy.center_y = random.randrange(SCREEN_HEIGHT)
