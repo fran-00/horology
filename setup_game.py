@@ -39,10 +39,8 @@ def setup(self):
     LAYER_NAME_GROUND = 'Ground'
     LAYER_NAME_BACKGROUND = 'Background'
 
-    # Map Path
-    current_directory = os.path.dirname(os.path.abspath(__file__))
-    map_path = os.path.join(current_directory, "map.tmx")
-    my_map = arcade.tilemap.TileMap(map_path)
+    # Name of map file to load
+    map_name = "map.json"
 
     self.level = 1
 
