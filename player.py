@@ -14,12 +14,10 @@ def load_texture_pair(filename):
         arcade.load_texture(filename, flipped_horizontally=True)
     ]
 
-class ChosenOne(arcade.Sprite):
+class PlayerCharacter(arcade.Sprite):
     def __init__(self):             # TODO add max_health as argument
         # Set up parent class
         super().__init__()
-
-
 
         # Default to face-right
         self.character_face_direction = RIGHT_FACING

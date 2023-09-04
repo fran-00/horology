@@ -293,7 +293,7 @@ class MyGame(arcade.Window):
         # inferiore sx dello schermo, che è anche il punto di spawn del giocatore. sospetto che anche questo comportamento abbia a che fare
         # con la necessità di aggiungere lo scrolling ai margini nei movimenti nemici)
 
-        player_sprite = player.ChosenOne()
+        player_sprite = player.PlayerCharacter()
         for enemy in self.enemies_list:
             follow_sprite(enemy, player_sprite)
 
