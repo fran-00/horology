@@ -1,6 +1,7 @@
-import random, arcade, math
+import math
+import arcade
 
-from shared_constants import RIGHT_FACING, LEFT_FACING, SPRITE_SCALING
+
 
 ENEMY_SPEED = 0.5
 
