@@ -2,65 +2,6 @@ import math
 import arcade
 
 
-ENEMY_SPEED = 0.5
-
-
-class Enemy(arcade.Sprite):
-    damage = 5
-    hp = 10
-
-
-"""
-def load_texture_pair(filename):
-    # Load a texture pair, with the second being a mirror image.
-    return [
-        arcade.load_texture(filename),
-        arcade.load_texture(filename, flipped_horizontally=True)
-    ]
-
-
-
-class Enemy(arcade.Sprite):
-    def __init__(self):
-        super().__init__()
-
-        self.damage = 5
-        # Default to face-right
-        self.character_face_direction = RIGHT_FACING
-
-        # Used for flipping between image sequences
-        self.cur_texture = 0
-
-        self.scale = SPRITE_SCALING
-
-        # Adjust the collision box. Box is centered at sprite center, (0, 0)
-        #Quadranti:      III          IV         I          II
-        self.points = [[-22, -52], [22, -52], [22, 28], [-22, 28]]
-
-        # --- Load Textures ---
-        main_path = ":resources:C:/Users/Frances/groi/tiled_game/sprite_pack/enemy"
-
-        # Load textures for idle and fighting standing
-        self.idle_texture_pair = load_texture_pair(f"{main_path}_missingidle.png")
-
-        # Load textures for walking
-        self.walk_textures = []
-        for i in range(3):
-            texture = load_texture_pair(f"{main_path}_missingwalk{i}.png")
-            self.walk_textures.append(texture)
-
-
-
-    def update_animation(self, delta_time: float = 1/60):
-        # Figure out if we need to flip face left or right
-        if self.change_x < 0 and self.character_face_direction == RIGHT_FACING:
-            self.character_face_direction = LEFT_FACING
-        elif self.change_x > 0 and self.character_face_direction == LEFT_FACING:
-            self.character_face_direction = RIGHT_FACING
-
-"""
-
-
 def follow_sprite(self, player_sprite):
     # This function will move the current sprite towards whatever other sprite is specified as a parameter.
     # We use the 'min' function here to get the sprite to line up with the target sprite, and not jump around if the sprite is not off
