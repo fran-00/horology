@@ -77,9 +77,6 @@ def setup(self):
         }
     }
 
-    # Calculate the right edge of the my_map in pixels
-    self.end_of_map = my_map.map_size.width * GRID_PIXEL_SIZE
-
     # PHYSICS ENGINE (very basic)
     self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite, self.wall_list)
 
