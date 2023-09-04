@@ -40,7 +40,7 @@ def setup(self):
     LAYER_NAME_BACKGROUND = 'Background'
 
     # Name of map file to load
-    map_name = "map.json"
+    map_name = "map.tmx"
 
     self.level = 1
 
