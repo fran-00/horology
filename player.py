@@ -1,15 +1,9 @@
-"""
-TODO LIST
-[]. Figure out how to set it and add player's hit box
-[].
-[].
-
-"""
-
 import os
+
 import arcade
 from shared_constants import SPRITE_SCALING, RIGHT_FACING, LEFT_FACING, UPDATES_PER_FRAME
-import stuff
+
+
 
 mouse_left_pressed = False
 
