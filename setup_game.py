@@ -1,13 +1,7 @@
-import os
+import arcade
 
-import arcade, random
-from shared_constants import SPRITE_SCALING, TILE_SCALING, PLAYER_START_X, PLAYER_START_Y, GRID_PIXEL_SIZE, MOVEMENT_SPEED
-from shared_constants import SCREEN_WIDTH, SCREEN_HEIGHT
-
+from shared_constants import TILE_SCALING, PLAYER_START_X, PLAYER_START_Y
 from player import ChosenOne
-
-from ai import Enemy
-
 
 
 # *** GAME SETUP ***
@@ -86,5 +80,3 @@ def setup(self):
 
     # PHYSICS ENGINE (very basic)
     self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite, self.wall_list)
-
-
