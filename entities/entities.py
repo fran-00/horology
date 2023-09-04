@@ -26,11 +26,23 @@ class Entity(arcade.Sprite):
 
         self.idle_texture_pair = load_texture_pair(f"{main_path}_idle.png")
 
-        # Load textures for walking
+        # Load textures for walking east/west
         self.walk_textures = []
         for i in range(8):
             texture = load_texture_pair(f"{main_path}_walk{i}.png")
             self.walk_textures.append(texture)
+        
+        # Load textures for walking south
+        self.walkfront_textures = []
+        for i in range(8):
+            texture = load_texture_pair(f"{main_path}_walkfront{i}.png")
+            self.walkfront_textures.append(texture)
+
+        # Load textures for walking north
+        self.walkback_textures = []
+        for i in range(8):
+            texture = load_texture_pair(f"{main_path}_walkback{i}.png")
+            self.walkback_textures.append(texture)
 
         # Set the initial texture
         self.texture = self.idle_texture_pair[0]
