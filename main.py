@@ -75,20 +75,14 @@ class MyGame(arcade.Window):
     def on_draw(self):
         # This command has to happen before we start drawing
         arcade.start_render()
-        # Draw the blue y labels used for calculate resize.
-        i = 0
+
         for y in range(START, END, STEP):
             arcade.draw_point(0, y, arcade.color.BLUE, 5)
             arcade.draw_text(f"{y}", 5, y, arcade.color.BLACK, 12, anchor_x="left", anchor_y="bottom")
-            i += 1
 
-        # Draw the blue x labels used for calculate resize.
-        i = 1
-        for x in range(START + STEP, END, STEP):
+        for i, x in enumerate(range(START + STEP, END, STEP), start=1):
             arcade.draw_point(x, 0, arcade.color.BLUE, 5)
             arcade.draw_text(f"{x}", x, 5, arcade.color.BLACK, 12, anchor_x="left", anchor_y="bottom")
-            i += 1
-
 
         # -----> RENDER ALL SPRITES
         # Draw our sprites ON ORDER! Warning! If you change this order player is renderes BELOW the map. She has to be under the foreground. 
