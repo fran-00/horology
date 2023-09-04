@@ -375,20 +375,6 @@ class MyGame(arcade.Window):
             # Bullet will travel forever and will go out of screen without causing any harm. Let them be whatever they want to be.
 
 
-        # **** TODO Level 2? Should we put differents levels in this game? Hmmm... *****
-        # See if the user got to the end of the level
-        if self.player_sprite.center_x >= self.end_of_map:
-            # Advance to the next level
-            # self.level += 1
-
-            # Load the next level
-            # self.setup(self.level)
-
-            # Set the camera to the start
-            self.view_left = 0
-            self.view_bottom = 0
-            changed_viewport = True
-
 # -----> MAIN METHOD
 def main():
     window = MyGame(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
