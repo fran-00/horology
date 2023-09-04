@@ -80,7 +80,7 @@ class ChosenOne(arcade.Sprite):
                 self.texture = self.idle_texture_pair[self.character_face_direction]
                 return
 
-            elif self.change_x != 0 or self.change_y != 0  or UPDATES_PER_FRAME != 0:
+            else:
                 self.cur_texture += 1
                 if self.cur_texture > 7 * UPDATES_PER_FRAME:
                     self.cur_texture = 0
