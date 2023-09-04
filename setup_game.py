@@ -37,15 +37,13 @@ def setup(self):
     self.spawn_trigger_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
                                                              self.spawn_trigger_list)
 
-
-    # --- Load in a map from Tiled editor ---
-    foreground_layer_name = 'Foreground'
-    items_layer_name = 'Items'
-    spawn_trigger_layer_name = 'Spawn_trigger'
-    walls_layer_name = 'Walls'
-    decorative_stuff_layer_name = 'Stuff'
-    ground_layer_name = 'Ground'
-    background_layer_name = 'Background'
+    LAYER_NAME_FOREGROUND = 'Foreground'
+    LAYER_NAME_ITEMS = 'Items'
+    LAYER_NAME_SPAWN_TRIGGER = 'Spawn_trigger'
+    LAYER_NAME_WALLS = 'Walls'
+    LAYER_NAME_STUFF = 'Stuff'
+    LAYER_NAME_GROUND = 'Ground'
+    LAYER_NAME_BACKGROUND = 'Background'
 
     # Map Path
     current_directory = os.path.dirname(os.path.abspath(__file__))
