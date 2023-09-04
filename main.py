@@ -146,7 +146,7 @@ class MyGame(arcade.Window):
 
             # -----> BULLETS!!!
             # Create a bullet
-            bullet = arcade.Sprite(":resources:C:/Users/Frances/groi/tiled_game/sprite_pack/4dEuclideanCube.png", SPRITE_SCALING_CURSE)
+            bullet = arcade.Sprite("sprite_pack/4dEuclideanCube.png", SPRITE_SCALING_CURSE)
 
             # Position the bullet at the player's current location
             start_x = self.player_sprite.center_x
