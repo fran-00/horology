@@ -1,6 +1,10 @@
-import arcade, math, random
+import math
+import random
 
-import player, stuff
+import arcade
+
+import player
+import stuff
 
 from ai import Enemy
 from ai import follow_sprite
@@ -9,9 +13,11 @@ from setup_game import setup
 from shared_constants import SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE, START, END, STEP, MOVEMENT_SPEED
 from shared_constants import LEFT_VIEWPORT_MARGIN, RIGHT_VIEWPORT_MARGIN, BOTTOM_VIEWPORT_MARGIN, TOP_VIEWPORT_MARGIN
 from shared_constants import PLAYER_START_X, PLAYER_START_Y, SPRITE_SCALING_CURSE, BULLET_SPEED
-from shared_constants import HEALTHBAR_WIDTH, HEALTHBAR_HEIGHT, HEALTHBAR_OFFSET_Y, HEALTH_NUMBER_OFFSET_X, HEALTH_NUMBER_OFFSET_Y
+from shared_constants import HEALTHBAR_WIDTH, HEALTHBAR_HEIGHT
 
 ENEMY_COUNT = 2
+
+
 
 # >>>> *** Main APPLICATION CLASS ***
 class MyGame(arcade.Window):
