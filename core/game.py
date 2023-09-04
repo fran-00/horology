@@ -73,16 +73,6 @@ class GameView(arcade.Window):
     def on_draw(self):
         """Render the screen"""
 
-        for y in range(START, END, STEP):
-            arcade.draw_point(0, y, arcade.color.BLUE, 5)
-            arcade.draw_text(f"{y}", 5, y, arcade.color.BLACK,
-                             12, anchor_x="left", anchor_y="bottom")
-
-        for i, x in enumerate(range(START + STEP, END, STEP), start=1):
-            arcade.draw_point(x, 0, arcade.color.BLUE, 5)
-            arcade.draw_text(f"{x}", x, 5, arcade.color.BLACK,
-                             12, anchor_x="left", anchor_y="bottom")
-
         # -----> RENDER ALL SPRITES
         # Draw our sprites ON ORDER! Warning! If you change this order player is renderes BELOW the map. She has to be under the foreground.
         self.background_list.draw()
