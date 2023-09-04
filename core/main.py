@@ -6,8 +6,8 @@ import arcade
 import entities.player as player
 import stuff
 
-from ai import Enemy
-from ai import follow_sprite
+from entities.ai import Enemy
+from entities.ai import follow_sprite
 from core.setup_game import setup
 
 from shared_constants import *
