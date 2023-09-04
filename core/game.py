@@ -6,7 +6,7 @@ import arcade
 import entities.player as player
 import stuff
 
-from entities.enemies import Enemy
+from entities.enemies import Enemy, HermanEnemy
 from entities.enemies import follow_sprite
 from core.setup import setup
 
