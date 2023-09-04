@@ -80,46 +80,6 @@ def setup(self):
     # Calculate the right edge of the my_map in pixels
     self.end_of_map = my_map.map_size.width * GRID_PIXEL_SIZE
 
-    # *** Layers names on map list ***
-    # Layer 7 -- Foreground (Environment above player)
-    self.foreground_list = arcade.tilemap.process_layer(my_map,
-                                                        foreground_layer_name,
-                                                        TILE_SCALING)
-
-    # Layer 6 -- Items, layer di oggetti
-    self.items_list = arcade.tilemap.process_layer(my_map,
-                                                   items_layer_name,
-                                                   TILE_SCALING,
-                                                   use_spatial_hash=True)
-
-
-    # Layer 5 -- Spawn Trigger Layer
-    self.spawn_trigger_list = arcade.tilemap.process_layer(my_map,
-                                                     spawn_trigger_layer_name,
-                                                     TILE_SCALING,
-                                                     use_spatial_hash=True)
-    
-    # Layer 4 -- Wall (Obstacles, tiles where player can't walk on)
-    self.wall_list = arcade.tilemap.process_layer(map_object=my_map,
-                                                  layer_name=walls_layer_name,
-                                                  scaling=TILE_SCALING,
-                                                  use_spatial_hash=True)
-
-    # Layer 3 -- Decorative stuff on the ground (flowers, rocks...)
-    self.stuff_list = arcade.tilemap.process_layer(my_map,
-                                                decorative_stuff_layer_name,
-                                                TILE_SCALING)
-
-    # Layer 2 -- Ground (Players walks above this ground)
-    self.ground_list = arcade.tilemap.process_layer(my_map,
-                                                    ground_layer_name,
-                                                    TILE_SCALING)
-
-    # Layer 1 -- Background
-    self.background_list = arcade.tilemap.process_layer(my_map,
-                                                        background_layer_name,
-                                                        TILE_SCALING)
-
     # PHYSICS ENGINE (very basic)
     self.physics_engine = arcade.PhysicsEngineSimple(self.player_sprite, self.wall_list)
 
