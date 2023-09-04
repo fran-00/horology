@@ -200,9 +200,9 @@ class MyGame(arcade.Window):
 
     # -----> MANAGE KEYS RELEASED
     def on_key_release(self, key, modifiers):
-        if key == arcade.key.W or key == arcade.key.S:
+        if key in [arcade.key.W, arcade.key.S]:
             self.player_sprite.change_y = 0
-        elif key == arcade.key.A or key == arcade.key.D:
+        elif key in [arcade.key.A, arcade.key.D]:
             self.player_sprite.change_x = 0
 
     # -----> MOVEMENTS AND GAME LOGIC
