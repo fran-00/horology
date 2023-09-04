@@ -31,14 +31,6 @@ def setup(self):
     self.spawn_trigger_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
                                                              self.spawn_trigger_list)
 
-    LAYER_NAME_FOREGROUND = 'Foreground'
-    LAYER_NAME_ITEMS = 'Items'
-    LAYER_NAME_SPAWN_TRIGGER = 'Spawn_trigger'
-    LAYER_NAME_WALLS = 'Walls'
-    LAYER_NAME_STUFF = 'Stuff'
-    LAYER_NAME_GROUND = 'Ground'
-    LAYER_NAME_BACKGROUND = 'Background'
-
     # Name of map file to load
     map_name = "map.tmx"
 
