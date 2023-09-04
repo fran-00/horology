@@ -24,7 +24,10 @@ class Entity(arcade.Sprite):
 
         main_path = f"sprite_pack/animated_entities/{name_folder}/{name_file}"
 
-        self.idle_texture_pair = load_texture_pair(f"{main_path}_idle.png")
+        # Load textures for idle and fighting standing
+        self.idle_texture_pair = load_texture_pair(f"{main_path}_idlefront.png")
+        
+        self.fight_texture_pair = load_texture_pair(f"{main_path}_fight_front.png")
 
         # Load textures for walking east/west
         self.walk_textures = []
