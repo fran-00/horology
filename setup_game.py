@@ -1,6 +1,6 @@
 import arcade
 
-from shared_constants import TILE_SCALING, PLAYER_START_X, PLAYER_START_Y
+from shared_constants import *
 from player import ChosenOne
 
 

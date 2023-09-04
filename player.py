@@ -1,8 +1,7 @@
 import os
 
 import arcade
-from shared_constants import SPRITE_SCALING, RIGHT_FACING, LEFT_FACING, UPDATES_PER_FRAME
-
+from shared_constants import *
 
 
 mouse_left_pressed = False
