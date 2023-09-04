@@ -73,6 +73,9 @@ class GameView(arcade.Window):
     def on_draw(self):
         """Render the screen"""
 
+        # Clear the screen to the background color
+        self.clear()
+
         # -----> RENDER ALL SPRITES
         # Draw our sprites ON ORDER! Warning! If you change this order player is renderes BELOW the map. She has to be under the foreground.
         self.background_list.draw()
