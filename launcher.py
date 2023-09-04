@@ -1,4 +1,4 @@
-from core.main import main
+from core.game import main
 
 if __name__ == "__main__":
     main()

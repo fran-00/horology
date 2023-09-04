@@ -8,7 +8,7 @@ import stuff
 
 from entities.enemies import Enemy
 from entities.enemies import follow_sprite
-from core.setup_game import setup
+from core.setup import setup
 
 from shared_constants import *
 
