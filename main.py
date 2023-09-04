@@ -3,7 +3,7 @@ import random
 
 import arcade
 
-import player
+import entities.player as player
 import stuff
 
 from ai import Enemy
