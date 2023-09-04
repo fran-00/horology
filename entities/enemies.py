@@ -62,3 +62,10 @@ def follow_sprite(self, player_sprite):
     # Taking into account the angle, calculate our change_x and change_y. Velocity is how fast the bullet travels.
     self.change_x = math.cos(angle) * ENEMY_SPEED
     self.change_y = math.sin(angle) * ENEMY_SPEED
+
+
+class HermanEnemy(Enemy):
+    def __init__(self):
+
+        # Set up parent class
+        super().__init__("herman", "herman")
