@@ -100,12 +100,6 @@ class GameView(arcade.Window):
         # Draw our Scene
         self.scene.draw()
 
-        # -----> RENDER THE SCORE
-        # Draw our SCORE on the bottom left corner of screen, scrolling it with the viewport ARGHHH
-        # score_text = f"SCORE: {self.score}"
-        # arcade.draw_text(score_text, 200 + self.view_left, 10 + self.view_bottom,
-        #                 arcade.csscolor.WHITE, 10)
-
         # -----> RENDER THE INVENTORY
         start_x = self.view_left + 30
         start_y = self.view_bottom + 50
