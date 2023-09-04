@@ -1,6 +1,6 @@
 import arcade
 
-import entities.player as player
+from entities.player import PlayerCharacter
 from shared_constants import *
 
 
