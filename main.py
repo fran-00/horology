@@ -21,10 +21,13 @@ ENEMY_COUNT = 2
 
 # >>>> *** Main APPLICATION CLASS ***
 class MyGame(arcade.Window):
+    """
+    Main application class.
+    """
+    def __init__(self):
 
-    # *** INITIALIZER ***
-    def __init__(self, width, height, title):
-        super().__init__(width, height, title, resizable=True)
+        # Call the parent class and set up the window
+        super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
 
         # questi attributi andrebbero messi su PLAYER ma al momento funzionano solo se li metto qui.
         self.hp = 100
@@ -358,6 +361,6 @@ class MyGame(arcade.Window):
 
 # -----> MAIN METHOD
 def main():
-    window = MyGame(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
+    window = MyGame()
     setup(window)
     arcade.run()
