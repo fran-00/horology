@@ -15,7 +15,7 @@ from shared_constants import *
 
 
 # >>>> *** Main APPLICATION CLASS ***
-class MyGame(arcade.Window):
+class GameView(arcade.Window):
     """
     Main application class.
     """
@@ -358,6 +358,6 @@ class MyGame(arcade.Window):
 
 # -----> MAIN METHOD
 def main():
-    window = MyGame()
+    window = GameView()
     setup(window)
     arcade.run()
