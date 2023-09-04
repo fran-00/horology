@@ -107,6 +107,8 @@ class MyGame(arcade.Window):
         self.draw_health_number()
         self.draw_health_bar()
 
+        # Draw our Scene
+        self.scene.draw()
 
         # -----> RENDER THE SCORE
         # Draw our SCORE on the bottom left corner of screen, scrolling it with the viewport ARGHHH
