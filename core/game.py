@@ -78,14 +78,14 @@ class GameView(arcade.Window):
 
         # -----> RENDER ALL SPRITES
         # Draw our sprites ON ORDER! Warning! If you change this order player is renderes BELOW the map. She has to be under the foreground.
-        self.background_list.draw()
-        self.wall_list.draw()
-        self.items_list.draw()
-        self.enemies_list.draw()
-        self.spawn_trigger_list.draw()
-        self.player_list.draw()
-        self.bullet_list.draw()
-        self.foreground_list.draw()
+        # self.background_list.draw()
+        # self.wall_list.draw()
+        # self.items_list.draw()
+        # self.enemies_list.draw()
+        # self.spawn_trigger_list.draw()
+        # self.player_list.draw()
+        # self.bullet_list.draw()
+        # self.foreground_list.draw()
 
         self.draw_health_number()
         self.draw_health_bar()
