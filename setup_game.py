@@ -52,6 +52,31 @@ def setup(self):
 
     self.level = 1
 
+    # Layer Specific Options for the Tilemap
+    layer_options = {
+        LAYER_NAME_FOREGROUND: {
+            "use_spatial_hash": True,
+        },
+        LAYER_NAME_ITEMS: {
+            "use_spatial_hash": True,
+        },
+        LAYER_NAME_SPAWN_TRIGGER: {
+            "use_spatial_hash": True,
+        },
+        LAYER_NAME_WALLS: {
+            "use_spatial_hash": True,
+        },
+        LAYER_NAME_STUFF: {
+            "use_spatial_hash": True,
+        },
+        LAYER_NAME_GROUND: {
+            "use_spatial_hash": True,
+        },
+        LAYER_NAME_BACKGROUND: {
+            "use_spatial_hash": True,
+        }
+    }
+
     # Calculate the right edge of the my_map in pixels
     self.end_of_map = my_map.map_size.width * GRID_PIXEL_SIZE
 
