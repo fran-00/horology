@@ -205,10 +205,18 @@ class GameView(arcade.Window):
             changed_viewport = True
             arcade.play_sound(self.game_over)
 
+        self.manage_scrolling()
+        self.spawn_enemies()
+        self.fight_enemies()
+        self.pick_up_items()
+        self.update_bullets()
+    
+    def manage_scrolling(self):
+        """Handle viewport scrolling"""
+        
         # Track if we need to change the viewport
         changed_viewport = False
 
-        # *** MANAGE SCROLLING ***
         # Scroll left
         left_boundary = self.view_left + LEFT_VIEWPORT_MARGIN
         if self.player_sprite.left < left_boundary:
@@ -243,11 +251,6 @@ class GameView(arcade.Window):
                                 SCREEN_WIDTH + self.view_left,
                                 self.view_bottom,
                                 SCREEN_HEIGHT + self.view_bottom)
-
-        self.spawn_enemies()
-        self.fight_enemies()
-        self.pick_up_items()
-        self.update_bullets()
     
     def spawn_enemies(self):
         """Spawn an enemy when a spawn point is triggered"""
