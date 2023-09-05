@@ -244,9 +244,13 @@ class GameView(arcade.Window):
                                 self.view_bottom,
                                 SCREEN_HEIGHT + self.view_bottom)
 
-        # ----> FIGHT!!!!
-
-        # *** SPAWN AN ENEMY WHEN A SPAWN POINT IS TRIGGERED
+        self.spawn_enemies()
+        self.fight_enemies()
+        self.pick_up_items()
+        self.update_bullets()
+    
+    def spawn_enemies(self):
+        """Spawn an enemy when a spawn point is triggered"""
         if arcade.check_for_collision_with_list(self.player_sprite,
                                                 self.scene[LAYER_NAME_SPAWN_TRIGGER]):
             # for i in range(ENEMY_COUNT):                              # questo ti serve se vuoi che spawni più di un nemico
@@ -272,8 +276,9 @@ class GameView(arcade.Window):
         player_sprite = player.PlayerCharacter()
         for enemy in self.enemies_list:
             follow_sprite(enemy, player_sprite)
-
-        # *** BATTLE WITH AN ENEMY ***
+    
+    def fight_enemies(self):
+        """Handle fights with enemies"""
         enemies_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
                                                                 self.enemies_list)
         # If the player touch an ENEMY, she respawn at starting coordinates AND loses as many hp as is written on damage property (for now is under Enemy parent class).
@@ -285,9 +290,6 @@ class GameView(arcade.Window):
                 self.player_sprite.change_y = 0
                 self.player_sprite.center_x = PLAYER_START_X
                 self.player_sprite.center_y = PLAYER_START_Y
-
-        self.pick_up_items()
-        self.update_bullets()
 
     def pick_up_items(self):
         """Handle pick up items: WEAPONS AND CONSUMABLES THAT RESTORE HEALTH"""
