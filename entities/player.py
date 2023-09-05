@@ -1,6 +1,5 @@
-import os
-
 import arcade
+
 from .entity import Entity
 from shared_constants import *
 
