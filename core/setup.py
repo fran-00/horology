@@ -12,13 +12,7 @@ def setup(game):
     # Create the Sprite lists
     game.player_list = arcade.SpriteList()
     game.bullet_list = arcade.SpriteList()
-    game.foreground_list = arcade.SpriteList()
-    game.background_list = arcade.SpriteList()
-    game.wall_list = arcade.SpriteList()
-    game.stuff_list = arcade.SpriteList()
-    game.items_list = arcade.SpriteList()
     game.enemies_list = arcade.SpriteList()
-    game.spawn_trigger_list = arcade.SpriteList()
 
     # Name of map file to load
     map_name = "map.tmx"
