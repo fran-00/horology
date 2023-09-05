@@ -57,6 +57,13 @@ def setup(game):
     # from the map as SpriteLists in the scene in the proper order.
     game.scene = arcade.Scene.from_tilemap(game.tile_map)
 
+    # Add Player Spritelist before a specific layer. This will make the layer
+    # be drawn AFTER the player, making it appear to be in front of the Player.
+    # Setting before using scene.add_sprite allows us to define where the SpriteList
+    # will be in the draw order. If we just use add_sprite, it will be appended to the
+    # end of the order.
+    game.scene.add_sprite_list_after("Player", LAYER_NAME_SPAWN_TRIGGER)
+
     # Set up the player, specifically placing it at these coordinates.
     game.player_sprite = PlayerCharacter()
     game.player_sprite.center_x = PLAYER_START_X
@@ -66,6 +73,7 @@ def setup(game):
                                                                game.items_list)
     game.spawn_trigger_hit_list = arcade.check_for_collision_with_list(game.player_sprite,
                                                                        game.spawn_trigger_list)
+    game.scene.add_sprite("Player", game.player_sprite)
 
     # PHYSICS ENGINE (very basic)
     game.physics_engine = arcade.PhysicsEngineSimple(
