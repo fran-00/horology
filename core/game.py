@@ -76,16 +76,16 @@ class GameView(arcade.Window):
         # Clear the screen to the background color
         self.clear()
 
-        # -----> RENDER ENTITIES
-        self.enemies_list.draw()
-        self.player_list.draw()
-        self.bullet_list.draw()
-
         self.draw_health_number()
         self.draw_health_bar()
 
         # Draw our Scene
         self.scene.draw()
+        
+        # -----> RENDER ENTITIES
+        self.enemies_list.draw()
+        self.player_list.draw()
+        self.bullet_list.draw()
 
         # -----> RENDER THE INVENTORY
         start_x = self.view_left + 30
