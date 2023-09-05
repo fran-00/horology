@@ -286,7 +286,11 @@ class GameView(arcade.Window):
                 self.player_sprite.center_x = PLAYER_START_X
                 self.player_sprite.center_y = PLAYER_START_Y
 
-        # *** ITEMS TO PICK UP: WEAPONS AND CONSUMABLES THAT RESTORE HEALTH ***
+        self.pick_up_items()
+        self.update_bullets()
+
+    def pick_up_items(self):
+        """Handle pick up items: WEAPONS AND CONSUMABLES THAT RESTORE HEALTH"""
         # Generate a list of all sprites from the item layer of the map that collided with the player.
         items_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
                                                               self.scene[LAYER_NAME_ITEMS])
@@ -304,8 +308,6 @@ class GameView(arcade.Window):
                 if my_weapon == 1:
                     self.inventory.append(stuff.Sep())
                     item.remove_from_sprite_lists()
-
-        self.update_bullets()
 
     def update_bullets(self):
         """Handle bullets update"""
