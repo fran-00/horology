@@ -21,7 +21,7 @@ def setup(self):
     self.spawn_trigger_list = arcade.SpriteList()
 
     # Set up the player, specifically placing it at these coordinates.
-    self.player_sprite = player.PlayerCharacter()
+    self.player_sprite = PlayerCharacter()
     self.player_sprite.center_x = PLAYER_START_X
     self.player_sprite.center_y = PLAYER_START_Y
     self.player_list.append(self.player_sprite)
