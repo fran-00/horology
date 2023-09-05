@@ -20,16 +20,6 @@ def setup(game):
     game.enemies_list = arcade.SpriteList()
     game.spawn_trigger_list = arcade.SpriteList()
 
-    # Set up the player, specifically placing it at these coordinates.
-    game.player_sprite = PlayerCharacter()
-    game.player_sprite.center_x = PLAYER_START_X
-    game.player_sprite.center_y = PLAYER_START_Y
-    game.player_list.append(game.player_sprite)
-    game.items_hit_list = arcade.check_for_collision_with_list(game.player_sprite,
-                                                               game.items_list)
-    game.spawn_trigger_hit_list = arcade.check_for_collision_with_list(game.player_sprite,
-                                                                       game.spawn_trigger_list)
-
     # Name of map file to load
     map_name = "map.tmx"
 
@@ -66,6 +56,16 @@ def setup(game):
     # Initialize Scene with our TileMap, this will automatically add all layers
     # from the map as SpriteLists in the scene in the proper order.
     game.scene = arcade.Scene.from_tilemap(game.tile_map)
+
+    # Set up the player, specifically placing it at these coordinates.
+    game.player_sprite = PlayerCharacter()
+    game.player_sprite.center_x = PLAYER_START_X
+    game.player_sprite.center_y = PLAYER_START_Y
+    game.player_list.append(game.player_sprite)
+    game.items_hit_list = arcade.check_for_collision_with_list(game.player_sprite,
+                                                               game.items_list)
+    game.spawn_trigger_hit_list = arcade.check_for_collision_with_list(game.player_sprite,
+                                                                       game.spawn_trigger_list)
 
     # PHYSICS ENGINE (very basic)
     game.physics_engine = arcade.PhysicsEngineSimple(
