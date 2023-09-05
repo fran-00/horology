@@ -1,7 +1,4 @@
 .vscode/
 __pycache__/
 venv/
-
-*ideas.md
-*drafts.py
 *.code-workspace
