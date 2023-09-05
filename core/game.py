@@ -193,6 +193,7 @@ class GameView(arcade.Window):
     def on_update(self, delta_time):
         """ Handle movements and game logic"""
         self.physics_engine.update()
+        self.player_list.update_animation()
 
         # USED FOR TEXT IN SCREEN (generic, not the score)
         self.text_angle += 1
