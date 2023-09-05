@@ -4,36 +4,36 @@ from entities.player import PlayerCharacter
 from shared_constants import *
 
 
-def setup(self):
+def setup(game):
     # Keep track of our scrolling
-    self.view_bottom = 0
-    self.view_left = 0
+    game.view_bottom = 0
+    game.view_left = 0
 
     # Create the Sprite lists
-    self.player_list = arcade.SpriteList()
-    self.bullet_list = arcade.SpriteList()
-    self.foreground_list = arcade.SpriteList()
-    self.background_list = arcade.SpriteList()
-    self.wall_list = arcade.SpriteList()
-    self.stuff_list = arcade.SpriteList()
-    self.items_list = arcade.SpriteList()
-    self.enemies_list = arcade.SpriteList()
-    self.spawn_trigger_list = arcade.SpriteList()
+    game.player_list = arcade.SpriteList()
+    game.bullet_list = arcade.SpriteList()
+    game.foreground_list = arcade.SpriteList()
+    game.background_list = arcade.SpriteList()
+    game.wall_list = arcade.SpriteList()
+    game.stuff_list = arcade.SpriteList()
+    game.items_list = arcade.SpriteList()
+    game.enemies_list = arcade.SpriteList()
+    game.spawn_trigger_list = arcade.SpriteList()
 
     # Set up the player, specifically placing it at these coordinates.
-    self.player_sprite = PlayerCharacter()
-    self.player_sprite.center_x = PLAYER_START_X
-    self.player_sprite.center_y = PLAYER_START_Y
-    self.player_list.append(self.player_sprite)
-    self.items_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
-                                                               self.items_list)
-    self.spawn_trigger_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
-                                                                       self.spawn_trigger_list)
+    game.player_sprite = PlayerCharacter()
+    game.player_sprite.center_x = PLAYER_START_X
+    game.player_sprite.center_y = PLAYER_START_Y
+    game.player_list.append(game.player_sprite)
+    game.items_hit_list = arcade.check_for_collision_with_list(game.player_sprite,
+                                                               game.items_list)
+    game.spawn_trigger_hit_list = arcade.check_for_collision_with_list(game.player_sprite,
+                                                                       game.spawn_trigger_list)
 
     # Name of map file to load
     map_name = "map.tmx"
 
-    self.level = 1
+    game.level = 1
 
     # Layer Specific Options for the Tilemap
     layer_options = {
@@ -61,12 +61,12 @@ def setup(self):
     }
 
     # Read in the tiled map
-    self.tile_map = arcade.load_tilemap(map_name, TILE_SCALING, layer_options)
+    game.tile_map = arcade.load_tilemap(map_name, TILE_SCALING, layer_options)
 
     # Initialize Scene with our TileMap, this will automatically add all layers
     # from the map as SpriteLists in the scene in the proper order.
-    self.scene = arcade.Scene.from_tilemap(self.tile_map)
+    game.scene = arcade.Scene.from_tilemap(game.tile_map)
 
     # PHYSICS ENGINE (very basic)
-    self.physics_engine = arcade.PhysicsEngineSimple(
-        self.player_sprite, self.wall_list)
+    game.physics_engine = arcade.PhysicsEngineSimple(
+        game.player_sprite, game.wall_list)
