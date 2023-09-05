@@ -64,11 +64,11 @@ def setup(game):
     game.player_sprite.center_y = PLAYER_START_Y
     game.player_list.append(game.player_sprite)
     game.items_hit_list = arcade.check_for_collision_with_list(game.player_sprite,
-                                                               game.items_list)
+                                                               game.scene[LAYER_NAME_ITEMS])
     game.spawn_trigger_hit_list = arcade.check_for_collision_with_list(game.player_sprite,
-                                                                       game.spawn_trigger_list)
+                                                                       game.scene[LAYER_NAME_SPAWN_TRIGGER])
     game.scene.add_sprite("Player", game.player_sprite)
 
     # PHYSICS ENGINE (very basic)
     game.physics_engine = arcade.PhysicsEngineSimple(
-        game.player_sprite, game.wall_list)
+        game.player_sprite, game.scene[LAYER_NAME_WALLS])

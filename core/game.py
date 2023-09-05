@@ -253,7 +253,7 @@ class GameView(arcade.Window):
 
         # *** SPAWN AN ENEMY WHEN A SPAWN POINT IS TRIGGERED
         if arcade.check_for_collision_with_list(self.player_sprite,
-                                                self.spawn_trigger_list):
+                                                self.scene[LAYER_NAME_SPAWN_TRIGGER]):
             # for i in range(ENEMY_COUNT):                              # questo ti serve se vuoi che spawni più di un nemico
             enemy = HermanEnemy()
             # Position the enemy at a random location
@@ -265,7 +265,7 @@ class GameView(arcade.Window):
 
         # remove the spawn point triggered from sprite list
         spawn_point_touched = arcade.check_for_collision_with_list(self.player_sprite,
-                                                                   self.spawn_trigger_list)
+                                                                   self.scene[LAYER_NAME_SPAWN_TRIGGER])
         for spawn_point in spawn_point_touched:
             spawn_point.kill()
             print("Prepare to fight! Spawn point touched!")
@@ -294,7 +294,7 @@ class GameView(arcade.Window):
         # *** ITEMS TO PICK UP: WEAPONS AND CONSUMABLES THAT RESTORE HEALTH ***
         # Generate a list of all sprites from the item layer of the map that collided with the player.
         items_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
-                                                              self.items_list)
+                                                              self.scene[LAYER_NAME_ITEMS])
 
         for item in items_hit_list:
             # If player's health isn't full, loop through each colliding sprite, add hp_restored propriety value (int) to hp and remove item sprite from list.
@@ -317,7 +317,7 @@ class GameView(arcade.Window):
             enemy_hit_list = arcade.check_for_collision_with_list(
                 bullet, self.enemies_list)
             wall_hit_list = arcade.check_for_collision_with_list(
-                bullet, self.wall_list)  # sempre facente parte del FASTIDIO, rimettilo
+                bullet, self.scene[LAYER_NAME_WALLS])  # sempre facente parte del FASTIDIO, rimettilo
             # If it did, get rid of the bullet
             if len(enemy_hit_list) > 0:
                 bullet.remove_from_sprite_lists()
