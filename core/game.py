@@ -304,7 +304,11 @@ class GameView(arcade.Window):
                 if my_weapon == 1:
                     self.inventory.append(stuff.Sep())
                     item.remove_from_sprite_lists()
-        # FIXME **** BULLETS UPDATE ****
+
+        self.update_bullets()
+
+    def update_bullets(self):
+        """Handle bullets update"""
         self.bullet_list.update()
 
         for bullet in self.bullet_list:
