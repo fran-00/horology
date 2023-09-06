@@ -29,8 +29,8 @@ BOTTOM_VIEWPORT_MARGIN = SCREEN_HEIGHT // 2
 TOP_VIEWPORT_MARGIN = SCREEN_HEIGHT // 2
 
 # Player starting coordinates
-PLAYER_START_X = 64
-PLAYER_START_Y = 225
+PLAYER_START_X = 327
+PLAYER_START_Y = 280
 
 # Constants used to track if the player is facing left or right
 RIGHT_FACING = 0
