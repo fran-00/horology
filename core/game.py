@@ -203,7 +203,6 @@ class GameView(arcade.Window):
             self.view_left = 0
             self.view_bottom = 0
             changed_viewport = True
-            arcade.play_sound(self.game_over)
 
         self.manage_scrolling()
         self.spawn_enemies()
