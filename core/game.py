@@ -76,11 +76,11 @@ class GameView(arcade.Window):
         # Clear the screen to the background color
         self.clear()
 
-        self.draw_health_number()
-        self.draw_health_bar()
-
         # Draw our Scene
         self.scene.draw()
+
+        self.draw_health_number()
+        self.draw_health_bar()
         
         # -----> RENDER ENTITIES
         self.enemies_list.draw()
