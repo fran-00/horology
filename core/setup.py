@@ -15,7 +15,7 @@ def setup(game):
     game.enemies_list = arcade.SpriteList()
 
     # Name of map file to load
-    map_name = "map.tmx"
+    map_name = "map_test.tmx"
 
     game.level = 1
 
