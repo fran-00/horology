@@ -84,7 +84,6 @@ class GameView(arcade.Window):
         
         # -----> RENDER ENTITIES
         self.enemies_list.draw()
-        self.player_list.draw()
         self.bullet_list.draw()
 
         # -----> RENDER THE INVENTORY
