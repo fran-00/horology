@@ -267,7 +267,7 @@ class GameView(arcade.View):
                 spawn_point.kill()
                 print("Prepare to fight! Spawn point touched!")
 
-            enemy = EnemyCharacter(enemy_name, enemy_hp, enemy_damage)
+            enemy = EnemyCharacter(enemy_name, enemy_hp, enemy_damage, self.player_sprite, self.scene[LAYER_NAME_WALLS])
             # Position the enemy 100 pixels away horizontally
             enemy.center_x = spawn_point.center_x + 100
             enemy.center_y = spawn_point.center_y
