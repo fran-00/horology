@@ -37,7 +37,7 @@ class GameView(arcade.Window):
     def draw_health_number(self):
         """Render player HP number"""
         # Draw how many hit points we have
-        health_string = f"{self.cur_health}/{self.max_health}"
+        health_string = f"{self.player_sprite.cur_health}/{self.player_sprite.max_health}"
         arcade.draw_text(health_string,
                          start_x=self.view_left + 750,
                          start_y=self.view_bottom + 0,
@@ -47,7 +47,7 @@ class GameView(arcade.Window):
     def draw_health_bar(self):
         """Render player HP bar"""
         # Draw the red background of the bar
-        if self.cur_health < self.max_health:
+        if self.player_sprite.cur_health < self.player_sprite.max_health:
             arcade.draw_rectangle_filled(center_x=self.view_left + 600,
                                          center_y=self.view_bottom + 10,
                                          width=HEALTHBAR_WIDTH,
@@ -55,7 +55,7 @@ class GameView(arcade.Window):
                                          color=arcade.color.RED)
 
         # Calculate width based on health
-        health_width = HEALTHBAR_WIDTH * (self.cur_health / self.max_health)
+        health_width = HEALTHBAR_WIDTH * (self.player_sprite.cur_health / self.player_sprite.max_health)
         # Draw the green foreground of the bar
         arcade.draw_rectangle_filled(center_x=(self.view_left + 600) - 0.5 * (HEALTHBAR_WIDTH - health_width),
                                      center_y=self.view_bottom - 10,
@@ -82,7 +82,7 @@ class GameView(arcade.Window):
         # -----> RENDER THE INVENTORY
         start_x = self.view_left + 30
         start_y = self.view_bottom + 50
-        for i, item in enumerate(self.inventory, 1):
+        for i, item in enumerate(self.player_sprite.inventory, 1):
             your_stuff = f"{i}: {item.name}\n"
             arcade.draw_text(your_stuff, start_x, start_y,
                              arcade.csscolor.WHITE, 10, anchor_y="top")
@@ -276,10 +276,10 @@ class GameView(arcade.Window):
         enemies_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
                                                                 self.enemies_list)
         # If the player touch an ENEMY, she respawn at starting coordinates AND loses as many hp as is written on damage property (for now is under Enemy parent class).
-        if self.cur_health > 0:
+        if self.player_sprite.cur_health > 0:
             for _ in enemies_hit_list:
                 hp_lost = int(Enemy().damage)
-                self.cur_health -= hp_lost
+                self.player_sprite.cur_health -= hp_lost
                 self.player_sprite.change_x = 0
                 self.player_sprite.change_y = 0
                 self.player_sprite.center_x = PLAYER_START_X
@@ -293,16 +293,16 @@ class GameView(arcade.Window):
 
         for item in items_hit_list:
             # If player's health isn't full, loop through each colliding sprite, add hp_restored propriety value (int) to hp and remove item sprite from list.
-            if 'hp_restore' in item.properties and self.cur_health < self.max_health:
+            if 'hp_restore' in item.properties and self.player_sprite.cur_health < self.player_sprite.max_health:
                 hp_restored = int(item.properties['hp_restore'])
-                self.cur_health += hp_restored
+                self.player_sprite.cur_health += hp_restored
                 item.remove_from_sprite_lists()
-            elif 'hp_restore' in item.properties and self.cur_health == self.max_health:
+            elif 'hp_restore' in item.properties and self.player_sprite.cur_health == self.player_sprite.max_health:
                 print("your health is full")
             elif 'weapon' in item.properties:
                 my_weapon = int(item.properties['weapon'])
                 if my_weapon == 1:
-                    self.inventory.append(stuff.Sep())
+                    self.player_sprite.inventory.append(stuff.Sep())
                     item.remove_from_sprite_lists()
 
     def update_bullets(self):
