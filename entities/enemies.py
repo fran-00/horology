@@ -38,13 +38,15 @@ class EnemySprite(Entity):
 
 
 class EnemyCharacter(EnemySprite):
-    def __init__(self, name, hp, damage):
+    def __init__(self, name, hp, damage, player, wall_list):
 
         super().__init__(name, name)
 
+        self.player = player
         self.name = name
         self.hp = hp
         self.damage = damage
+        self.wall_list = wall_list
 
     def follow_sprite(self, player_sprite):
         # This function will move the current sprite towards whatever other sprite is specified as a parameter.
