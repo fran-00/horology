@@ -4,7 +4,7 @@ import random
 import arcade
 
 import stuff
-from entities.enemies import EnemyCharacter, follow_sprite
+from entities.enemies import EnemyCharacter
 from core.setup import setup
 from shared_constants import *
 
