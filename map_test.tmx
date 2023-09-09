@@ -232,7 +232,13 @@
   <object id="15" name="Mushroom" type="Item" gid="2689" x="396" y="2420" width="64" height="64"/>
  </objectgroup>
  <objectgroup id="11" name="Spawn_trigger">
-  <object id="16" gid="2059" x="830.667" y="3123.33" width="140" height="136"/>
+  <object id="16" name="herman" gid="2059" x="830.667" y="3123.33" width="140" height="136">
+   <properties>
+    <property name="damage" type="int" value="1"/>
+    <property name="hp" type="int" value="10"/>
+    <property name="name" value="herman"/>
+   </properties>
+  </object>
  </objectgroup>
  <layer id="4" name="Foreground" width="50" height="50">
   <data encoding="csv">
