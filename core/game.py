@@ -20,13 +20,6 @@ class GameView(arcade.Window):
 
         super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
 
-        # questi attributi andrebbero messi su PLAYER ma al momento funzionano solo se li metto qui.
-        self.hp = 100
-        self.max_health = self.hp
-        self.cur_health = 100
-        self.inventory = []
-        self.score = 0
-
         # Show or don't the mouse cursor
         self.set_mouse_visible(True)
         # Used for text on screen (dialogues, not score)

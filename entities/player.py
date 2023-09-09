@@ -22,7 +22,12 @@ class PlayerCharacter(Entity):
 
         # Set up parent class
         super().__init__("player", "player")
-
+        
+        self.hp = 100
+        self.max_health = self.hp
+        self.cur_health = 100
+        self.inventory = []
+        self.score = 0
 
     def update_animation(self, delta_time: float = 1/60):
         # Figure out if we need to flip face left or right
