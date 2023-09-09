@@ -263,13 +263,9 @@ class GameView(arcade.Window):
             spawn_point.kill()
             print("Prepare to fight! Spawn point touched!")
 
-        # manage the following behavior (FIXME funziona male, la sprite si muove ma non segue proprio un cazzo, tende ad andare nell'angolo
-        # inferiore sx dello schermo, che è anche il punto di spawn del giocatore. sospetto che anche questo comportamento abbia a che fare
-        # con la necessità di aggiungere lo scrolling ai margini nei movimenti nemici)
-
-        player_sprite = player.PlayerCharacter()
+        # manage the following behavior
         for enemy in self.enemies_list:
-            follow_sprite(enemy, player_sprite)
+            follow_sprite(enemy, self.player_sprite)
     
     def fight_enemies(self):
         """Handle fights with enemies"""
