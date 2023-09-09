@@ -87,27 +87,8 @@ class GameView(arcade.View):
 
     def on_mouse_press(self, x, y, button, modifiers):
         """Handle mouse buttons pressed"""
-        # # Questo serve per far muovere il giocatore al click del mouse (tasto destro)
-        # # FIXME funziona. Ma una volta arrivata a destinazione non si ferma!
-        # current_position_x = self.player_sprite.center_x
-        # current_position_y = self.player_sprite.center_y
-        # target_position_x = x + self.view_left
-        # target_position_y = y + self.view_bottom
-        # x_diff = target_position_x - current_position_x
-        # y_diff = target_position_y - current_position_y
-        # rad_angle = math.atan2(y_diff, x_diff)
-
-        # if button == arcade.MOUSE_BUTTON_RIGHT and rad_angle != 0:
-        #     self.player_sprite.change_x = math.cos(rad_angle) * MOVEMENT_SPEED
-        #     self.player_sprite.change_y = math.sin(rad_angle) * MOVEMENT_SPEED
-        # else:
-        #     self.player_sprite.change_x = 0
-        #     self.player_sprite.change_y = 0
-        #     return
-        # if x == current_position_x and y == current_position_y:
-        #     self.player_sprite.change_x = 0
-        #     self.player_sprite.change_y = 0
-        #     return
+        if button == arcade.MOUSE_BUTTON_RIGHT:
+            self.move_on_mouse_click(x, y)
 
         # we check if left button is pressed to change player sprite to fighting version
         if button == arcade.MOUSE_BUTTON_LEFT:
@@ -116,6 +97,26 @@ class GameView(arcade.View):
             bullet = self.create_bullet(x, y)
             # Add the bullet to the appropriate lists
             self.bullet_list.append(bullet)
+    
+    def move_on_mouse_click(self, x, y):
+        # Questo serve per far muovere il giocatore al click del mouse (tasto destro)
+        # FIXME: Player must stop when target position is reached or when they
+        # hit a wall
+        current_position_x = self.player_sprite.center_x
+        current_position_y = self.player_sprite.center_y
+        target_position_x = x + self.view_left
+        target_position_y = y + self.view_bottom
+        x_diff = target_position_x - current_position_x
+        y_diff = target_position_y - current_position_y
+        rad_angle = math.atan2(y_diff, x_diff)
+
+        if rad_angle != 0 and x != current_position_x and y != current_position_y:
+            self.player_sprite.change_x = math.cos(rad_angle) * MOVEMENT_SPEED
+            self.player_sprite.change_y = math.sin(rad_angle) * MOVEMENT_SPEED
+        else:
+            self.player_sprite.change_x = 0
+            self.player_sprite.change_y = 0
+            return
 
     def create_bullet(self, x, y):
         """Spawn a bullet that travels from player to target"""
