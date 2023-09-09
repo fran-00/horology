@@ -106,7 +106,7 @@ class GameView(arcade.Window):
         """
         # we check if left button is pressed to change player sprite to fighting version
         if button == arcade.MOUSE_BUTTON_LEFT:
-            player.mouse_left_pressed = True
+            self.player_sprite.mouse_left_pressed = True
 
             # -----> BULLETS!!!
             # Create a bullet
@@ -152,7 +152,7 @@ class GameView(arcade.Window):
 
     def on_mouse_release(self, x, y, button, modifiers):
         """Handle mouse button release"""
-        player.mouse_left_pressed = False
+        self.player_sprite.mouse_left_pressed = False
 
     def on_key_press(self, key, modifiers):
         """Handle Keys Pressed"""

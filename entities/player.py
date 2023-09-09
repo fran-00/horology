@@ -4,7 +4,7 @@ from .entity import Entity
 from shared_constants import *
 
 
-mouse_left_pressed = False
+
 
 
 def load_texture_pair(filename):
@@ -23,6 +23,7 @@ class PlayerCharacter(Entity):
         # Set up parent class
         super().__init__("player", "player")
         
+        self.mouse_left_pressed = False
         self.hp = 100
         self.max_health = self.hp
         self.cur_health = 100
@@ -36,7 +37,7 @@ class PlayerCharacter(Entity):
         elif self.change_x > 0 and self.facing_direction == LEFT_FACING:
             self.facing_direction = RIGHT_FACING
 
-        if not mouse_left_pressed:
+        if not self.mouse_left_pressed:
             # Idle animation
             if self.change_x == 0 and self.change_y == 0 or UPDATES_PER_FRAME == 0:
                 self.texture = self.idle_texture_pair[self.facing_direction]
