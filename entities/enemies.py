@@ -48,7 +48,7 @@ class EnemyCharacter(EnemySprite):
         self.damage = damage
         self.wall_list = wall_list
 
-    def follow_sprite(self, player_sprite):
+    def follow_sprite(self):
         # This function will move the current sprite towards whatever other sprite is specified as a parameter.
         # We use the 'min' function here to get the sprite to line up with the target sprite, and not jump around if the sprite is not off
         # an exact multiple of SPRITE_SPEED.
@@ -61,8 +61,8 @@ class EnemyCharacter(EnemySprite):
 
         # Get the destination location for the bullet
         # probabilmente devi dirgli dove sta questa roba
-        dest_x = player_sprite.center_x
-        dest_y = player_sprite.center_y
+        dest_x = self.player.center_x
+        dest_y = self.player.center_y
 
         # Do math to calculate how to get the bullet to the destination. CHE CAZZO C'ENTRANO LE PALLOTTOLE???????? mmmh....
         # Calculation the angle in radians between the start points and end points. This is the angle the bullet will travel.
