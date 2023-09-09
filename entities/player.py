@@ -4,9 +4,6 @@ from .entity import Entity
 from shared_constants import *
 
 
-
-
-
 def load_texture_pair(filename):
     # Load a texture pair, with the second being a mirror image.
     return [
@@ -21,7 +18,7 @@ class PlayerCharacter(Entity):
     def __init__(self):
 
         super().__init__("player", "player")
-        
+
         self.mouse_left_pressed = False
         self.hp = 100
         self.max_health = self.hp

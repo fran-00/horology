@@ -34,7 +34,7 @@ class Entity(arcade.Sprite):
         for i in range(8):
             texture = load_texture_pair(f"{main_path}_walk{i}.png")
             self.walk_textures.append(texture)
-        
+
         # Load textures for walking south
         self.walkfront_textures = []
         for i in range(8):

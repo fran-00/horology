@@ -71,7 +71,7 @@ class GameView(arcade.Window):
 
         self.draw_health_number()
         self.draw_health_bar()
-        
+
         # -----> RENDER ENTITIES
         self.enemies_list.draw()
         self.bullet_list.draw()
@@ -202,10 +202,10 @@ class GameView(arcade.Window):
         self.fight_enemies()
         self.pick_up_items()
         self.update_bullets()
-    
+
     def manage_scrolling(self):
         """Handle viewport scrolling"""
-        
+
         # Track if we need to change the viewport
         changed_viewport = False
 
@@ -244,7 +244,7 @@ class GameView(arcade.Window):
                                 SCREEN_WIDTH + self.view_left,
                                 self.view_bottom,
                                 SCREEN_HEIGHT + self.view_bottom)
-    
+
     def spawn_enemies(self):
         """Spawn an enemy when a spawn point is triggered"""
         if arcade.check_for_collision_with_list(self.player_sprite,
@@ -268,7 +268,7 @@ class GameView(arcade.Window):
         # manage the following behavior
         for enemy in self.enemies_list:
             follow_sprite(enemy, self.player_sprite)
-    
+
     def fight_enemies(self):
         """Handle fights with enemies"""
         enemies_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
