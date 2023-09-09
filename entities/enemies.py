@@ -4,7 +4,7 @@ from .entity import Entity
 from shared_constants import *
 
 
-class Enemy(Entity):
+class EnemySprite(Entity):
     def __init__(self, name_folder, name_file):
 
         # Setup parent class
@@ -64,8 +64,11 @@ def follow_sprite(self, player_sprite):
     self.change_y = math.sin(angle) * ENEMY_SPEED
 
 
-class HermanEnemy(Enemy):
-    def __init__(self):
+class EnemyCharacter(EnemySprite):
+    def __init__(self, name, hp, damage):
 
-        # Set up parent class
-        super().__init__("herman", "herman")
+        super().__init__(name, name)
+
+        self.name = name
+        self.hp = hp
+        self.damage = damage

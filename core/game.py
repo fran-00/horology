@@ -4,7 +4,7 @@ import random
 import arcade
 
 import stuff
-from entities.enemies import Enemy, HermanEnemy, follow_sprite
+from entities.enemies import EnemyCharacter, follow_sprite
 from core.setup import setup
 from shared_constants import *
 
@@ -250,7 +250,7 @@ class GameView(arcade.Window):
         if arcade.check_for_collision_with_list(self.player_sprite,
                                                 self.scene[LAYER_NAME_SPAWN_TRIGGER]):
             # for i in range(ENEMY_COUNT)
-            enemy = HermanEnemy()
+            enemy = EnemyCharacter("herman", 10, 1)
             # Position the enemy at a random location
             enemy.center_x = random.randrange(SCREEN_WIDTH)
             enemy.center_y = random.randrange(SCREEN_HEIGHT)
@@ -277,7 +277,7 @@ class GameView(arcade.Window):
         # loses as many hp as is written on damage property (for now is under Enemy parent class).
         if self.player_sprite.cur_health > 0:
             for _ in enemies_hit_list:
-                hp_lost = int(Enemy().damage)
+                hp_lost = int(EnemyCharacter("herman", 10, 1).damage)
                 self.player_sprite.cur_health -= hp_lost
                 self.player_sprite.change_x = 0
                 self.player_sprite.change_y = 0
