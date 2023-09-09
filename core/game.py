@@ -25,7 +25,8 @@ class GameView(arcade.Window):
     def on_resize(self, width, height):
         """Handle window resizing"""
 
-        # Call the parent. Failing to do this will mess up the coordinates, and default to 0,0 at the center and the edges being -1 to 1.
+        # Call the parent. Failing to do this will mess up the coordinates,
+        # and default to 0,0 at the center and the edges being -1 to 1.
         super().on_resize(width, height)
 
         print(f"Window resized to: {width}, {height}")
@@ -121,8 +122,10 @@ class GameView(arcade.Window):
             # TODO il proiettile viene fuori dalla mano e cambia mano in base all'orientamento della sprite di lei
 
             # Get from the mouse the destination location for the bullet
-            # right now target's coordinates system origin is precisely the bottom left angle of the viewport. Viewport follows the player..
-            # IMPORTANT! If you have a scrolling screen, you will also need to add in self.view_bottom and self.view_left. But HOW?
+            # right now target's coordinates system origin is precisely the
+            # bottom left angle of the viewport. Viewport follows the player..
+            # IMPORTANT! If you have a scrolling screen, you will also need to
+            # add in self.view_bottom and self.view_left. But HOW?
             target_x = x + self.view_left
             target_y = y + self.view_bottom
 
@@ -143,7 +146,8 @@ class GameView(arcade.Window):
             print(f"Bullet angle: {bullet.angle:.2f}")
 
             print(f"target_x = {target_x}, target_y = {target_y}")
-            # Taking into account the angle, calculate our change_x and change_y. Velocity is how fast the bullet travels.
+            # Taking into account the angle, calculate our change_x and change_y.
+            # Velocity is how fast the bullet travels.
             bullet.change_x = math.cos(angle) * BULLET_SPEED
             bullet.change_y = math.sin(angle) * BULLET_SPEED
 
@@ -181,7 +185,8 @@ class GameView(arcade.Window):
         self.text_angle += 1
         self.time_elapsed += delta_time
 
-        # FIXME: Did the player fall off the map? Now it works only if she goes down under the map, but she can walk up, right and left forever.
+        # Did the player fall off the map? Now it works only if she goes
+        # down under the map, but she can walk up, right and left forever.
         if self.player_sprite.center_y < -100:
             self.player_sprite.center_x = PLAYER_START_X
             self.player_sprite.center_y = PLAYER_START_Y
@@ -229,7 +234,8 @@ class GameView(arcade.Window):
             changed_viewport = True
 
         if changed_viewport:
-            # Only scroll to integers. Otherwise we end up with pixels that don't line up on the screen (i think it may be quite interesting...)
+            # Only scroll to integers. Otherwise we end up with pixels that
+            # don't line up on the screen (i think it may be quite interesting...)
             self.view_bottom = int(self.view_bottom)
             self.view_left = int(self.view_left)
 
@@ -243,7 +249,7 @@ class GameView(arcade.Window):
         """Spawn an enemy when a spawn point is triggered"""
         if arcade.check_for_collision_with_list(self.player_sprite,
                                                 self.scene[LAYER_NAME_SPAWN_TRIGGER]):
-            # for i in range(ENEMY_COUNT):                              # questo ti serve se vuoi che spawni più di un nemico
+            # for i in range(ENEMY_COUNT)
             enemy = HermanEnemy()
             # Position the enemy at a random location
             enemy.center_x = random.randrange(SCREEN_WIDTH)
@@ -267,7 +273,8 @@ class GameView(arcade.Window):
         """Handle fights with enemies"""
         enemies_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
                                                                 self.enemies_list)
-        # If the player touch an ENEMY, she respawn at starting coordinates AND loses as many hp as is written on damage property (for now is under Enemy parent class).
+        # If the player touch an ENEMY, she respawn at starting coordinates AND
+        # loses as many hp as is written on damage property (for now is under Enemy parent class).
         if self.player_sprite.cur_health > 0:
             for _ in enemies_hit_list:
                 hp_lost = int(Enemy().damage)
@@ -284,7 +291,8 @@ class GameView(arcade.Window):
                                                               self.scene[LAYER_NAME_ITEMS])
 
         for item in items_hit_list:
-            # If player's health isn't full, loop through each colliding sprite, add hp_restored propriety value (int) to hp and remove item sprite from list.
+            # If player's health isn't full, loop through each colliding sprite,
+            # add hp_restored propriety value (int) to hp and remove item sprite from list.
             if 'hp_restore' in item.properties and self.player_sprite.cur_health < self.player_sprite.max_health:
                 hp_restored = int(item.properties['hp_restore'])
                 self.player_sprite.cur_health += hp_restored
@@ -306,7 +314,7 @@ class GameView(arcade.Window):
             enemy_hit_list = arcade.check_for_collision_with_list(
                 bullet, self.enemies_list)
             wall_hit_list = arcade.check_for_collision_with_list(
-                bullet, self.scene[LAYER_NAME_WALLS])  # sempre facente parte del FASTIDIO, rimettilo
+                bullet, self.scene[LAYER_NAME_WALLS])
             # If it did, get rid of the bullet
             if len(enemy_hit_list) > 0:
                 bullet.remove_from_sprite_lists()
@@ -322,8 +330,7 @@ class GameView(arcade.Window):
             for _ in wall_hit_list:
                 bullet.remove_from_sprite_lists()
 
-            # Bullet will travel forever and will go out of screen without
-            # causing any harm. Let them be whatever they want to be.
+            # Now bullet will travel forever and will go out of screen
 
 
 def main():

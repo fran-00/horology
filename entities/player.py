@@ -20,7 +20,6 @@ class PlayerCharacter(Entity):
 
     def __init__(self):
 
-        # Set up parent class
         super().__init__("player", "player")
         
         self.mouse_left_pressed = False
