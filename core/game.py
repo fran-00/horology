@@ -87,72 +87,80 @@ class GameView(arcade.View):
 
     def on_mouse_press(self, x, y, button, modifiers):
         """Handle mouse buttons pressed"""
-        """ Questo serve per far muovere il giocatore al click del mouse (tasto destro)
-        # FIXME funziona. Ma una volta arrivata a destinazione non si ferma!
-        current_position_x = self.player_sprite.center_x
-        current_position_y = self.player_sprite.center_y
-        target_position_x = x + self.view_left
-        target_position_y = y + self.view_bottom
-        x_diff = target_position_x - current_position_x
-        y_diff = target_position_y - current_position_y
-        rad_angle = math.atan2(y_diff, x_diff)
+        # # Questo serve per far muovere il giocatore al click del mouse (tasto destro)
+        # # FIXME funziona. Ma una volta arrivata a destinazione non si ferma!
+        # current_position_x = self.player_sprite.center_x
+        # current_position_y = self.player_sprite.center_y
+        # target_position_x = x + self.view_left
+        # target_position_y = y + self.view_bottom
+        # x_diff = target_position_x - current_position_x
+        # y_diff = target_position_y - current_position_y
+        # rad_angle = math.atan2(y_diff, x_diff)
 
-        if button == arcade.MOUSE_BUTTON_RIGHT and rad_angle != 0:
-            self.player_sprite.change_x = math.cos(rad_angle) * MOVEMENT_SPEED
-            self.player_sprite.change_y = math.sin(rad_angle) * MOVEMENT_SPEED
-        else:
-            self.player_sprite.change_x = 0     FIXME!! come cazzo faccio a farla fermare quando arriva???
-            self.player_sprite.change_y = 0     FIXME!!
-            return
-        """
+        # if button == arcade.MOUSE_BUTTON_RIGHT and rad_angle != 0:
+        #     self.player_sprite.change_x = math.cos(rad_angle) * MOVEMENT_SPEED
+        #     self.player_sprite.change_y = math.sin(rad_angle) * MOVEMENT_SPEED
+        # else:
+        #     self.player_sprite.change_x = 0
+        #     self.player_sprite.change_y = 0
+        #     return
+        # if x == current_position_x and y == current_position_y:
+        #     self.player_sprite.change_x = 0
+        #     self.player_sprite.change_y = 0
+        #     return
+
         # we check if left button is pressed to change player sprite to fighting version
         if button == arcade.MOUSE_BUTTON_LEFT:
             self.player_sprite.mouse_left_pressed = True
-
-            # -----> BULLETS!!!
-            # Create a bullet
-            bullet = arcade.Sprite(
-                "sprite_pack/4dEuclideanCube.png", SPRITE_SCALING_CURSE)
-
-            # Position the bullet at the player's current location
-            start_x = self.player_sprite.center_x
-            start_y = self.player_sprite.center_y
-            bullet.center_x = start_x
-            bullet.center_y = start_y
-            # TODO il proiettile viene fuori dalla mano e cambia mano in base all'orientamento della sprite di lei
-
-            # Get from the mouse the destination location for the bullet
-            # right now target's coordinates system origin is precisely the
-            # bottom left angle of the viewport. Viewport follows the player..
-            # IMPORTANT! If you have a scrolling screen, you will also need to
-            # add in self.view_bottom and self.view_left. But HOW?
-            target_x = x + self.view_left
-            target_y = y + self.view_bottom
-
-            # Calculate how to get the bullet to the destination: the angle in
-            # radians between the start points and end points is the one the
-            # bullet will travel: 2-argument arctangent is equal the angle
-            # between the positive x axis and the ray to the point (x, y) ≠ (0, 0)
-            # In our case coordinates x and y is the difference between player
-            # position and the point aimed with the mouse cursor in our
-            # coordinates system where 0.0 is in the bottom left of the viewport
-
-            x_diff = target_x - start_x
-            y_diff = target_y - start_y
-            angle = math.atan2(y_diff, x_diff)
-
-            # Angle the bullet sprite so it doesn't look like it is flying sideways.
-            bullet.angle = math.degrees(angle)
-            print(f"Bullet angle: {bullet.angle:.2f}")
-
-            print(f"target_x = {target_x}, target_y = {target_y}")
-            # Taking into account the angle, calculate our change_x and change_y.
-            # Velocity is how fast the bullet travels.
-            bullet.change_x = math.cos(angle) * BULLET_SPEED
-            bullet.change_y = math.sin(angle) * BULLET_SPEED
-
+            
+            bullet = self.create_bullet(x, y)
             # Add the bullet to the appropriate lists
             self.bullet_list.append(bullet)
+
+    def create_bullet(self, x, y):
+        """Spawn a bullet that travels from player to target"""
+        # Create a bullet
+        bullet = arcade.Sprite(
+            "sprite_pack/4dEuclideanCube.png", SPRITE_SCALING_CURSE)
+
+        # Position the bullet at the player's current location
+        start_x = self.player_sprite.center_x
+        start_y = self.player_sprite.center_y
+        bullet.center_x = start_x
+        bullet.center_y = start_y
+        # TODO il proiettile viene fuori dalla mano e cambia mano in base all'orientamento della sprite di lei
+
+        # Get from the mouse the destination location for the bullet
+        # right now target's coordinates system origin is precisely the
+        # bottom left angle of the viewport. Viewport follows the player..
+        # IMPORTANT! If you have a scrolling screen, you will also need to
+        # add in self.view_bottom and self.view_left. But HOW?
+        target_x = x + self.view_left
+        target_y = y + self.view_bottom
+
+        # Calculate how to get the bullet to the destination: the angle in
+        # radians between the start points and end points is the one the
+        # bullet will travel: 2-argument arctangent is equal the angle
+        # between the positive x axis and the ray to the point (x, y) ≠ (0, 0)
+        # In our case coordinates x and y is the difference between player
+        # position and the point aimed with the mouse cursor in our
+        # coordinates system where 0.0 is in the bottom left of the viewport
+
+        x_diff = target_x - start_x
+        y_diff = target_y - start_y
+        angle = math.atan2(y_diff, x_diff)
+
+        # Angle the bullet sprite so it doesn't look like it is flying sideways.
+        bullet.angle = math.degrees(angle)
+        print(f"Bullet angle: {bullet.angle:.2f}")
+
+        print(f"target_x = {target_x}, target_y = {target_y}")
+        # Taking into account the angle, calculate our change_x and change_y.
+        # Velocity is how fast the bullet travels.
+        bullet.change_x = math.cos(angle) * BULLET_SPEED
+        bullet.change_y = math.sin(angle) * BULLET_SPEED
+
+        return bullet
 
     def on_mouse_release(self, x, y, button, modifiers):
         """Handle mouse button release"""
