@@ -9,15 +9,15 @@ from core.setup import setup
 from shared_constants import *
 
 
-class GameView(arcade.Window):
+class GameView(arcade.View):
     """Main application class"""
 
     def __init__(self):
 
-        super().__init__(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
+        super().__init__()
 
         # Show or don't the mouse cursor
-        self.set_mouse_visible(True)
+        self.window.set_mouse_visible(True)
         # Used for text on screen (dialogues, not score)
         self.text_angle = 0
         self.time_elapsed = 0.0
@@ -335,6 +335,8 @@ class GameView(arcade.Window):
 
 
 def main():
-    window = GameView()
-    setup(window)
+    window = arcade.Window(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
+    start_view = GameView()
+    window.show_view(start_view)
+    setup(start_view)
     arcade.run()
