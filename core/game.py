@@ -268,7 +268,7 @@ class GameView(arcade.Window):
 
         # manage the following behavior
         for enemy in self.enemies_list:
-            follow_sprite(enemy, self.player_sprite)
+            enemy.follow_sprite(self.player_sprite)
 
     def fight_enemies(self):
         """Handle fights with enemies"""
