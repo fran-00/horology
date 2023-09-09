@@ -36,7 +36,7 @@ class PlayerCharacter(Entity):
         elif self.change_x > 0 and self.facing_direction == LEFT_FACING:
             self.facing_direction = RIGHT_FACING
 
-        if mouse_left_pressed == False:
+        if not mouse_left_pressed:
             # Idle animation
             if self.change_x == 0 and self.change_y == 0 or UPDATES_PER_FRAME == 0:
                 self.texture = self.idle_texture_pair[self.facing_direction]
@@ -61,7 +61,7 @@ class PlayerCharacter(Entity):
                 else:
                     return
 
-        elif mouse_left_pressed == True:
+        else:
             # FIXME Fighting animation
             self.texture = self.fight_texture_pair[self.facing_direction]
             return
