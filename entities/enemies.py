@@ -1,5 +1,7 @@
 import math
 
+import arcade
+
 from .entity import Entity
 from shared_constants import *
 
