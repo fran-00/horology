@@ -286,11 +286,11 @@ class GameView(arcade.View):
         # If the player touch an ENEMY, she respawn at starting coordinates AND
         # loses as many hp as is written on damage property (for now is under Enemy parent class).
         if self.player_sprite.cur_health > 0:
-            self.player_sprite.change_x = 0
-            self.player_sprite.change_y = 0
             for enemy in enemies_hit_list:
                 hp_lost = int(enemy.damage)
                 self.player_sprite.cur_health -= hp_lost
+                self.player_sprite.change_x = 0
+                self.player_sprite.change_y = 0
                 self.player_sprite.center_x = PLAYER_START_X
                 self.player_sprite.center_y = PLAYER_START_Y
 
