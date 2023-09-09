@@ -247,23 +247,24 @@ class GameView(arcade.Window):
 
     def spawn_enemies(self):
         """Spawn an enemy when a spawn point is triggered"""
-        if arcade.check_for_collision_with_list(self.player_sprite,
-                                                self.scene[LAYER_NAME_SPAWN_TRIGGER]):
-            # for i in range(ENEMY_COUNT)
-            enemy = EnemyCharacter("herman", 10, 1)
-            # Position the enemy at a random location
-            enemy.center_x = random.randrange(SCREEN_WIDTH)
-            enemy.center_y = random.randrange(SCREEN_HEIGHT)
+        spawn_points_touched_list = arcade.check_for_collision_with_list(self.player_sprite,
+                                                                         self.scene[LAYER_NAME_SPAWN_TRIGGER])
+        if spawn_points_touched_list != []:
+            for spawn_point in spawn_points_touched_list:
+                enemy_name = spawn_point.properties["name"]
+                enemy_hp = spawn_point.properties["hp"]
+                enemy_damage = spawn_point.properties["damage"]
+                # remove the spawn point triggered from sprite list
+                spawn_point.kill()
+                print("Prepare to fight! Spawn point touched!")
+
+            enemy = EnemyCharacter(enemy_name, enemy_hp, enemy_damage)
+            # Position the enemy 100 pixels away horizontally
+            enemy.center_x = spawn_point.center_x + 100
+            enemy.center_y = spawn_point.center_y
 
             # Add the enemy to the lists spawning it at a random location
             self.enemies_list.append(enemy)
-
-        # remove the spawn point triggered from sprite list
-        spawn_point_touched = arcade.check_for_collision_with_list(self.player_sprite,
-                                                                   self.scene[LAYER_NAME_SPAWN_TRIGGER])
-        for spawn_point in spawn_point_touched:
-            spawn_point.kill()
-            print("Prepare to fight! Spawn point touched!")
 
         # manage the following behavior
         for enemy in self.enemies_list:
