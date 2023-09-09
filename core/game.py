@@ -208,7 +208,7 @@ class GameView(arcade.View):
 
         self.manage_scrolling()
         self.spawn_enemies()
-        self.fight_enemies()
+        self.get_damage_from_enemy()
         self.pick_up_items()
         self.update_bullets()
 
@@ -279,18 +279,18 @@ class GameView(arcade.View):
         for enemy in self.enemies_list:
             enemy.follow_sprite(self.player_sprite)
 
-    def fight_enemies(self):
+    def get_damage_from_enemy(self):
         """Handle fights with enemies"""
         enemies_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
                                                                 self.enemies_list)
         # If the player touch an ENEMY, she respawn at starting coordinates AND
         # loses as many hp as is written on damage property (for now is under Enemy parent class).
         if self.player_sprite.cur_health > 0:
-            for _ in enemies_hit_list:
-                hp_lost = int(EnemyCharacter("herman", 10, 1).damage)
+            self.player_sprite.change_x = 0
+            self.player_sprite.change_y = 0
+            for enemy in enemies_hit_list:
+                hp_lost = int(enemy.damage)
                 self.player_sprite.cur_health -= hp_lost
-                self.player_sprite.change_x = 0
-                self.player_sprite.change_y = 0
                 self.player_sprite.center_x = PLAYER_START_X
                 self.player_sprite.center_y = PLAYER_START_Y
 
