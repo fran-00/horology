@@ -75,3 +75,18 @@ class EnemyCharacter(EnemySprite):
         # Taking into account the angle, calculate our change_x and change_y. Velocity is how fast the bullet travels.
         self.change_x = math.cos(angle) * ENEMY_SPEED
         self.change_y = math.sin(angle) * ENEMY_SPEED
+
+    def follow_A_star(self):
+        
+        playing_field_left_boundary = -SPRITE_SIZE * 2
+        playing_field_right_boundary = SPRITE_SIZE * 35
+        playing_field_top_boundary = SPRITE_SIZE * 17
+        playing_field_bottom_boundary = -SPRITE_SIZE * 2
+        
+        self.barrier_list = arcade.AStarBarrierList(self,
+                                                    self.wall_list,
+                                                    SPRITE_SIZE,
+                                                    playing_field_left_boundary,
+                                                    playing_field_right_boundary,
+                                                    playing_field_bottom_boundary,
+                                                    playing_field_top_boundary)
