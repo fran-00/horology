@@ -3,13 +3,9 @@ import random
 
 import arcade
 
-import entities.player as player
 import stuff
-
-from entities.enemies import Enemy, HermanEnemy
-from entities.enemies import follow_sprite
+from entities.enemies import Enemy, HermanEnemy, follow_sprite
 from core.setup import setup
-
 from shared_constants import *
 
 
