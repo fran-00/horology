@@ -210,6 +210,13 @@ class GameView(arcade.View):
         self.get_damage_from_enemy()
         self.pick_up_items()
         self.update_bullets()
+        
+        if self.scene[LAYER_NAME_ENEMIES] != []:
+            for enemy in self.scene[LAYER_NAME_ENEMIES]:
+                self.path = arcade.astar_calculate_path(enemy.position,
+                                                self.player_sprite.position,
+                                                enemy.barrier_list,
+                                                diagonal_movement=False)
 
     def manage_scrolling(self):
         """Handle viewport scrolling"""
