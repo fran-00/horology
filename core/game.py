@@ -205,6 +205,10 @@ class GameView(arcade.View):
             self.view_bottom = 0
             changed_viewport = True
 
+        # Handle enemies following behaviour
+        for enemy in self.scene[LAYER_NAME_ENEMIES]:
+            enemy.update_path(delta_time)
+
         self.manage_scrolling()
         self.spawn_enemies()
         self.get_damage_from_enemy()
