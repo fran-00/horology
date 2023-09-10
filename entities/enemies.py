@@ -90,7 +90,7 @@ class EnemyCharacter(EnemySprite):
         self.change_x = math.cos(angle) * ENEMY_SPEED
         self.change_y = math.sin(angle) * ENEMY_SPEED
 
-    def update_path(self):
+    def update_path(self, delta_time):
         self.path = arcade.astar_calculate_path(self.position,
                                                 self.player.position,
                                                 self.barrier_list,
