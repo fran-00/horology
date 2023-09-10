@@ -219,7 +219,7 @@ class GameView(arcade.View):
                 self.path = arcade.astar_calculate_path(enemy.position,
                                                 self.player_sprite.position,
                                                 enemy.barrier_list,
-                                                diagonal_movement=False)
+                                                diagonal_movement=True)
 
     def manage_scrolling(self):
         """Handle viewport scrolling"""
