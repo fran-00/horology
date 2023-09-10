@@ -74,6 +74,9 @@ class GameView(arcade.View):
 
         # -----> RENDER ENTITIES
         self.bullet_list.draw()
+        
+        if self.path:
+            arcade.draw_line_strip(self.path, arcade.color.BLUE, 2)
 
         # -----> RENDER THE INVENTORY
         start_x = self.view_left + 30
