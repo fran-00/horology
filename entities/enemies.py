@@ -105,6 +105,6 @@ class EnemyCharacter(EnemySprite):
                 self.center_x -= min(ENEMY_SPEED, self.center_x - self.path[1][0])
 
             if self.center_y < self.path[1][1]:
-                self.center_y += min(ENEMY_SPEED, self.path[1][1] - self.center_x)
+                self.center_y += min(ENEMY_SPEED, self.path[1][1] - self.center_y)
             elif self.center_y > self.path[1][1]:
-                self.center_y -= min(ENEMY_SPEED, self.center_x - self.path[1][1])
+                self.center_y -= min(ENEMY_SPEED, self.center_y - self.path[1][1])
