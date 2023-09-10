@@ -50,10 +50,10 @@ class EnemyCharacter(EnemySprite):
         self.damage = damage
         self.wall_list = wall_list
         
-        playing_field_left_boundary = -SPRITE_SIZE * 2
-        playing_field_right_boundary = SPRITE_SIZE * 35
-        playing_field_top_boundary = SPRITE_SIZE * 17
-        playing_field_bottom_boundary = -SPRITE_SIZE * 2
+        playing_field_left_boundary = -SPRITE_SIZE * 50
+        playing_field_right_boundary = SPRITE_SIZE * 50
+        playing_field_top_boundary = SPRITE_SIZE * 50
+        playing_field_bottom_boundary = -SPRITE_SIZE * 50
         
         self.barrier_list = arcade.AStarBarrierList(self,
                                                     self.wall_list,
