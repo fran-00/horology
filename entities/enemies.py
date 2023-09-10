@@ -49,6 +49,7 @@ class EnemyCharacter(EnemySprite):
         self.hp = hp
         self.damage = damage
         self.wall_list = wall_list
+        self.path = None
         
         playing_field_left_boundary = -SPRITE_SIZE * 50
         playing_field_right_boundary = SPRITE_SIZE * 50

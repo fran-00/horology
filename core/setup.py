@@ -16,8 +16,6 @@ def setup(game):
     # Name of map file to load
     map_name = "map_test.tmx"
 
-    game.path = None
-
     # Layer Specific Options for the Tilemap
     layer_options = {
         LAYER_NAME_FOREGROUND: {
