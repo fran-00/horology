@@ -89,3 +89,22 @@ class EnemyCharacter(EnemySprite):
         # Taking into account the angle, calculate our change_x and change_y. Velocity is how fast the bullet travels.
         self.change_x = math.cos(angle) * ENEMY_SPEED
         self.change_y = math.sin(angle) * ENEMY_SPEED
+
+    def update_path(self):
+        self.path = arcade.astar_calculate_path(self.position,
+                                                self.player.position,
+                                                self.barrier_list,
+                                                diagonal_movement=True)
+        if self.path:
+            arcade.draw_line_strip(self.path, arcade.color.BLUE, 2)
+        
+        if self.path and len(self.path) > 1:
+            if self.center_x < self.path[1][0]:
+                self.center_x += min(ENEMY_SPEED, self.path[1][0] - self.center_x)
+            elif self.center_x > self.path[1][0]:
+                self.center_x -= min(ENEMY_SPEED, self.center_x - self.path[1][0])
+
+            if self.center_y < self.path[1][1]:
+                self.center_y += min(ENEMY_SPEED, self.path[1][1] - self.center_x)
+            elif self.center_y > self.path[1][1]:
+                self.center_y -= min(ENEMY_SPEED, self.center_x - self.path[1][1])
