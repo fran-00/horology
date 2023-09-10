@@ -27,7 +27,7 @@ class Entity(arcade.Sprite):
         # Load textures for idle and fighting standing
         self.idle_texture_pair = load_texture_pair(f"{main_path}_idlefront.png")
         
-        self.fight_texture_pair = load_texture_pair(f"{main_path}_fight_front.png")
+        self.fight_texture_pair = load_texture_pair(f"{main_path}_fightfront.png")
 
         # Load textures for walking east/west
         self.walk_textures = []
