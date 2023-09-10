@@ -73,7 +73,6 @@ class GameView(arcade.View):
         self.draw_health_bar()
 
         # -----> RENDER ENTITIES
-        self.enemies_list.draw()
         self.bullet_list.draw()
 
         # -----> RENDER THE INVENTORY
@@ -273,16 +272,16 @@ class GameView(arcade.View):
             enemy.center_y = spawn_point.center_y
 
             # Add the enemy to the lists spawning it at a random location
-            self.enemies_list.append(enemy)
+            self.scene[LAYER_NAME_ENEMIES].append(enemy)
 
         # manage the following behavior
-        for enemy in self.enemies_list:
+        for enemy in self.scene[LAYER_NAME_ENEMIES]:
             enemy.follow_sprite()
 
     def get_damage_from_enemy(self):
         """Handle fights with enemies"""
         enemies_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
-                                                                self.enemies_list)
+                                                                self.scene[LAYER_NAME_ENEMIES])
         # If the player touch an ENEMY, she respawn at starting coordinates AND
         # loses as many hp as is written on damage property (for now is under Enemy parent class).
         if self.player_sprite.cur_health > 0:
@@ -322,7 +321,7 @@ class GameView(arcade.View):
         for bullet in self.bullet_list:
             # Check this bullet to see if it hit an enemy or a wall
             enemy_hit_list = arcade.check_for_collision_with_list(
-                bullet, self.enemies_list)
+                bullet, self.scene[LAYER_NAME_ENEMIES])
             wall_hit_list = arcade.check_for_collision_with_list(
                 bullet, self.scene[LAYER_NAME_WALLS])
             # If it did, get rid of the bullet
@@ -334,7 +333,6 @@ class GameView(arcade.View):
                 # Enemy.hp -= stuff.dmg
                 # if Enemy.hp <= 0:
                 enemy.remove_from_sprite_lists()
-                self.score += 1
 
             # Remove bullet if it hits an obstacle which is not an enemy:
             for _ in wall_hit_list:
