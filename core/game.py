@@ -274,10 +274,6 @@ class GameView(arcade.View):
             # Add the enemy to the lists spawning it at a random location
             self.scene[LAYER_NAME_ENEMIES].append(enemy)
 
-        # manage the following behavior
-        for enemy in self.scene[LAYER_NAME_ENEMIES]:
-            enemy.follow_sprite()
-
     def get_damage_from_enemy(self):
         """Handle fights with enemies"""
         enemies_hit_list = arcade.check_for_collision_with_list(self.player_sprite,
