@@ -165,6 +165,9 @@ class GameView(arcade.View):
         # Handle enemies following behaviour
         for enemy in self.scene[LAYER_NAME_ENEMIES]:
             enemy.update_path(delta_time)
+            bullet = enemy.shoot_at_player(delta_time)
+            if bullet:
+                self.bullet_list.append(bullet)
 
         self.manage_scrolling()
         self.spawn_enemies()
