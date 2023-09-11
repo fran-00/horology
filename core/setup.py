@@ -11,7 +11,6 @@ def setup(game):
 
     # Create the Sprite lists
     game.player_list = arcade.SpriteList()
-    game.bullet_list = arcade.SpriteList()
 
     # Name of map file to load
     map_name = "map_test.tmx"
@@ -22,6 +21,9 @@ def setup(game):
             "use_spatial_hash": True,
         },
         LAYER_NAME_ENEMIES: {
+            "use_spatial_hash": True,
+        },
+        LAYER_NAME_BULLETS: {
             "use_spatial_hash": True,
         },
         LAYER_NAME_SPAWN_TRIGGER: {
