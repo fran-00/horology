@@ -163,18 +163,14 @@ class GameView(arcade.View):
             self.view_bottom = 0
             changed_viewport = True
 
-        # Handle enemies following behaviour
-        for enemy in self.scene[LAYER_NAME_ENEMIES]:
-            enemy.update_path(delta_time)
-            bullet = enemy.shoot_at_player(delta_time)
-            if bullet:
-                self.scene[LAYER_NAME_BULLETS].append(bullet)
-
+        # Update game state calling other methods
         self.manage_scrolling()
         self.spawn_enemies()
         self.get_damage_from_enemy()
         self.pick_up_items()
         self.update_bullets()
+        self.handle_enemies_following_behaviour(delta_time)
+        self.handle_enemies_shooting(delta_time)
 
     def manage_scrolling(self):
         """Handle viewport scrolling"""
@@ -301,6 +297,17 @@ class GameView(arcade.View):
 
             # Now bullet will travel forever and will go out of screen
 
+    def handle_enemies_following_behaviour(self, delta_time):
+        """Handle enemies following behaviour"""
+        for enemy in self.scene[LAYER_NAME_ENEMIES]:
+            enemy.update_path(delta_time)
+
+    def handle_enemies_shooting(self, delta_time):
+        """Handle enemies shooting"""
+        for enemy in self.scene[LAYER_NAME_ENEMIES]:
+            bullet = enemy.shoot_at_player(delta_time)
+            if bullet:
+                self.scene[LAYER_NAME_BULLETS].append(bullet)
 
 def main():
     window = arcade.Window(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
