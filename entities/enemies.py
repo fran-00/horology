@@ -50,6 +50,7 @@ class EnemyCharacter(EnemySprite):
         self.damage = damage
         self.wall_list = wall_list
         self.path = None
+        self.frame_count = 0
         
         playing_field_left_boundary = -SPRITE_SIZE * 50
         playing_field_right_boundary = SPRITE_SIZE * 50
@@ -64,31 +65,30 @@ class EnemyCharacter(EnemySprite):
                                                     playing_field_bottom_boundary,
                                                     playing_field_top_boundary)
 
-    def follow_sprite(self):
-        # This function will move the current sprite towards whatever other sprite is specified as a parameter.
-        # We use the 'min' function here to get the sprite to line up with the target sprite, and not jump around if the sprite is not off
-        # an exact multiple of SPRITE_SPEED.
-
-        self.center_x += self.change_x
-        self.center_y += self.change_y
+    def shoot_at_player(self, delta_time):
+        """Spawn a bullet that travels from enemy to player"""
+        self.frame_count += 1
 
         start_x = self.center_x
         start_y = self.center_y
 
-        # Get the destination location for the bullet
-        # probabilmente devi dirgli dove sta questa roba
-        dest_x = self.player.center_x
-        dest_y = self.player.center_y
+        target_x = self.player.center_x
+        target_y = self.player.center_y
 
-        # Do math to calculate how to get the bullet to the destination. CHE CAZZO C'ENTRANO LE PALLOTTOLE???????? mmmh....
-        # Calculation the angle in radians between the start points and end points. This is the angle the bullet will travel.
-        x_diff = dest_x - start_x
-        y_diff = dest_y - start_y
+        x_diff = target_x - start_x
+        y_diff = target_y - start_y
         angle = math.atan2(y_diff, x_diff)
 
-        # Taking into account the angle, calculate our change_x and change_y. Velocity is how fast the bullet travels.
-        self.change_x = math.cos(angle) * ENEMY_SPEED
-        self.change_y = math.sin(angle) * ENEMY_SPEED
+        if self.frame_count % 60 == 0:
+            bullet = arcade.Sprite("sprite_pack/4dEuclideanCube.png", SPRITE_SCALING_CURSE)
+            bullet.center_x = start_x
+            bullet.center_y = start_y
+
+            bullet.angle = math.degrees(angle)
+            bullet.change_x = math.cos(angle) * BULLET_SPEED
+            bullet.change_y = math.sin(angle) * BULLET_SPEED
+            
+            return bullet
 
     def update_path(self, delta_time):
         self.path = arcade.astar_calculate_path(self.position,
