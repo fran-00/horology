@@ -62,17 +62,25 @@ class GameView(arcade.View):
 
     def on_draw(self):
         """Render the screen"""
-
         # Clear the screen to the background color
         self.clear()
 
         # Draw our Scene
         self.scene.draw()
-
+        
+        # Draw other stuff
         self.draw_health_number()
         self.draw_health_bar()
+        self.draw_inventory()
+        self.draw_A_star_paths()
 
-        # -----> RENDER THE INVENTORY
+    def draw_A_star_paths(self):
+        for enemy in self.scene[LAYER_NAME_ENEMIES]:
+            if enemy.path:
+                arcade.draw_line_strip(enemy.path, arcade.color.BLUE, 2)
+
+    def draw_inventory(self):
+        """Render the Inventory"""
         start_x = self.view_left + 30
         start_y = self.view_bottom + 50
         for i, item in enumerate(self.player.inventory, 1):
@@ -80,10 +88,6 @@ class GameView(arcade.View):
             arcade.draw_text(your_stuff, start_x, start_y,
                              arcade.csscolor.WHITE, 10, anchor_y="top")
             start_y -= 20
-        
-        for enemy in self.scene[LAYER_NAME_ENEMIES]:
-            if enemy.path:
-                arcade.draw_line_strip(enemy.path, arcade.color.BLUE, 2)
 
     def on_mouse_press(self, x, y, button, modifiers):
         """Handle mouse buttons pressed"""
