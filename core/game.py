@@ -83,6 +83,10 @@ class GameView(arcade.View):
             arcade.draw_text(your_stuff, start_x, start_y,
                              arcade.csscolor.WHITE, 10, anchor_y="top")
             start_y -= 20
+        
+        for enemy in self.scene[LAYER_NAME_ENEMIES]:
+            if enemy.path:
+                arcade.draw_line_strip(enemy.path, arcade.color.BLUE, 2)
 
     def on_mouse_press(self, x, y, button, modifiers):
         """Handle mouse buttons pressed"""
