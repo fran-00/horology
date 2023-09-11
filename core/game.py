@@ -72,9 +72,6 @@ class GameView(arcade.View):
         self.draw_health_number()
         self.draw_health_bar()
 
-        # -----> RENDER ENTITIES
-        self.bullet_list.draw()
-
         # -----> RENDER THE INVENTORY
         start_x = self.view_left + 30
         start_y = self.view_bottom + 50
@@ -97,7 +94,7 @@ class GameView(arcade.View):
         if button == arcade.MOUSE_BUTTON_LEFT:
             self.player.mouse_left_pressed = True
             bullet = self.player.create_bullet(self, x, y)
-            self.bullet_list.append(bullet)
+            self.scene[LAYER_NAME_BULLETS].append(bullet)
     
     def move_on_mouse_click(self, x, y):
         # Questo serve per far muovere il giocatore al click del mouse (tasto destro)
@@ -167,7 +164,7 @@ class GameView(arcade.View):
             enemy.update_path(delta_time)
             bullet = enemy.shoot_at_player(delta_time)
             if bullet:
-                self.bullet_list.append(bullet)
+                self.scene[LAYER_NAME_BULLETS].append(bullet)
 
         self.manage_scrolling()
         self.spawn_enemies()
@@ -276,9 +273,9 @@ class GameView(arcade.View):
 
     def update_bullets(self):
         """Handle bullets update"""
-        self.bullet_list.update()
+        self.scene[LAYER_NAME_BULLETS].update()
 
-        for bullet in self.bullet_list:
+        for bullet in self.scene[LAYER_NAME_BULLETS]:
             # Check this bullet to see if it hit an enemy or a wall
             enemy_hit_list = arcade.check_for_collision_with_list(
                 bullet, self.scene[LAYER_NAME_ENEMIES])
