@@ -240,16 +240,18 @@ class GameView(arcade.View):
         """Handle fights with enemies"""
         enemies_hit_list = arcade.check_for_collision_with_list(self.player,
                                                                 self.scene[LAYER_NAME_ENEMIES])
-        # If the player touch an ENEMY, she respawn at starting coordinates AND
-        # loses as many hp as is written on damage property (for now is under Enemy parent class).
+        # If player touch an ENEMY, she loses as many hp as is written on damage property
         if self.player.cur_health > 0:
             for enemy in enemies_hit_list:
                 hp_lost = int(enemy.damage)
                 self.player.cur_health -= hp_lost
-                self.player.change_x = 0
-                self.player.change_y = 0
-                self.player.center_x = PLAYER_START_X
-                self.player.center_y = PLAYER_START_Y
+        # If player's health reaches 0, she respawns at starting coordinates with full health (for now)
+        else:
+            self.player.change_x = 0
+            self.player.change_y = 0
+            self.player.center_x = PLAYER_START_X
+            self.player.center_y = PLAYER_START_Y
+            self.player.cur_health = self.player.max_health
 
     def pick_up_items(self):
         """Handle pick up items: WEAPONS AND CONSUMABLES THAT RESTORE HEALTH"""
