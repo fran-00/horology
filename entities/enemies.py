@@ -7,9 +7,9 @@ from shared_constants import *
 
 
 class EnemySprite(Entity):
-    def __init__(self, name_folder, name_file):
+    def __init__(self, name):
 
-        super().__init__(name_folder, name_file)
+        super().__init__(name)
 
     def update_animation(self, delta_time: float = 1 / 60):
 
@@ -47,7 +47,7 @@ class EnemySprite(Entity):
 class EnemyCharacter(EnemySprite):
     def __init__(self, name, hp, damage, player, wall_list):
 
-        super().__init__(name, name)
+        super().__init__(name)
 
         self.player = player
         self.name = name

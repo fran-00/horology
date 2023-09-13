@@ -12,7 +12,7 @@ def load_texture_pair(filename):
 
 
 class Entity(arcade.Sprite):
-    def __init__(self, name_folder, name_file):
+    def __init__(self, name):
         super().__init__()
 
         # Default to facing right
@@ -22,7 +22,7 @@ class Entity(arcade.Sprite):
         self.cur_texture = 0
         self.scale = CHARACTER_SCALING
 
-        main_path = f"sprite_pack/animated_entities/{name_folder}/{name_file}"
+        main_path = f"sprite_pack/animated_entities/{name}/{name}"
 
         # Load textures for idle and fighting standing
         self.idle_texture_pair = load_texture_pair(f"{main_path}_idlefront.png")

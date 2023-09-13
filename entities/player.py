@@ -19,7 +19,7 @@ class PlayerCharacter(Entity):
 
     def __init__(self):
 
-        super().__init__("player", "player")
+        super().__init__("player")
 
         self.mouse_left_pressed = False
         self.hp = 100
