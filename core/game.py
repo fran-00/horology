@@ -169,6 +169,7 @@ class GameView(arcade.View):
         self.get_damage_from_enemy()
         self.pick_up_items()
         self.update_bullets()
+        self.handle_enemies_animation(delta_time)
         self.handle_enemies_following_behaviour(delta_time)
         self.handle_enemies_shooting(delta_time)
 
@@ -301,6 +302,11 @@ class GameView(arcade.View):
         """Handle enemies following behaviour"""
         for enemy in self.scene[LAYER_NAME_ENEMIES]:
             enemy.update_path(delta_time)
+    
+    def handle_enemies_animation(self, delta_time):
+        """Handle enemies animation"""
+        for enemy in self.scene[LAYER_NAME_ENEMIES]:
+            enemy.update_animation(delta_time)
 
     def handle_enemies_shooting(self, delta_time):
         """Handle enemies shooting"""
