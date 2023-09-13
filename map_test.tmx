@@ -259,7 +259,7 @@
    <properties>
     <property name="damage" type="int" value="1"/>
     <property name="hp" type="int" value="10"/>
-    <property name="name" value="herman"/>
+    <property name="name" value="test"/>
    </properties>
   </object>
   <object id="21" gid="2062" x="1536" y="2620" width="102" height="104">
