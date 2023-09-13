@@ -266,7 +266,7 @@
    <properties>
     <property name="damage" type="int" value="1"/>
     <property name="hp" type="int" value="10"/>
-    <property name="name" value="missingno"/>
+    <property name="name" value="boogieman"/>
    </properties>
   </object>
  </objectgroup>
