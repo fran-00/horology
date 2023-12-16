@@ -1,5 +1,30 @@
 # The Great Relocation
 
+A 2D tiled-based game made with **Python**, [Arcade](https://api.arcade.academy/en/latest/) and [Tiled](https://www.mapeditor.org/).
+
+## How to install
+
+To run the game you need Python (=> 3.8 should work) installed in your system. Clone this project
+
+    https://github.com/fran-00/groi_2D.git
+    cd groi_2D
+
+Create a new virtual environment with [venv](https://docs.python.org/3/library/venv.html) and activate it:
+
+    python -m venv venv
+    venv/Scripts/Activate.ps1
+
+During development I used **Windows 11** with **Powershell** but the game also runs on Linux.
+Install project requirements:
+
+    pip install -r requirements.txt
+
+Run the game:
+
+    py launcher.py
+
+Replace *py* with the appropriate command  for the Python version you are using.
+
 ## TODO List
 
 - [x] Player must stand in the center of the viewport.
