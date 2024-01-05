@@ -1,8 +1,8 @@
 import arcade
 
 # Self explenatory
-SCREEN_WIDTH = 800
-SCREEN_HEIGHT = 600
+SCREEN_WIDTH = 1366
+SCREEN_HEIGHT = 768
 SCREEN_TITLE = "Giuoco"
 
 # Constant used to resize the screen dragging window (dividing the map with those blue dots you see).
