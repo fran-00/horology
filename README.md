@@ -11,7 +11,7 @@ To run the game you need Python (=> 3.8 should work) installed in your system. C
 
 Create a new virtual environment with [venv](https://docs.python.org/3/library/venv.html) and activate it:
 
-    python -m venv venv
+    py -m venv venv
     venv/Scripts/Activate.ps1
 
 During development I used **Windows 11** with **Powershell** but the game also runs on Linux.
