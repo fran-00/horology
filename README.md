@@ -23,7 +23,7 @@ Run the game:
 
     py launcher.py
 
-Replace *py* with the appropriate command  for the Python version you are using.
+Replace *py* with the appropriate command for the Python version you are using.
 
 ## TODO List
 
