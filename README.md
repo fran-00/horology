@@ -4,26 +4,28 @@ A 2D tiled-based game made with **Python**, [Arcade](https://api.arcade.academy/
 
 ## How to install
 
-To run the game you need Python (=> 3.8 should work) installed in your system. Clone this project
+To run the game you need **Python** installed in your system, and that system really should be a Linux based one. Clone this project:
 
     https://github.com/fran-00/groi_2D.git
     cd groi_2D
 
-Create a new virtual environment with [venv](https://docs.python.org/3/library/venv.html) and activate it:
+Create a new virtual environment with **pyenv** (Python <= 3.11 should be fine) and activate it:
 
-    py -m venv venv
-    venv/Scripts/Activate.ps1
+    python install 3.11.4
+    pyenv virtualenv 3.11.4 relocation
+    pyenv activate relocation
 
-During development I used **Windows 11** with **Powershell** but the game also runs on Linux.
 Install project requirements:
 
     pip install -r requirements.txt
 
 Run the game:
 
-    py launcher.py
+    python launcher.py
 
-Replace *py* with the appropriate command for the Python version you are using.
+## Known Issues
+
+Currently you can't run it with Python 3.12: Pillow 9.3.0 does not support it and **Arcade** requires that specific version. If you are on Windows with Python 3.12 installed in your system you should use **pyenv** (with WSL) or **conda** instead. This probably will change when Arcade will be updated.
 
 ## TODO List
 
