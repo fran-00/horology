@@ -3,6 +3,7 @@ import math
 import arcade
 
 from .entity import Entity
+from .bullets import Bullet
 from shared_constants import *
 
 
@@ -68,7 +69,7 @@ class PlayerCharacter(Entity):
     def create_bullet(self, game, x, y):
         """Spawn a bullet that travels from player to target"""
         # Create a bullet
-        bullet = arcade.Sprite("sprite_pack/4dEuclideanCube.png", SPRITE_SCALING_CURSE)
+        bullet = Bullet("green")
 
         # Position the bullet at the player's current location
         start_x = self.center_x
