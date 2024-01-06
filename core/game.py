@@ -172,6 +172,12 @@ class GameView(arcade.View):
         self.handle_enemies_animation(delta_time)
         self.handle_enemies_following_behaviour(delta_time)
         self.handle_enemies_shooting(delta_time)
+        self.handle_bullets_animation(delta_time)
+
+    def handle_bullets_animation(self, delta_time):
+        """Handle bullets animation"""
+        for bullet in self.scene[LAYER_NAME_BULLETS]:
+            bullet.update_animation(delta_time)
 
     def manage_scrolling(self):
         """Handle viewport scrolling"""
