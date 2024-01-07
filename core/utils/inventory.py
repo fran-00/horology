@@ -37,5 +37,6 @@ class Inventory:
         if not self.game_view.player.equipped_weapon:
             self.game_view.player.equipped_weapon = new_weapon
         else:
-            pass
+            print("You changed your weapon")
+            self.game_view.player.equipped_weapon = new_weapon
         weapon.remove_from_sprite_lists()
