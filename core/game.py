@@ -88,38 +88,6 @@ class GameView(arcade.View):
         elif key in [arcade.key.A, arcade.key.D]:
             self.player.change_x = 0
 
-    def on_update(self, delta_time):
-        """ Handle movements and game logic"""
-        self.physics_engine.update()
-        self.player_list.update_animation()
-
-        # USED FOR TEXT IN SCREEN (generic, not the score)
-        self.text_angle += 1
-        self.time_elapsed += delta_time
-
-        # Did the player fall off the map? Now it works only if she goes
-        # down under the map, but she can walk up, right and left forever.
-        if self.player.center_y < -100:
-            self.player.center_x = PLAYER_START_X
-            self.player.center_y = PLAYER_START_Y
-
-            # *** SCREEN RENDERING ***
-            # Set the camera to the start
-            self.view_left = 0
-            self.view_bottom = 0
-            changed_viewport = True
-
-        # Update game state calling other methods
-        self.manage_scrolling()
-        self.enemy_ai.spawn_enemies()
-        self.enemy_ai.get_damage_from_enemy()
-        self.pick_up_items()
-        self.combat.update_bullets()
-        self.combat.handle_bullets_animation(delta_time)
-        self.enemy_ai.handle_enemies_animation(delta_time)
-        self.enemy_ai.handle_enemies_following_behaviour(delta_time)
-        self.enemy_ai.handle_enemies_shooting(delta_time)
-
     def manage_scrolling(self):
         """Handle viewport scrolling"""
 
@@ -161,6 +129,38 @@ class GameView(arcade.View):
                                 SCREEN_WIDTH + self.view_left,
                                 self.view_bottom,
                                 SCREEN_HEIGHT + self.view_bottom)
+
+    def on_update(self, delta_time):
+        """ Handle movements and game logic"""
+        self.physics_engine.update()
+        self.player_list.update_animation()
+
+        # USED FOR TEXT IN SCREEN (generic, not the score)
+        self.text_angle += 1
+        self.time_elapsed += delta_time
+
+        # Did the player fall off the map? Now it works only if she goes
+        # down under the map, but she can walk up, right and left forever.
+        if self.player.center_y < -100:
+            self.player.center_x = PLAYER_START_X
+            self.player.center_y = PLAYER_START_Y
+
+            # *** SCREEN RENDERING ***
+            # Set the camera to the start
+            self.view_left = 0
+            self.view_bottom = 0
+            changed_viewport = True
+
+        # Update game state calling other methods
+        self.manage_scrolling()
+        self.enemy_ai.spawn_enemies()
+        self.enemy_ai.get_damage_from_enemy()
+        self.pick_up_items()
+        self.combat.update_bullets()
+        self.combat.handle_bullets_animation(delta_time)
+        self.enemy_ai.handle_enemies_animation(delta_time)
+        self.enemy_ai.handle_enemies_following_behaviour(delta_time)
+        self.enemy_ai.handle_enemies_shooting(delta_time)
 
     def pick_up_items(self):
         """Handle pick up items: WEAPONS AND CONSUMABLES THAT RESTORE HEALTH"""
