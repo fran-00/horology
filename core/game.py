@@ -56,7 +56,7 @@ class GameView(arcade.View):
 
         if button == arcade.MOUSE_BUTTON_RIGHT:
             self.player.mouse_left_pressed = True
-            bullet = self.player.create_bullet(self, x, y)
+            bullet = self.combat.create_bullet(self.player, x, y)
             self.scene[LAYER_NAME_BULLETS].append(bullet)
 
     def on_mouse_release(self, x, y, button, modifiers):
