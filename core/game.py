@@ -99,26 +99,6 @@ class GameView(arcade.View):
             self.player.mouse_left_pressed = True
             bullet = self.player.create_bullet(self, x, y)
             self.scene[LAYER_NAME_BULLETS].append(bullet)
-    
-    def move_on_mouse_click(self, x, y):
-        # Questo serve per far muovere il giocatore al click del mouse (tasto destro)
-        # FIXME: Player must stop when target position is reached or when they
-        # hit a wall
-        current_position_x = self.player.center_x
-        current_position_y = self.player.center_y
-        target_position_x = x + self.view_left
-        target_position_y = y + self.view_bottom
-        x_diff = target_position_x - current_position_x
-        y_diff = target_position_y - current_position_y
-        rad_angle = math.atan2(y_diff, x_diff)
-
-        if rad_angle != 0 and x != current_position_x and y != current_position_y:
-            self.player.change_x = math.cos(rad_angle) * MOVEMENT_SPEED
-            self.player.change_y = math.sin(rad_angle) * MOVEMENT_SPEED
-        else:
-            self.player.change_x = 0
-            self.player.change_y = 0
-            return
 
     def on_mouse_release(self, x, y, button, modifiers):
         """Handle mouse button release"""
