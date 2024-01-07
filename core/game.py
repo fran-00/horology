@@ -56,6 +56,9 @@ class GameView(arcade.View):
 
         if button == arcade.MOUSE_BUTTON_RIGHT:
             self.player.mouse_left_pressed = True
+            if not self.player.equipped_weapon:
+                print("You have no weapons")
+                return
             bullet = self.combat.create_bullet_from_player(self.player, x, y)
             self.scene[LAYER_NAME_BULLETS].append(bullet)
 
