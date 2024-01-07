@@ -1,6 +1,5 @@
 import arcade
 
-import stuff
 from entities.weapons import Melee, Ranged
 from shared_constants import *
 
