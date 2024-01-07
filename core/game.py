@@ -4,7 +4,6 @@ import random
 import arcade
 
 import stuff
-from entities.enemies import EnemyCharacter
 from .setup import setup
 from .hud import Hud
 from .enemy_ai import EnemyAI
@@ -110,8 +109,8 @@ class GameView(arcade.View):
 
         # Update game state calling other methods
         self.manage_scrolling()
-        self.spawn_enemies()
-        self.get_damage_from_enemy()
+        self.enemy_ai.spawn_enemies()
+        self.enemy_ai.get_damage_from_enemy()
         self.pick_up_items()
         self.update_bullets()
         self.handle_bullets_animation(delta_time)
