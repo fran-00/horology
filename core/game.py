@@ -61,7 +61,7 @@ class GameView(arcade.View):
                 print("You have no weapons")
                 return
             bullet = self.combat.create_bullet_from_player(self.player, x, y)
-            self.scene[LAYER_BULLETS].append(bullet)
+            self.scene[LAYER_PLAYER_BULLETS].append(bullet)
 
     def on_mouse_release(self, x, y, button, modifiers):
         """Handle mouse button release"""

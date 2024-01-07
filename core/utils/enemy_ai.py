@@ -25,7 +25,7 @@ class EnemyAI:
         for enemy in self.game_view.scene[LAYER_ENEMIES]:
             bullet = self.combat.create_bullet_from_enemy(enemy, delta_time)
             if bullet:
-                self.game_view.scene[LAYER_BULLETS].append(bullet)
+                self.game_view.scene[LAYER_ENEMIES_BULLETS].append(bullet)
 
     def draw_A_star_paths(self):
         for enemy in self.game_view.scene[LAYER_ENEMIES]:

@@ -12,8 +12,11 @@ class Combat:
 
     def handle_bullets_animation(self, delta_time):
         """Handle bullets animation"""
-        for bullet in self.game_view.scene[LAYER_BULLETS]:
-            bullet.update_animation(delta_time)
+        for player_bullet in self.game_view.scene[LAYER_PLAYER_BULLETS]:
+            player_bullet.update_animation(delta_time)
+
+        for enemies_bullet in self.game_view.scene[LAYER_ENEMIES_BULLETS]:
+            enemies_bullet.update_animation(delta_time)
 
     def create_bullet_from_player(self, player, x, y):
         """Spawn a bullet that travels from player to target"""
@@ -85,9 +88,10 @@ class Combat:
 
     def update_bullets(self):
         """Handle bullets update"""
-        self.game_view.scene[LAYER_BULLETS].update()
+        self.game_view.scene[LAYER_PLAYER_BULLETS].update()
+        self.game_view.scene[LAYER_ENEMIES_BULLETS].update()
 
-        for bullet in self.game_view.scene[LAYER_BULLETS]:
+        for bullet in self.game_view.scene[LAYER_PLAYER_BULLETS]:
             # Check this bullet to see if it hit an enemy or a wall
             enemy_hit_list = arcade.check_for_collision_with_list(
                 bullet, self.game_view.scene[LAYER_ENEMIES])

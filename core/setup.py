@@ -23,7 +23,10 @@ def setup(game):
         LAYER_ENEMIES: {
             "use_spatial_hash": True,
         },
-        LAYER_BULLETS: {
+        LAYER_ENEMIES_BULLETS: {
+            "use_spatial_hash": True,
+        },
+        LAYER_PLAYER_BULLETS: {
             "use_spatial_hash": True,
         },
         LAYER_SPAWN_TRIGGER: {
