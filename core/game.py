@@ -1,10 +1,10 @@
 import arcade
 
 from .setup import setup
-from .hud import Hud
-from .enemy_ai import EnemyAI
-from .combat import Combat
-from .inventory import Inventory
+from gui.hud import Hud
+from .utils.enemy_ai import EnemyAI
+from .utils.combat import Combat
+from .utils.inventory import Inventory
 from shared_constants import *
 
 
