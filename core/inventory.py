@@ -1,6 +1,7 @@
 import arcade
 
 import stuff
+from entities.weapons import Melee, Ranged
 from shared_constants import *
 
 
@@ -24,7 +25,14 @@ class Inventory:
             elif 'hp_restore' in item.properties and self.game_view.player.cur_health == self.game_view.player.max_health:
                 print("your health is full")
             elif 'weapon' in item.properties:
-                my_weapon = int(item.properties['weapon'])
-                if my_weapon == 1:
-                    self.game_view.player.inventory.append(stuff.Sep())
-                    item.remove_from_sprite_lists()
+                self.pick_up_weapon(item)
+
+    def pick_up_weapon(self, weapon):
+        weapon_name = str(weapon.properties['name'])
+        weapon_damage = int(weapon.properties['damage'])
+        if str(weapon.properties['weapon']) == "melee":
+            new_weapon = Melee(weapon_name, weapon_damage)
+        else:
+            new_weapon = Ranged(weapon_name, weapon_damage)
+        self.game_view.player.inventory.append(new_weapon)
+        weapon.remove_from_sprite_lists()
