@@ -118,11 +118,6 @@ class GameView(arcade.View):
         self.enemy_ai.handle_enemies_following_behaviour(delta_time)
         self.enemy_ai.handle_enemies_shooting(delta_time)
 
-    def handle_bullets_animation(self, delta_time):
-        """Handle bullets animation"""
-        for bullet in self.scene[LAYER_NAME_BULLETS]:
-            bullet.update_animation(delta_time)
-
     def manage_scrolling(self):
         """Handle viewport scrolling"""
 
@@ -185,31 +180,6 @@ class GameView(arcade.View):
                 if my_weapon == 1:
                     self.player.inventory.append(stuff.Sep())
                     item.remove_from_sprite_lists()
-
-    def update_bullets(self):
-        """Handle bullets update"""
-        self.scene[LAYER_NAME_BULLETS].update()
-
-        for bullet in self.scene[LAYER_NAME_BULLETS]:
-            # Check this bullet to see if it hit an enemy or a wall
-            enemy_hit_list = arcade.check_for_collision_with_list(
-                bullet, self.scene[LAYER_NAME_ENEMIES])
-            wall_hit_list = arcade.check_for_collision_with_list(
-                bullet, self.scene[LAYER_NAME_WALLS])
-            # If it did, get rid of the bullet
-            # if len(enemy_hit_list) > 0:
-            #     bullet.remove_from_sprite_lists()
-
-            # # remove enemy tile if a bullet hit him
-            # for enemy in enemy_hit_list:
-            #     # Enemy.hp -= stuff.dmg
-            #     # if Enemy.hp <= 0:
-            #     enemy.remove_from_sprite_lists()
-
-            # Remove bullet if it hits an obstacle which is not an enemy:
-            for _ in wall_hit_list:
-                bullet.remove_from_sprite_lists()
-            # Now bullet will travel forever and will go out of screen
 
 
 def main():
