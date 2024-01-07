@@ -18,7 +18,7 @@ class Combat:
     def create_bullet_from_player(self, player, x, y):
         """Spawn a bullet that travels from player to target"""
         # Create a bullet
-        bullet = Bullet("red")
+        bullet = Bullet(player.equipped_weapon.name)
 
         # Position the bullet at the player's current location
         start_x = player.center_x
