@@ -25,6 +25,11 @@ class EnemyAI:
             if bullet:
                 self.game_view.scene[LAYER_NAME_BULLETS].append(bullet)
 
+    def draw_A_star_paths(self):
+        for enemy in self.game_view.scene[LAYER_NAME_ENEMIES]:
+            if enemy.path:
+                arcade.draw_line_strip(enemy.path, arcade.color.BLUE, 2)
+
     def spawn_enemies(self):
         """Spawn an enemy when a spawn point is triggered"""
         spawn_points_touched_list = arcade.check_for_collision_with_list(self.game_view.player,
