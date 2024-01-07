@@ -20,7 +20,7 @@ class PlayerCharacter(Entity):
 
     def __init__(self):
 
-        super().__init__("player")
+        super().__init__("hooded")
 
         self.mouse_left_pressed = False
         self.hp = 100
@@ -69,7 +69,7 @@ class PlayerCharacter(Entity):
     def create_bullet(self, game, x, y):
         """Spawn a bullet that travels from player to target"""
         # Create a bullet
-        bullet = Bullet("green")
+        bullet = Bullet("red")
 
         # Position the bullet at the player's current location
         start_x = self.center_x
