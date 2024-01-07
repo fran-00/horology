@@ -17,31 +17,31 @@ def setup(game):
 
     # Layer Specific Options for the Tilemap
     layer_options = {
-        LAYER_NAME_FOREGROUND: {
+        LAYER_FOREGROUND: {
             "use_spatial_hash": True,
         },
-        LAYER_NAME_ENEMIES: {
+        LAYER_ENEMIES: {
             "use_spatial_hash": True,
         },
-        LAYER_NAME_BULLETS: {
+        LAYER_BULLETS: {
             "use_spatial_hash": True,
         },
-        LAYER_NAME_SPAWN_TRIGGER: {
+        LAYER_SPAWN_TRIGGER: {
             "use_spatial_hash": True,
         },
-        LAYER_NAME_ITEMS: {
+        LAYER_ITEMS: {
             "use_spatial_hash": True,
         },
-        LAYER_NAME_WALLS: {
+        LAYER_WALLS: {
             "use_spatial_hash": True,
         },
-        LAYER_NAME_STUFF: {
+        LAYER_STUFF: {
             "use_spatial_hash": True,
         },
-        LAYER_NAME_GROUND: {
+        LAYER_GROUND: {
             "use_spatial_hash": True,
         },
-        LAYER_NAME_BACKGROUND: {
+        LAYER_BACKGROUND: {
             "use_spatial_hash": True,
         }
     }
@@ -58,7 +58,7 @@ def setup(game):
     # Setting before using scene.add_sprite allows us to define where the SpriteList
     # will be in the draw order. If we just use add_sprite, it will be appended to the
     # end of the order.
-    game.scene.add_sprite_list_after("Player", LAYER_NAME_SPAWN_TRIGGER)
+    game.scene.add_sprite_list_after("Player", LAYER_SPAWN_TRIGGER)
 
     # Set up the player, specifically placing it at these coordinates.
     game.player = PlayerCharacter()
@@ -66,11 +66,11 @@ def setup(game):
     game.player.center_y = PLAYER_START_Y
     game.player_list.append(game.player)
     game.items_hit_list = arcade.check_for_collision_with_list(game.player,
-                                                               game.scene[LAYER_NAME_ITEMS])
+                                                               game.scene[LAYER_ITEMS])
     game.spawn_trigger_hit_list = arcade.check_for_collision_with_list(game.player,
-                                                                       game.scene[LAYER_NAME_SPAWN_TRIGGER])
+                                                                       game.scene[LAYER_SPAWN_TRIGGER])
     game.scene.add_sprite("Player", game.player)
 
     # PHYSICS ENGINE (very basic)
     game.physics_engine = arcade.PhysicsEngineSimple(
-        game.player, game.scene[LAYER_NAME_WALLS])
+        game.player, game.scene[LAYER_WALLS])

@@ -12,7 +12,7 @@ class Inventory:
         """Handle pick up items: WEAPONS AND CONSUMABLES THAT RESTORE HEALTH"""
         # Generate a list of all sprites from the item layer of the map that collided with the player.
         items_hit_list = arcade.check_for_collision_with_list(self.game_view.player,
-                                                              self.game_view.scene[LAYER_NAME_ITEMS])
+                                                              self.game_view.scene[LAYER_ITEMS])
 
         for item in items_hit_list:
             # If player's health isn't full, loop through each colliding sprite,
