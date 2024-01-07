@@ -166,44 +166,6 @@ class GameView(arcade.View):
                                 self.view_bottom,
                                 SCREEN_HEIGHT + self.view_bottom)
 
-    def spawn_enemies(self):
-        """Spawn an enemy when a spawn point is triggered"""
-        spawn_points_touched_list = arcade.check_for_collision_with_list(self.player,
-                                                                         self.scene[LAYER_NAME_SPAWN_TRIGGER])
-        if spawn_points_touched_list != []:
-            for spawn_point in spawn_points_touched_list:
-                enemy_name = spawn_point.properties["name"]
-                enemy_hp = spawn_point.properties["hp"]
-                enemy_damage = spawn_point.properties["damage"]
-                # remove the spawn point triggered from sprite list
-                spawn_point.kill()
-                print("Prepare to fight! Spawn point touched!")
-
-            enemy = EnemyCharacter(enemy_name, enemy_hp, enemy_damage, self.player, self.scene[LAYER_NAME_WALLS])
-            # Position the enemy 100 pixels away horizontally
-            enemy.center_x = spawn_point.center_x + 100
-            enemy.center_y = spawn_point.center_y
-
-            # Add the enemy to the lists spawning it at a random location
-            self.scene[LAYER_NAME_ENEMIES].append(enemy)
-
-    def get_damage_from_enemy(self):
-        """Handle fights with enemies"""
-        enemies_hit_list = arcade.check_for_collision_with_list(self.player,
-                                                                self.scene[LAYER_NAME_ENEMIES])
-        # If player touch an ENEMY, she loses as many hp as is written on damage property
-        if self.player.cur_health > 0:
-            for enemy in enemies_hit_list:
-                hp_lost = int(enemy.damage)
-                self.player.cur_health -= hp_lost
-        # If player's health reaches 0, she respawns at starting coordinates with full health (for now)
-        else:
-            self.player.change_x = 0
-            self.player.change_y = 0
-            self.player.center_x = PLAYER_START_X
-            self.player.center_y = PLAYER_START_Y
-            self.player.cur_health = self.player.max_health
-
     def pick_up_items(self):
         """Handle pick up items: WEAPONS AND CONSUMABLES THAT RESTORE HEALTH"""
         # Generate a list of all sprites from the item layer of the map that collided with the player.
