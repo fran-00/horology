@@ -19,6 +19,7 @@ class PlayerCharacter(Entity):
 
         super().__init__("hooded")
 
+        self.mouse_right_pressed = False
         self.mouse_left_pressed = False
         self.hp = 100
         self.max_health = self.hp
@@ -34,7 +35,7 @@ class PlayerCharacter(Entity):
         elif self.change_x > 0 and self.facing_direction == LEFT_FACING:
             self.facing_direction = RIGHT_FACING
 
-        if not self.mouse_left_pressed:
+        if not self.mouse_right_pressed and not self.mouse_left_pressed:
             # Idle animation
             if self.change_x == 0 and self.change_y == 0 or UPDATES_PER_FRAME == 0:
                 self.texture = self.idle_texture_pair[self.facing_direction]
@@ -59,9 +60,14 @@ class PlayerCharacter(Entity):
                 else:
                     return
 
-        else:
+        elif self.mouse_left_pressed:
             # FIXME Fighting animation
-            self.texture = self.fight_texture_pair[self.facing_direction]
+            self.texture = self.melee_attack_texture_pair[self.facing_direction]
+            return
+
+        elif self.mouse_right_pressed:
+            # FIXME Fighting animation
+            self.texture = self.ranged_attack_texture_pair[self.facing_direction]
             return
 
     def manage_equipped_weapon(self):
