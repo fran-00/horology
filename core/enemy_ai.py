@@ -1,5 +1,6 @@
 import arcade
 
+from .combat import Combat
 from entities.enemies import EnemyCharacter
 from shared_constants import *
 
@@ -7,6 +8,7 @@ from shared_constants import *
 class EnemyAI:
     def __init__(self, view):
         self.game_view = view
+        self.combat = Combat(self.game_view)
 
     def handle_enemies_animation(self, delta_time):
         """Handle enemies animation"""
@@ -21,7 +23,7 @@ class EnemyAI:
     def handle_enemies_shooting(self, delta_time):
         """Handle enemies shooting"""
         for enemy in self.game_view.scene[LAYER_NAME_ENEMIES]:
-            bullet = enemy.shoot_at_player(delta_time)
+            bullet = self.combat.create_bullet_from_enemy(enemy, delta_time)
             if bullet:
                 self.game_view.scene[LAYER_NAME_BULLETS].append(bullet)
 
