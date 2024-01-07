@@ -41,7 +41,7 @@ class Hud:
         start_x = self.game_view.view_left + 30
         start_y = self.game_view.view_bottom + 50
         for i, item in enumerate(self.game_view.player.inventory, 1):
-            your_stuff = f"{i}: {item.name}\n"
+            your_stuff = f"{i}: {item.name}"
             arcade.draw_text(your_stuff, start_x, start_y,
                              arcade.csscolor.WHITE, 10, anchor_y="top")
             start_y -= 20
