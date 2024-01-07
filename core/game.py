@@ -48,12 +48,7 @@ class GameView(arcade.View):
         self.hud.draw_health_number()
         self.hud.draw_health_bar()
         self.hud.draw_inventory()
-        self.draw_A_star_paths()
-
-    def draw_A_star_paths(self):
-        for enemy in self.scene[LAYER_NAME_ENEMIES]:
-            if enemy.path:
-                arcade.draw_line_strip(enemy.path, arcade.color.BLUE, 2)
+        self.enemy_ai.draw_A_star_paths()
 
     def on_mouse_press(self, x, y, button, modifiers):
         """Handle mouse buttons pressed"""
