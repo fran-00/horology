@@ -58,6 +58,30 @@ class Combat:
 
         return bullet
 
+    def create_bullet_from_enemy(self, enemy, delta_time):
+        """Spawn a bullet that travels from enemy to player"""
+        enemy.frame_count += 1
+
+        start_x = enemy.center_x
+        start_y = enemy.center_y
+
+        target_x = self.game_view.player.center_x
+        target_y = self.game_view.player.center_y
+
+        x_diff = target_x - start_x
+        y_diff = target_y - start_y
+        angle = math.atan2(y_diff, x_diff)
+
+        if enemy.frame_count % 60 == 0:
+            bullet = arcade.Sprite("sprite_pack/4dEuclideanCube.png", SPRITE_SCALING_CURSE)
+            bullet.center_x = start_x
+            bullet.center_y = start_y
+
+            bullet.angle = math.degrees(angle)
+            bullet.change_x = math.cos(angle) * BULLET_SPEED
+            bullet.change_y = math.sin(angle) * BULLET_SPEED
+
+            return bullet
 
     def update_bullets(self):
         """Handle bullets update"""

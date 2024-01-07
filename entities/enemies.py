@@ -70,31 +70,6 @@ class EnemyCharacter(EnemySprite):
                                                     playing_field_bottom_boundary,
                                                     playing_field_top_boundary)
 
-    def shoot_at_player(self, delta_time):
-        """Spawn a bullet that travels from enemy to player"""
-        self.frame_count += 1
-
-        start_x = self.center_x
-        start_y = self.center_y
-
-        target_x = self.player.center_x
-        target_y = self.player.center_y
-
-        x_diff = target_x - start_x
-        y_diff = target_y - start_y
-        angle = math.atan2(y_diff, x_diff)
-
-        if self.frame_count % 60 == 0:
-            bullet = arcade.Sprite("sprite_pack/4dEuclideanCube.png", SPRITE_SCALING_CURSE)
-            bullet.center_x = start_x
-            bullet.center_y = start_y
-
-            bullet.angle = math.degrees(angle)
-            bullet.change_x = math.cos(angle) * BULLET_SPEED
-            bullet.change_y = math.sin(angle) * BULLET_SPEED
-            
-            return bullet
-
     def update_path(self, delta_time):
         self.path = arcade.astar_calculate_path(self.position,
                                                 self.player.position,
