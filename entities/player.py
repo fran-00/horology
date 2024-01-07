@@ -26,7 +26,7 @@ class PlayerCharacter(Entity):
         self.cur_health = 100
         self.inventory = []
         self.score = 0
-        self.equipped_weapon = None
+        self.equipped_ranged_weapon = None
 
     def update_animation(self, delta_time: float = 1/60):
         # Figure out if we need to flip face left or right

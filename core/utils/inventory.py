@@ -34,9 +34,9 @@ class Inventory:
         else:
             new_weapon = Ranged(weapon_name, weapon_damage)
         self.game_view.player.inventory.append(new_weapon)
-        if not self.game_view.player.equipped_weapon:
-            self.game_view.player.equipped_weapon = new_weapon
+        if not self.game_view.player.equipped_ranged_weapon:
+            self.game_view.player.equipped_ranged_weapon = new_weapon
         else:
             print("You changed your weapon")
-            self.game_view.player.equipped_weapon = new_weapon
+            self.game_view.player.equipped_ranged_weapon = new_weapon
         weapon.remove_from_sprite_lists()

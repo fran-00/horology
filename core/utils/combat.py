@@ -21,7 +21,7 @@ class Combat:
     def create_bullet_from_player(self, player, x, y):
         """Spawn a bullet that travels from player to target"""
         # Create a bullet
-        bullet = Bullet(player.equipped_weapon.name)
+        bullet = Bullet(player.equipped_ranged_weapon.name)
 
         # Position the bullet at the player's current location
         start_x = player.center_x
@@ -110,7 +110,7 @@ class Combat:
 
     def damage_enemy_with_ranged_attack(self, enemy_hit_list):
         for enemy in enemy_hit_list:
-            enemy.hp -= self.game_view.player.equipped_weapon.damage
+            enemy.hp -= self.game_view.player.equipped_ranged_weapon.damage
             if enemy.hp <= 0:
                 enemy.remove_from_sprite_lists()
             else:
