@@ -3,11 +3,11 @@ import random
 
 import arcade
 
-import stuff
 from .setup import setup
 from .hud import Hud
 from .enemy_ai import EnemyAI
 from .combat import Combat
+from .inventory import Inventory
 from shared_constants import *
 
 
@@ -26,6 +26,7 @@ class GameView(arcade.View):
         self.hud = Hud(self)
         self.enemy_ai = EnemyAI(self)
         self.combat = Combat(self)
+        self.inventory = Inventory(self)
 
     def on_resize(self, width, height):
         """Handle window resizing"""
@@ -150,33 +151,12 @@ class GameView(arcade.View):
         self.manage_scrolling()
         self.enemy_ai.spawn_enemies()
         self.enemy_ai.get_damage_from_enemy()
-        self.pick_up_items()
+        self.inventory.pick_up_items()
         self.combat.update_bullets()
         self.combat.handle_bullets_animation(delta_time)
         self.enemy_ai.handle_enemies_animation(delta_time)
         self.enemy_ai.handle_enemies_following_behaviour(delta_time)
         self.enemy_ai.handle_enemies_shooting(delta_time)
-
-    def pick_up_items(self):
-        """Handle pick up items: WEAPONS AND CONSUMABLES THAT RESTORE HEALTH"""
-        # Generate a list of all sprites from the item layer of the map that collided with the player.
-        items_hit_list = arcade.check_for_collision_with_list(self.player,
-                                                              self.scene[LAYER_NAME_ITEMS])
-
-        for item in items_hit_list:
-            # If player's health isn't full, loop through each colliding sprite,
-            # add hp_restored propriety value (int) to hp and remove item sprite from list.
-            if 'hp_restore' in item.properties and self.player.cur_health < self.player.max_health:
-                hp_restored = int(item.properties['hp_restore'])
-                self.player.cur_health += hp_restored
-                item.remove_from_sprite_lists()
-            elif 'hp_restore' in item.properties and self.player.cur_health == self.player.max_health:
-                print("your health is full")
-            elif 'weapon' in item.properties:
-                my_weapon = int(item.properties['weapon'])
-                if my_weapon == 1:
-                    self.player.inventory.append(stuff.Sep())
-                    item.remove_from_sprite_lists()
 
 
 def main():
