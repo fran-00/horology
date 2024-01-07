@@ -31,35 +31,6 @@ class GameView(arcade.View):
 
         print(f"Window resized to: {width}, {height}")
 
-    def draw_health_number(self):
-        """Render player HP number"""
-        # Draw how many hit points we have
-        health_string = f"{self.player.cur_health}/{self.player.max_health}"
-        arcade.draw_text(health_string,
-                         start_x=self.view_left + 750,
-                         start_y=self.view_bottom + 0,
-                         font_size=12,
-                         color=arcade.color.WHITE)
-
-    def draw_health_bar(self):
-        """Render player HP bar"""
-        # Draw the red background of the bar
-        if self.player.cur_health < self.player.max_health:
-            arcade.draw_rectangle_filled(center_x=self.view_left + 600,
-                                         center_y=self.view_bottom + 10,
-                                         width=HEALTHBAR_WIDTH,
-                                         height=10,
-                                         color=arcade.color.RED)
-
-        # Calculate width based on health
-        health_width = HEALTHBAR_WIDTH * (self.player.cur_health / self.player.max_health)
-        # Draw the green foreground of the bar
-        arcade.draw_rectangle_filled(center_x=(self.view_left + 600) - 0.5 * (HEALTHBAR_WIDTH - health_width),
-                                     center_y=self.view_bottom - 10,
-                                     width=health_width,
-                                     height=HEALTHBAR_HEIGHT,
-                                     color=arcade.color.GREEN)
-
     def on_draw(self):
         """Render the screen"""
         # Clear the screen to the background color
@@ -78,16 +49,6 @@ class GameView(arcade.View):
         for enemy in self.scene[LAYER_NAME_ENEMIES]:
             if enemy.path:
                 arcade.draw_line_strip(enemy.path, arcade.color.BLUE, 2)
-
-    def draw_inventory(self):
-        """Render the Inventory"""
-        start_x = self.view_left + 30
-        start_y = self.view_bottom + 50
-        for i, item in enumerate(self.player.inventory, 1):
-            your_stuff = f"{i}: {item.name}\n"
-            arcade.draw_text(your_stuff, start_x, start_y,
-                             arcade.csscolor.WHITE, 10, anchor_y="top")
-            start_y -= 20
 
     def on_mouse_press(self, x, y, button, modifiers):
         """Handle mouse buttons pressed"""
