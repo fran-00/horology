@@ -7,6 +7,7 @@ import stuff
 from entities.enemies import EnemyCharacter
 from .setup import setup
 from .hud import Hud
+from .enemy_ai import EnemyAI
 from shared_constants import *
 
 
@@ -23,6 +24,7 @@ class GameView(arcade.View):
         self.text_angle = 0
         self.time_elapsed = 0.0
         self.hud = Hud(self)
+        self.enemy_ai = EnemyAI(self)
 
     def on_resize(self, width, height):
         """Handle window resizing"""
@@ -112,10 +114,10 @@ class GameView(arcade.View):
         self.get_damage_from_enemy()
         self.pick_up_items()
         self.update_bullets()
-        self.handle_enemies_animation(delta_time)
-        self.handle_enemies_following_behaviour(delta_time)
-        self.handle_enemies_shooting(delta_time)
         self.handle_bullets_animation(delta_time)
+        self.enemy_ai.handle_enemies_animation(delta_time)
+        self.enemy_ai.handle_enemies_following_behaviour(delta_time)
+        self.enemy_ai.handle_enemies_shooting(delta_time)
 
     def handle_bullets_animation(self, delta_time):
         """Handle bullets animation"""
