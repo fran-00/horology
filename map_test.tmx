@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="22">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="64" tileheight="64" infinite="0" nextlayerid="17" nextobjectid="23">
  <tileset firstgid="1" name="MISCELLANEA" tilewidth="64" tileheight="64" tilecount="8192" columns="128">
   <image source="sprite_pack/tilesets/MISCELLANEA.png" width="8192" height="4096"/>
  </tileset>
@@ -8,6 +8,9 @@
  </tileset>
  <tileset firstgid="12289" name="Food" tilewidth="64" tileheight="64" tilecount="64" columns="8">
   <image source="sprite_pack/tilesets/Food.png" width="512" height="512"/>
+ </tileset>
+ <tileset firstgid="12353" name="bullets_tileset" tilewidth="64" tileheight="64" tilecount="99" columns="11">
+  <image source="sprite_pack/bullets_tileset.png" width="704" height="576"/>
  </tileset>
  <layer id="3" name="Background" width="50" height="50">
   <data encoding="csv">
@@ -225,23 +228,23 @@
 0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0
 </data>
  </layer>
- <objectgroup id="8" name="Items" offsetx="-32" offsety="-356">
+ <objectgroup id="8" name="Items" offsetx="2" offsety="-14">
   <properties>
    <property name="anguria" value=""/>
   </properties>
-  <object id="15" type="Item" gid="2689" x="801.333" y="2535.33" width="64" height="64">
+  <object id="15" type="Item" gid="2689" x="915.333" y="2775.33" width="64" height="64">
    <properties>
     <property name="hp_restore" value="100"/>
     <property name="name" value="Mushroom"/>
    </properties>
   </object>
-  <object id="18" gid="12304" x="620.667" y="2602.67" width="64" height="64">
+  <object id="18" gid="12304" x="1228.67" y="2818.67" width="64" height="64">
    <properties>
     <property name="hp_restore" value="10"/>
     <property name="name" value="Potato"/>
    </properties>
   </object>
-  <object id="19" gid="12337" x="526" y="2552" width="64" height="64">
+  <object id="19" gid="12337" x="1294" y="2652" width="64" height="64">
    <properties>
     <property name="hp_restore" value="10"/>
     <property name="name" value="Watermelon"/>
@@ -251,6 +254,13 @@
    <properties>
     <property name="hp_restore" value="5"/>
     <property name="name" value="Apple"/>
+   </properties>
+  </object>
+  <object id="22" gid="12368" x="604" y="2861" width="64" height="64">
+   <properties>
+    <property name="damage" type="int" value="1"/>
+    <property name="name" value="green"/>
+    <property name="weapon" value="ranged"/>
    </properties>
   </object>
  </objectgroup>
