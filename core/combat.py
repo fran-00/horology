@@ -15,7 +15,7 @@ class Combat:
         for bullet in self.game_view.scene[LAYER_NAME_BULLETS]:
             bullet.update_animation(delta_time)
 
-    def create_bullet(self, player, x, y):
+    def create_bullet_from_player(self, player, x, y):
         """Spawn a bullet that travels from player to target"""
         # Create a bullet
         bullet = Bullet("red")
