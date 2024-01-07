@@ -31,12 +31,15 @@ class Inventory:
         weapon_damage = int(weapon.properties['damage'])
         if str(weapon.properties['weapon']) == "melee":
             new_weapon = Melee(weapon_name, weapon_damage)
+            if not self.game_view.player.equipped_melee_weapon:
+                self.game_view.player.equipped_melee_weapon = new_weapon
         else:
             new_weapon = Ranged(weapon_name, weapon_damage)
+            if not self.game_view.player.equipped_ranged_weapon:
+                self.game_view.player.equipped_ranged_weapon = new_weapon
+
         self.game_view.player.inventory.append(new_weapon)
-        if not self.game_view.player.equipped_ranged_weapon:
-            self.game_view.player.equipped_ranged_weapon = new_weapon
-        else:
-            print("You changed your weapon")
-            self.game_view.player.equipped_ranged_weapon = new_weapon
         weapon.remove_from_sprite_lists()
+
+    def change_equipped_weapon(self, weapon):
+        pass
