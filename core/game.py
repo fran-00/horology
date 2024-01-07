@@ -91,11 +91,11 @@ class GameView(arcade.View):
 
     def on_mouse_press(self, x, y, button, modifiers):
         """Handle mouse buttons pressed"""
-        if button == arcade.MOUSE_BUTTON_RIGHT:
-            self.move_on_mouse_click(x, y)
-
-        # we check if left button is pressed to change player sprite to fighting version
         if button == arcade.MOUSE_BUTTON_LEFT:
+            # TODO: Melee attack
+            pass
+
+        if button == arcade.MOUSE_BUTTON_RIGHT:
             self.player.mouse_left_pressed = True
             bullet = self.player.create_bullet(self, x, y)
             self.scene[LAYER_NAME_BULLETS].append(bullet)
