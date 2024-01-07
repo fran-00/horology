@@ -51,11 +51,12 @@ class GameView(arcade.View):
     def on_mouse_press(self, x, y, button, modifiers):
         """Handle mouse buttons pressed"""
         if button == arcade.MOUSE_BUTTON_LEFT:
+            self.player.mouse_left_pressed = True
             # TODO: Melee attack
             pass
 
         if button == arcade.MOUSE_BUTTON_RIGHT:
-            self.player.mouse_left_pressed = True
+            self.player.mouse_right_pressed = True
             if not self.player.equipped_weapon:
                 print("You have no weapons")
                 return
@@ -64,6 +65,7 @@ class GameView(arcade.View):
 
     def on_mouse_release(self, x, y, button, modifiers):
         """Handle mouse button release"""
+        self.player.mouse_right_pressed = False
         self.player.mouse_left_pressed = False
 
     def on_key_press(self, key, modifiers):
