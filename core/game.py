@@ -5,7 +5,8 @@ import arcade
 
 import stuff
 from entities.enemies import EnemyCharacter
-from core.setup import setup
+from .setup import setup
+from .hud import Hud
 from shared_constants import *
 
 
@@ -21,6 +22,7 @@ class GameView(arcade.View):
         # Used for text on screen (dialogues, not score)
         self.text_angle = 0
         self.time_elapsed = 0.0
+        self.hud = Hud(self)
 
     def on_resize(self, width, height):
         """Handle window resizing"""
@@ -40,9 +42,9 @@ class GameView(arcade.View):
         self.scene.draw()
         
         # Draw other stuff
-        self.draw_health_number()
-        self.draw_health_bar()
-        self.draw_inventory()
+        self.hud.draw_health_number()
+        self.hud.draw_health_bar()
+        self.hud.draw_inventory()
         self.draw_A_star_paths()
 
     def draw_A_star_paths(self):
