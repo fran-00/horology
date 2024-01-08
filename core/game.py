@@ -1,6 +1,5 @@
 import arcade
 
-from .setup import setup
 from gui.hud import Hud
 from .utils.enemy_ai import EnemyAI
 from .utils.combat import Combat
@@ -171,11 +170,3 @@ class GameView(arcade.View):
         self.enemy_ai.handle_enemies_animation(delta_time)
         self.enemy_ai.handle_enemies_following_behaviour(delta_time)
         self.enemy_ai.handle_enemies_shooting(delta_time)
-
-
-def main():
-    window = arcade.Window(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
-    start_view = GameView()
-    window.show_view(start_view)
-    setup(start_view)
-    arcade.run()

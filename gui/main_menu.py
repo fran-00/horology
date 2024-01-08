@@ -22,3 +22,10 @@ class MainMenuView(arcade.View):
         game_view = GameView()
         setup(game_view)
         self.window.show_view(game_view)
+
+
+def main():
+    window = arcade.Window(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
+    menu_view = MainMenuView()
+    window.show_view(menu_view)
+    arcade.run()
