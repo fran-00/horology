@@ -20,6 +20,8 @@ class Inventory:
             if 'hp_restore' in item.properties and self.game_view.player.cur_health < self.game_view.player.max_health:
                 hp_restored = int(item.properties['hp_restore'])
                 self.game_view.player.cur_health += hp_restored
+                if self.game_view.player.cur_health > self.game_view.player.max_health:
+                    self.game_view.player.cur_health = self.game_view.player.max_health
                 item.remove_from_sprite_lists()
             elif 'hp_restore' in item.properties and self.game_view.player.cur_health == self.game_view.player.max_health:
                 print("your health is full")
