@@ -22,19 +22,19 @@ class EnemySprite(Entity):
 
     def set_animations(self):
         self.walk_textures = []
-        for i in range(8):
+        for i in range(5):
             texture = self.load_texture_pair(f"{self.sprites_path}_walk{i}.png")
             self.walk_textures.append(texture)
 
         # Load textures for walking south
         self.walkfront_textures = []
-        for i in range(8):
+        for i in range(5):
             texture = self.load_texture_pair(f"{self.sprites_path}_walkfront{i}.png")
             self.walkfront_textures.append(texture)
 
         # Load textures for walking north
         self.walkback_textures = []
-        for i in range(8):
+        for i in range(5):
             texture = self.load_texture_pair(f"{self.sprites_path}_walkback{i}.png")
             self.walkback_textures.append(texture)
 
@@ -61,7 +61,7 @@ class EnemySprite(Entity):
 
         else:
             self.cur_texture += 1
-            if self.cur_texture > 7 * UPDATES_PER_FRAME:
+            if self.cur_texture > 4 * UPDATES_PER_FRAME:
                 self.cur_texture = 0
             frame = self.cur_texture // UPDATES_PER_FRAME
             direction = self.facing_direction
