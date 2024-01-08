@@ -34,14 +34,23 @@ class GameView(arcade.View):
 
         print(f"Window resized to: {width}, {height}")
 
+    # def update_minimap(self):
+    #     proj = 0, MAP_WIDTH, 0, MAP_HEIGHT
+    #     with self.minimap_sprite_list.atlas.render_into(self.minimap_texture, projection=proj) as fbo:
+    #         fbo.clear(MINIMAP_BACKGROUND_COLOR)
+    #         self.scene[LAYER_WALLS].draw()
+    #         self.player.draw()
+
     def on_draw(self):
         """Render the screen"""
-        # Clear the screen to the background color
+        # Clear the screen to the background color and draw scene
         self.clear()
-
-        # Draw our Scene
         self.scene.draw()
-        
+
+        # # Update and draw the minimap
+        # self.update_minimap()
+        # self.minimap_sprite_list.draw()
+
         # Draw other stuff
         self.hud.draw_health_number()
         self.hud.draw_health_bar()

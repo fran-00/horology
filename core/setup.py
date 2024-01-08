@@ -1,3 +1,5 @@
+from uuid import uuid4
+
 import arcade
 
 from entities.player import PlayerCharacter
@@ -77,3 +79,13 @@ def setup(game):
     # PHYSICS ENGINE (very basic)
     game.physics_engine = arcade.PhysicsEngineSimple(
         game.player, game.scene[LAYER_WALLS])
+
+    # # Construct the minimap
+    # size = (MINIMAP_WIDTH, MINIMAP_HEIGHT)
+    # game.minimap_texture = arcade.Texture.create_empty(str(uuid4()), size)
+    # game.minimap_sprite = arcade.Sprite(center_x=MINIMAP_WIDTH / 2,
+    #                                     center_y=SCREEN_HEIGHT - MINIMAP_HEIGHT / 2,
+    #                                     texture=game.minimap_texture)
+
+    # game.minimap_sprite_list = arcade.SpriteList()
+    # game.minimap_sprite_list.append(game.minimap_sprite)
