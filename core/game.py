@@ -80,6 +80,8 @@ class GameView(arcade.View):
             self.player.change_x = -MOVEMENT_SPEED
         elif key == arcade.key.D:
             self.player.change_x = MOVEMENT_SPEED
+        elif key == arcade.key.E:
+            self.inventory_system.pick_up_items()
 
     def on_key_release(self, key, modifiers):
         """ Handle Keys Released """
@@ -155,7 +157,6 @@ class GameView(arcade.View):
         self.manage_scrolling()
         self.enemy_ai.spawn_enemies()
         self.enemy_ai.get_damage_from_enemy()
-        self.inventory_system.pick_up_items()
         self.combat.update_bullets()
         self.combat.handle_bullets_animation(delta_time)
         self.enemy_ai.handle_enemies_animation(delta_time)
