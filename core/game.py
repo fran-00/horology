@@ -4,7 +4,7 @@ from .setup import setup
 from gui.hud import Hud
 from .utils.enemy_ai import EnemyAI
 from .utils.combat import Combat
-from .utils.inventory import Inventory
+from .utils.inventory_system import InventorySystem
 from shared_constants import *
 
 
@@ -23,7 +23,7 @@ class GameView(arcade.View):
         self.hud = Hud(self)
         self.enemy_ai = EnemyAI(self)
         self.combat = Combat(self)
-        self.inventory = Inventory(self)
+        self.inventory_system = InventorySystem(self)
 
     def on_resize(self, width, height):
         """Handle window resizing"""
@@ -155,7 +155,7 @@ class GameView(arcade.View):
         self.manage_scrolling()
         self.enemy_ai.spawn_enemies()
         self.enemy_ai.get_damage_from_enemy()
-        self.inventory.pick_up_items()
+        self.inventory_system.pick_up_items()
         self.combat.update_bullets()
         self.combat.handle_bullets_animation(delta_time)
         self.enemy_ai.handle_enemies_animation(delta_time)
