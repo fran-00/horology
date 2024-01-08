@@ -4,14 +4,6 @@ from .entity import Entity
 from shared_constants import *
 
 
-def load_texture_pair(filename):
-    # Load a texture pair, with the second being a mirror image.
-    return [
-        arcade.load_texture(filename),
-        arcade.load_texture(filename, flipped_horizontally=True)
-    ]
-
-
 class PlayerCharacter(Entity):
     """Player Sprite"""
 
@@ -28,6 +20,42 @@ class PlayerCharacter(Entity):
         self.score = 0
         self.equipped_ranged_weapon = None
         self.equipped_melee_weapon = None
+
+        self.set_sprite()
+        self.set_animations()
+
+    def set_sprite(self):
+        self.sprites_path = f"sprite_pack/player/hooded/hooded"
+
+        self.idle_texture_pair = self.load_texture_pair(f"{self.sprites_path}_idle.png")
+        self.melee_attack_texture_pair = self.load_texture_pair(f"{self.sprites_path}_melee.png")
+        self.ranged_attack_texture_pair = self.load_texture_pair(f"{self.sprites_path}_ranged.png")
+
+    def set_animations(self):
+        self.walk_textures = []
+        for i in range(8):
+            texture = self.load_texture_pair(f"{self.sprites_path}_walk{i}.png")
+            self.walk_textures.append(texture)
+
+        # Load textures for walking south
+        self.walkfront_textures = []
+        for i in range(8):
+            texture = self.load_texture_pair(f"{self.sprites_path}_walkfront{i}.png")
+            self.walkfront_textures.append(texture)
+
+        # Load textures for walking north
+        self.walkback_textures = []
+        for i in range(8):
+            texture = self.load_texture_pair(f"{self.sprites_path}_walkback{i}.png")
+            self.walkback_textures.append(texture)
+
+        # Set the initial texture
+        self.texture = self.idle_texture_pair[0]
+
+        # Hit box will be set based on the first image used. If you want to specify
+        # a different hit box, you can do it like the code below.
+        # self.set_hit_box([[-22, -64], [22, -64], [22, 28], [-22, 28]])
+        self.set_hit_box(self.texture.hit_box_points)
 
     def update_animation(self, delta_time: float = 1/60):
         # Figure out if we need to flip face left or right
