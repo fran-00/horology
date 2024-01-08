@@ -55,6 +55,7 @@ class GameView(arcade.View):
             if not self.player.equipped_melee_weapon:
                 print("You have no melee weapons")
                 return
+            self.combat.update_melee_attacks()
 
         if button == arcade.MOUSE_BUTTON_RIGHT:
             self.player.mouse_right_pressed = True

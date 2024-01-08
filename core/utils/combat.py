@@ -101,16 +101,21 @@ class Combat:
             if len(enemy_hit_list) > 0:
                 bullet.remove_from_sprite_lists()
 
-            self.damage_enemy_with_ranged_attack(enemy_hit_list)
+            self.damage_enemy(enemy_hit_list, self.game_view.player.equipped_ranged_weapon)
 
             # Remove bullet if it hits an obstacle which is not an enemy:
             for _ in wall_hit_list:
                 bullet.remove_from_sprite_lists()
             # Now bullet will travel forever and will go out of screen
 
-    def damage_enemy_with_ranged_attack(self, enemy_hit_list):
+    def update_melee_attacks(self):
+        enemy_hit_list = arcade.check_for_collision_with_list(
+            self.game_view.player, self.game_view.scene[LAYER_ENEMIES])
+        self.damage_enemy(enemy_hit_list, self.game_view.player.equipped_melee_weapon)
+
+    def damage_enemy(self, enemy_hit_list, weapon):
         for enemy in enemy_hit_list:
-            enemy.hp -= self.game_view.player.equipped_ranged_weapon.damage
+            enemy.hp -= weapon.damage
             if enemy.hp <= 0:
                 enemy.remove_from_sprite_lists()
             else:
