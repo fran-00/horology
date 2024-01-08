@@ -106,7 +106,16 @@ class Combat:
             # Remove bullet if it hits an obstacle which is not an enemy:
             for _ in wall_hit_list:
                 bullet.remove_from_sprite_lists()
-            # Now bullet will travel forever and will go out of screen
+            
+            self.remove_far_bullets(bullet)
+
+    def remove_far_bullets(self, bullet):
+        """Delete bullets to prevent them from travelling forever and go out of screen"""
+        if ((bullet.center_y > self.game_view.player.center_y + 400)
+                or (bullet.center_y < self.game_view.player.center_y - 400)
+                or (bullet.center_x > self.game_view.player.center_x + 400)
+                or (bullet.center_x < self.game_view.player.center_x - 400)):
+            bullet.remove_from_sprite_lists()
 
     def update_melee_attacks(self):
         enemy_hit_list = arcade.check_for_collision_with_list(
