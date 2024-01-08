@@ -51,17 +51,17 @@ class GameView(arcade.View):
     def on_mouse_press(self, x, y, button, modifiers):
         """Handle mouse buttons pressed"""
         if button == arcade.MOUSE_BUTTON_LEFT:
-            self.player.mouse_left_pressed = True
             if not self.player.equipped_melee_weapon:
                 print("You have no melee weapons")
                 return
+            self.player.mouse_left_pressed = True
             self.combat.update_melee_attacks()
 
         if button == arcade.MOUSE_BUTTON_RIGHT:
-            self.player.mouse_right_pressed = True
             if not self.player.equipped_ranged_weapon:
                 print("You have no ranged weapons")
                 return
+            self.player.mouse_right_pressed = True
             bullet = self.combat.create_bullet_from_player(self.player, x, y)
             self.scene[LAYER_PLAYER_BULLETS].append(bullet)
 
