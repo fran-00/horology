@@ -2,7 +2,7 @@ from uuid import uuid4
 
 import arcade
 
-from entities.player import PlayerCharacter
+from ..entities.player import PlayerCharacter
 from shared_constants import *
 
 

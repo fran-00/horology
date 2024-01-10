@@ -1,7 +1,7 @@
 import arcade
 
 from .combat import Combat
-from entities.enemies import EnemyCharacter
+from ...entities.enemies import EnemyCharacter
 from shared_constants import *
 
 

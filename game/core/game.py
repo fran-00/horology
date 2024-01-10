@@ -1,6 +1,6 @@
 import arcade
 
-from gui.hud import Hud
+from ..gui.hud import Hud
 from .utils.enemy_ai import EnemyAI
 from .utils.combat import Combat
 from .utils.inventory_system import InventorySystem

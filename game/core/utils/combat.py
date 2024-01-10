@@ -2,7 +2,7 @@ import math
 
 import arcade
 
-from entities.bullets import Bullet
+from ...entities.bullets import Bullet
 from shared_constants import *
 
 
