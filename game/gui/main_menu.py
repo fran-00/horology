@@ -1,6 +1,6 @@
 import arcade
 
-from ..core.game import GameView
+from ..core.game_view import GameView
 from ..core.setup import setup
 from shared_constants import *
 
