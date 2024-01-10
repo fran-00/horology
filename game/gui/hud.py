@@ -1,6 +1,6 @@
 import arcade
 
-from shared_constants import *
+from ..constants import *
 
 
 class Hud:

@@ -4,7 +4,7 @@ from ..gui.hud import Hud
 from .utils.enemy_ai import EnemyAI
 from .utils.combat import Combat
 from .utils.inventory_system import InventorySystem
-from shared_constants import *
+from ..constants import *
 
 
 class GameView(arcade.View):

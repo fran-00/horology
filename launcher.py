@@ -1,7 +1,7 @@
 import arcade
 
 from game.gui.main_menu import MainMenuView
-from shared_constants import *
+from game.constants import *
 
 
 def main():

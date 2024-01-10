@@ -1,7 +1,7 @@
 import arcade
 
 from ...entities.weapons import Melee, Ranged
-from shared_constants import *
+from ...constants import *
 
 
 class InventorySystem:

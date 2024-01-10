@@ -1,7 +1,7 @@
 import arcade
 
 from .entity import Entity
-from shared_constants import *
+from ..constants import *
 
 
 class PlayerCharacter(Entity):

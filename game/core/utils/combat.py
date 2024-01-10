@@ -3,7 +3,7 @@ import math
 import arcade
 
 from ...entities.bullets import Bullet
-from shared_constants import *
+from ...constants import *
 
 
 class Combat:

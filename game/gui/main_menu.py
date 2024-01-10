@@ -2,7 +2,7 @@ import arcade
 
 from ..core.game_view import GameView
 from ..core.setup import setup
-from shared_constants import *
+from ..constants import *
 
 
 class MainMenuView(arcade.View):

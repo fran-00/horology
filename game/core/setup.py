@@ -1,7 +1,7 @@
 import arcade
 
 from ..entities.player import PlayerCharacter
-from shared_constants import *
+from ..constants import *
 
 
 def setup(game_view):
