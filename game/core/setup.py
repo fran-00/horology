@@ -15,7 +15,7 @@ def setup(game):
     game.player_list = arcade.SpriteList()
 
     # Name of map file to load
-    map_name = "map_test.tmx"
+    map_name = "resources/maps/map_test.tmx"
 
     # Layer Specific Options for the Tilemap
     layer_options = {
