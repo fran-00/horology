@@ -4,7 +4,7 @@ from ..gui.hud import Hud
 from .utils.enemy_ai import EnemyAI
 from .utils.combat import Combat
 from .utils.inventory_system import InventorySystem
-from ..constants import *
+from ..constants import Constants as c
 
 
 class GameView(arcade.View):
@@ -60,7 +60,7 @@ class GameView(arcade.View):
                 return
             self.player.mouse_right_pressed = True
             bullet = self.combat.create_bullet_from_player(self.player, x, y)
-            self.scene[LAYER_PLAYER_BULLETS].append(bullet)
+            self.scene[c.LAYER_PLAYER_BULLETS].append(bullet)
 
     def on_mouse_release(self, x, y, button, modifiers):
         """Handle mouse button release"""
@@ -70,13 +70,13 @@ class GameView(arcade.View):
     def on_key_press(self, key, modifiers):
         """Handle Keys Pressed"""
         if key == arcade.key.W:
-            self.player.change_y = MOVEMENT_SPEED
+            self.player.change_y = c.MOVEMENT_SPEED
         elif key == arcade.key.S:
-            self.player.change_y = -MOVEMENT_SPEED
+            self.player.change_y = -c.MOVEMENT_SPEED
         elif key == arcade.key.A:
-            self.player.change_x = -MOVEMENT_SPEED
+            self.player.change_x = -c.MOVEMENT_SPEED
         elif key == arcade.key.D:
-            self.player.change_x = MOVEMENT_SPEED
+            self.player.change_x = c.MOVEMENT_SPEED
         elif key == arcade.key.E:
             self.inventory_system.pick_up_items()
 
@@ -94,25 +94,25 @@ class GameView(arcade.View):
         changed_viewport = False
 
         # Scroll left
-        left_boundary = self.view_left + LEFT_VIEWPORT_MARGIN
+        left_boundary = self.view_left + c.LEFT_VIEWPORT_MARGIN
         if self.player.left < left_boundary:
             self.view_left -= left_boundary - self.player.left
             changed_viewport = True
 
         # Scroll right
-        right_boundary = self.view_left + SCREEN_WIDTH - RIGHT_VIEWPORT_MARGIN
+        right_boundary = self.view_left + c.SCREEN_WIDTH - c.RIGHT_VIEWPORT_MARGIN
         if self.player.right > right_boundary:
             self.view_left += self.player.right - right_boundary
             changed_viewport = True
 
         # Scroll up
-        top_boundary = self.view_bottom + SCREEN_HEIGHT - TOP_VIEWPORT_MARGIN
+        top_boundary = self.view_bottom + c.SCREEN_HEIGHT - c.TOP_VIEWPORT_MARGIN
         if self.player.top > top_boundary:
             self.view_bottom += self.player.top - top_boundary
             changed_viewport = True
 
         # Scroll down
-        bottom_boundary = self.view_bottom + BOTTOM_VIEWPORT_MARGIN
+        bottom_boundary = self.view_bottom + c.BOTTOM_VIEWPORT_MARGIN
         if self.player.bottom < bottom_boundary:
             self.view_bottom -= bottom_boundary - self.player.bottom
             changed_viewport = True
@@ -125,9 +125,9 @@ class GameView(arcade.View):
 
             # Do the scrolling
             arcade.set_viewport(self.view_left,
-                                SCREEN_WIDTH + self.view_left,
+                                c.SCREEN_WIDTH + self.view_left,
                                 self.view_bottom,
-                                SCREEN_HEIGHT + self.view_bottom)
+                                c.SCREEN_HEIGHT + self.view_bottom)
 
     def on_update(self, delta_time):
         """ Handle movements and game logic"""
@@ -141,8 +141,8 @@ class GameView(arcade.View):
         # Did the player fall off the map? Now it works only if she goes
         # down under the map, but she can walk up, right and left forever.
         if self.player.center_y < -100:
-            self.player.center_x = PLAYER_START_X
-            self.player.center_y = PLAYER_START_Y
+            self.player.center_x = c.PLAYER_START_X
+            self.player.center_y = c.PLAYER_START_Y
 
             # *** SCREEN RENDERING ***
             # Set the camera to the start

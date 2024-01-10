@@ -3,7 +3,7 @@ import math
 import arcade
 
 from ...entities.bullets import Bullet
-from ...constants import *
+from ...constants import Constants as c
 
 
 class Combat:
@@ -12,10 +12,10 @@ class Combat:
 
     def handle_bullets_animation(self, delta_time):
         """Handle bullets animation"""
-        for player_bullet in self.game_view.scene[LAYER_PLAYER_BULLETS]:
+        for player_bullet in self.game_view.scene[c.LAYER_PLAYER_BULLETS]:
             player_bullet.update_animation(delta_time)
 
-        for enemies_bullet in self.game_view.scene[LAYER_ENEMIES_BULLETS]:
+        for enemies_bullet in self.game_view.scene[c.LAYER_ENEMIES_BULLETS]:
             enemies_bullet.update_animation(delta_time)
 
     def create_bullet_from_player(self, player, x, y):
@@ -56,8 +56,8 @@ class Combat:
         print(f"target_x = {target_x}, target_y = {target_y}")
         # Taking into account the angle, calculate our change_x and change_y.
         # Velocity is how fast the bullet travels.
-        bullet.change_x = math.cos(angle) * BULLET_SPEED
-        bullet.change_y = math.sin(angle) * BULLET_SPEED
+        bullet.change_x = math.cos(angle) * c.BULLET_SPEED
+        bullet.change_y = math.sin(angle) * c.BULLET_SPEED
 
         return bullet
 
@@ -76,27 +76,27 @@ class Combat:
         angle = math.atan2(y_diff, x_diff)
 
         if enemy.frame_count % 60 == 0:
-            bullet = arcade.Sprite("resources/4dEuclideanCube.png", SPRITE_SCALING_CURSE)
+            bullet = arcade.Sprite("resources/4dEuclideanCube.png", c.SPRITE_SCALING_CURSE)
             bullet.center_x = start_x
             bullet.center_y = start_y
 
             bullet.angle = math.degrees(angle)
-            bullet.change_x = math.cos(angle) * BULLET_SPEED
-            bullet.change_y = math.sin(angle) * BULLET_SPEED
+            bullet.change_x = math.cos(angle) * c.BULLET_SPEED
+            bullet.change_y = math.sin(angle) * c.BULLET_SPEED
 
             return bullet
 
     def update_bullets(self):
         """Handle bullets update"""
-        self.game_view.scene[LAYER_PLAYER_BULLETS].update()
-        self.game_view.scene[LAYER_ENEMIES_BULLETS].update()
+        self.game_view.scene[c.LAYER_PLAYER_BULLETS].update()
+        self.game_view.scene[c.LAYER_ENEMIES_BULLETS].update()
 
-        for bullet in self.game_view.scene[LAYER_PLAYER_BULLETS]:
+        for bullet in self.game_view.scene[c.LAYER_PLAYER_BULLETS]:
             # Check this bullet to see if it hit an enemy or a wall
             enemy_hit_list = arcade.check_for_collision_with_list(
-                bullet, self.game_view.scene[LAYER_ENEMIES])
+                bullet, self.game_view.scene[c.LAYER_ENEMIES])
             wall_hit_list = arcade.check_for_collision_with_list(
-                bullet, self.game_view.scene[LAYER_WALLS])
+                bullet, self.game_view.scene[c.LAYER_WALLS])
             # If it did, get rid of the bullet
             if len(enemy_hit_list) > 0:
                 bullet.remove_from_sprite_lists()
@@ -119,7 +119,7 @@ class Combat:
 
     def update_melee_attacks(self):
         enemy_hit_list = arcade.check_for_collision_with_list(
-            self.game_view.player, self.game_view.scene[LAYER_ENEMIES])
+            self.game_view.player, self.game_view.scene[c.LAYER_ENEMIES])
         self.damage_enemy(enemy_hit_list, self.game_view.player.equipped_melee_weapon)
 
     def damage_enemy(self, enemy_hit_list, weapon):

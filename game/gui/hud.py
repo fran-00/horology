@@ -1,6 +1,6 @@
 import arcade
 
-from ..constants import *
+from ..constants import Constants as c
 
 
 class Hud:
@@ -23,17 +23,17 @@ class Hud:
         if self.game_view.player.cur_health < self.game_view.player.max_health:
             arcade.draw_rectangle_filled(center_x=self.game_view.view_left + 600,
                                          center_y=self.game_view.view_bottom + 10,
-                                         width=HEALTHBAR_WIDTH,
+                                         width=c.HEALTHBAR_WIDTH,
                                          height=10,
                                          color=arcade.color.RED)
 
         # Calculate width based on health
-        health_width = HEALTHBAR_WIDTH * (self.game_view.player.cur_health / self.game_view.player.max_health)
+        health_width = c.HEALTHBAR_WIDTH * (self.game_view.player.cur_health / self.game_view.player.max_health)
         # Draw the green foreground of the bar
-        arcade.draw_rectangle_filled(center_x=(self.game_view.view_left + 600) - 0.5 * (HEALTHBAR_WIDTH - health_width),
+        arcade.draw_rectangle_filled(center_x=(self.game_view.view_left + 600) - 0.5 * (c.HEALTHBAR_WIDTH - health_width),
                                      center_y=self.game_view.view_bottom - 10,
                                      width=health_width,
-                                     height=HEALTHBAR_HEIGHT,
+                                     height=c.HEALTHBAR_HEIGHT,
                                      color=arcade.color.GREEN)
 
     def draw_inventory(self):

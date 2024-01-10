@@ -1,7 +1,7 @@
 import arcade
 
 from .entity import Entity
-from ..constants import *
+from ..constants import Constants as c
 
 
 class PlayerCharacter(Entity):
@@ -59,22 +59,22 @@ class PlayerCharacter(Entity):
 
     def update_animation(self, delta_time: float = 1/60):
         # Figure out if we need to flip face left or right
-        if self.change_x < 0 and self.facing_direction == RIGHT_FACING:
-            self.facing_direction = LEFT_FACING
-        elif self.change_x > 0 and self.facing_direction == LEFT_FACING:
-            self.facing_direction = RIGHT_FACING
+        if self.change_x < 0 and self.facing_direction == c.RIGHT_FACING:
+            self.facing_direction = c.LEFT_FACING
+        elif self.change_x > 0 and self.facing_direction == c.LEFT_FACING:
+            self.facing_direction = c.RIGHT_FACING
 
         if not self.mouse_right_pressed and not self.mouse_left_pressed:
             # Idle animation
-            if self.change_x == 0 and self.change_y == 0 or UPDATES_PER_FRAME == 0:
+            if self.change_x == 0 and self.change_y == 0 or c.UPDATES_PER_FRAME == 0:
                 self.texture = self.idle_texture_pair[self.facing_direction]
                 return
 
             else:
                 self.cur_texture += 1
-                if self.cur_texture > 7 * UPDATES_PER_FRAME:
+                if self.cur_texture > 7 * c.UPDATES_PER_FRAME:
                     self.cur_texture = 0
-                frame = self.cur_texture // UPDATES_PER_FRAME
+                frame = self.cur_texture // c.UPDATES_PER_FRAME
                 direction = self.facing_direction
 
                 # Walking to SOUTH

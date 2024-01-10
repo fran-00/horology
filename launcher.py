@@ -1,11 +1,11 @@
 import arcade
 
 from game.gui.main_menu import MainMenuView
-from game.constants import *
+from game.constants import Constants as c
 
 
 def main():
-    window = arcade.Window(SCREEN_WIDTH, SCREEN_HEIGHT, SCREEN_TITLE)
+    window = arcade.Window(c.SCREEN_WIDTH, c.SCREEN_HEIGHT, c.SCREEN_TITLE)
     menu_view = MainMenuView()
     window.show_view(menu_view)
     arcade.run()

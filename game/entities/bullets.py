@@ -1,6 +1,6 @@
 import arcade
 
-from ..constants import *
+from ..constants import Constants as c
 
 
 class Bullet(arcade.Sprite):
@@ -8,7 +8,7 @@ class Bullet(arcade.Sprite):
         super().__init__()
 
         self.cur_texture = 0
-        self.scale = CHARACTER_SCALING / 2
+        self.scale = c.CHARACTER_SCALING / 2
 
         main_path = f"resources/bullets/{name}/{name}"
 
@@ -23,7 +23,7 @@ class Bullet(arcade.Sprite):
 
     def update_animation(self, delta_time: float = 1 / 60):
         self.cur_texture += 1
-        if self.cur_texture > 6 * UPDATES_PER_FRAME:
+        if self.cur_texture > 6 * c.UPDATES_PER_FRAME:
             self.cur_texture = 0
-        frame = self.cur_texture // UPDATES_PER_FRAME
+        frame = self.cur_texture // c.UPDATES_PER_FRAME
         self.texture = self.bullet_textures[frame]

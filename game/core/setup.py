@@ -1,7 +1,7 @@
 import arcade
 
 from ..entities.player import PlayerCharacter
-from ..constants import *
+from ..constants import Constants as c
 
 
 def setup(game_view):
@@ -17,40 +17,40 @@ def setup(game_view):
 
     # Layer Specific Options for the Tilemap
     layer_options = {
-        LAYER_FOREGROUND: {
+        c.LAYER_FOREGROUND: {
             "use_spatial_hash": True,
         },
-        LAYER_ENEMIES: {
+        c.LAYER_ENEMIES: {
             "use_spatial_hash": True,
         },
-        LAYER_ENEMIES_BULLETS: {
+        c.LAYER_ENEMIES_BULLETS: {
             "use_spatial_hash": True,
         },
-        LAYER_PLAYER_BULLETS: {
+        c.LAYER_PLAYER_BULLETS: {
             "use_spatial_hash": True,
         },
-        LAYER_SPAWN_TRIGGER: {
+        c.LAYER_SPAWN_TRIGGER: {
             "use_spatial_hash": True,
         },
-        LAYER_ITEMS: {
+        c.LAYER_ITEMS: {
             "use_spatial_hash": True,
         },
-        LAYER_WALLS: {
+        c.LAYER_WALLS: {
             "use_spatial_hash": True,
         },
-        LAYER_STUFF: {
+        c.LAYER_STUFF: {
             "use_spatial_hash": True,
         },
-        LAYER_GROUND: {
+        c.LAYER_GROUND: {
             "use_spatial_hash": True,
         },
-        LAYER_BACKGROUND: {
+        c.LAYER_BACKGROUND: {
             "use_spatial_hash": True,
         }
     }
 
     # Read in the tiled map
-    game_view.tile_map = arcade.load_tilemap(map_name, TILE_SCALING, layer_options)
+    game_view.tile_map = arcade.load_tilemap(map_name, c.TILE_SCALING, layer_options)
 
     # Initialize Scene with our TileMap, this will automatically add all layers
     # from the map as SpriteLists in the scene in the proper order.
@@ -61,19 +61,19 @@ def setup(game_view):
     # Setting before using scene.add_sprite allows us to define where the SpriteList
     # will be in the draw order. If we just use add_sprite, it will be appended to the
     # end of the order.
-    game_view.scene.add_sprite_list_after("Player", LAYER_SPAWN_TRIGGER)
+    game_view.scene.add_sprite_list_after("Player", c.LAYER_SPAWN_TRIGGER)
 
     # Set up the player, specifically placing it at these coordinates.
     game_view.player = PlayerCharacter()
-    game_view.player.center_x = PLAYER_START_X
-    game_view.player.center_y = PLAYER_START_Y
+    game_view.player.center_x = c.PLAYER_START_X
+    game_view.player.center_y = c.PLAYER_START_Y
     game_view.player_list.append(game_view.player)
     game_view.items_hit_list = arcade.check_for_collision_with_list(game_view.player,
-                                                               game_view.scene[LAYER_ITEMS])
+                                                               game_view.scene[c.LAYER_ITEMS])
     game_view.spawn_trigger_hit_list = arcade.check_for_collision_with_list(game_view.player,
-                                                                       game_view.scene[LAYER_SPAWN_TRIGGER])
+                                                                       game_view.scene[c.LAYER_SPAWN_TRIGGER])
     game_view.scene.add_sprite("Player", game_view.player)
 
     # PHYSICS ENGINE (very basic)
     game_view.physics_engine = arcade.PhysicsEngineSimple(
-        game_view.player, game_view.scene[LAYER_WALLS])
+        game_view.player, game_view.scene[c.LAYER_WALLS])

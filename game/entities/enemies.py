@@ -3,7 +3,7 @@ import math
 import arcade
 
 from .entity import Entity
-from ..constants import *
+from ..constants import Constants as c
 
 
 class EnemySprite(Entity):
@@ -49,21 +49,21 @@ class EnemySprite(Entity):
     def update_animation(self, delta_time: float = 1 / 60):
 
         # Figure out if we need to flip face left or right
-        if self.change_x < 0 and self.facing_direction == RIGHT_FACING:
-            self.facing_direction = LEFT_FACING
-        elif self.change_x > 0 and self.facing_direction == LEFT_FACING:
-            self.facing_direction = RIGHT_FACING
+        if self.change_x < 0 and self.facing_direction == c.RIGHT_FACING:
+            self.facing_direction = c.LEFT_FACING
+        elif self.change_x > 0 and self.facing_direction == c.LEFT_FACING:
+            self.facing_direction = c.RIGHT_FACING
 
         # Idle animation
-        if self.change_x == 0 and self.change_y == 0 or UPDATES_PER_FRAME == 0:
+        if self.change_x == 0 and self.change_y == 0 or c.UPDATES_PER_FRAME == 0:
             self.texture = self.idle_texture_pair[self.facing_direction]
             return
 
         else:
             self.cur_texture += 1
-            if self.cur_texture > 4 * UPDATES_PER_FRAME:
+            if self.cur_texture > 4 * c.UPDATES_PER_FRAME:
                 self.cur_texture = 0
-            frame = self.cur_texture // UPDATES_PER_FRAME
+            frame = self.cur_texture // c.UPDATES_PER_FRAME
             direction = self.facing_direction
 
             # Walking to SOUTH
@@ -92,14 +92,14 @@ class EnemyCharacter(EnemySprite):
         self.path = None
         self.frame_count = 0
         
-        playing_field_left_boundary = -SPRITE_SIZE * 50
-        playing_field_right_boundary = SPRITE_SIZE * 50
-        playing_field_top_boundary = SPRITE_SIZE * 50
-        playing_field_bottom_boundary = -SPRITE_SIZE * 50
+        playing_field_left_boundary = -c.SPRITE_SIZE * 50
+        playing_field_right_boundary = c.SPRITE_SIZE * 50
+        playing_field_top_boundary = c.SPRITE_SIZE * 50
+        playing_field_bottom_boundary = -c.SPRITE_SIZE * 50
         
         self.barrier_list = arcade.AStarBarrierList(self,
                                                     self.wall_list,
-                                                    SPRITE_SIZE,
+                                                    c.SPRITE_SIZE,
                                                     playing_field_left_boundary,
                                                     playing_field_right_boundary,
                                                     playing_field_bottom_boundary,
@@ -115,18 +115,18 @@ class EnemyCharacter(EnemySprite):
         
         if self.path and len(self.path) > 1:
             if self.center_x < self.path[1][0]:
-                self.center_x += min(ENEMY_SPEED, self.path[1][0] - self.center_x)
-                self.change_x = -ENEMY_SPEED
+                self.center_x += min(c.ENEMY_SPEED, self.path[1][0] - self.center_x)
+                self.change_x = -c.ENEMY_SPEED
             elif self.center_x > self.path[1][0]:
-                self.center_x -= min(ENEMY_SPEED, self.center_x - self.path[1][0])
-                self.change_x = ENEMY_SPEED
+                self.center_x -= min(c.ENEMY_SPEED, self.center_x - self.path[1][0])
+                self.change_x = c.ENEMY_SPEED
 
             if self.center_y < self.path[1][1]:
-                self.center_y += min(ENEMY_SPEED, self.path[1][1] - self.center_y)
-                self.change_y = -ENEMY_SPEED
+                self.center_y += min(c.ENEMY_SPEED, self.path[1][1] - self.center_y)
+                self.change_y = -c.ENEMY_SPEED
             elif self.center_y > self.path[1][1]:
-                self.center_y -= min(ENEMY_SPEED, self.center_y - self.path[1][1])
-                self.change_y = ENEMY_SPEED
+                self.center_y -= min(c.ENEMY_SPEED, self.center_y - self.path[1][1])
+                self.change_y = c.ENEMY_SPEED
         else:
             self.change_x = 0
             self.change_y = 0
