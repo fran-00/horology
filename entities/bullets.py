@@ -10,7 +10,7 @@ class Bullet(arcade.Sprite):
         self.cur_texture = 0
         self.scale = CHARACTER_SCALING / 2
 
-        main_path = f"sprite_pack/bullets/{name}/{name}"
+        main_path = f"resources/bullets/{name}/{name}"
 
         self.bullet_textures = []
         for i in range(7):

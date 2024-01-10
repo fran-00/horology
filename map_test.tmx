@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="64" tileheight="64" infinite="0" nextlayerid="18" nextobjectid="32">
  <tileset firstgid="1" name="MISCELLANEA" tilewidth="64" tileheight="64" tilecount="8192" columns="128">
-  <image source="sprite_pack/tilesets/MISCELLANEA.png" width="8192" height="4096"/>
+  <image source="resources/tilesets/MISCELLANEA.png" width="8192" height="4096"/>
  </tileset>
  <tileset firstgid="8193" name="Alberi" tilewidth="64" tileheight="64" tilecount="4096" columns="64">
-  <image source="sprite_pack/tilesets/Alberi.png" width="4096" height="4096"/>
+  <image source="resources/tilesets/Alberi.png" width="4096" height="4096"/>
  </tileset>
  <tileset firstgid="12289" name="Food" tilewidth="64" tileheight="64" tilecount="64" columns="8">
-  <image source="sprite_pack/tilesets/Food.png" width="512" height="512"/>
+  <image source="resources/tilesets/Food.png" width="512" height="512"/>
  </tileset>
  <tileset firstgid="12353" name="bullets_tileset" tilewidth="64" tileheight="64" tilecount="99" columns="11">
-  <image source="sprite_pack/bullets_tileset.png" width="704" height="576"/>
+  <image source="resources/bullets_tileset.png" width="704" height="576"/>
  </tileset>
  <tileset firstgid="12452" name="items" tilewidth="64" tileheight="64" tilecount="432" columns="16">
-  <image source="sprite_pack/tilesets/items.png" width="1024" height="1734"/>
+  <image source="resources/tilesets/items.png" width="1024" height="1734"/>
  </tileset>
  <layer id="3" name="Background" width="50" height="50">
   <data encoding="csv">

@@ -15,7 +15,7 @@ class EnemySprite(Entity):
         self.set_animations()
 
     def set_sprite(self):
-        self.sprites_path = f"sprite_pack/enemies/{self.name}/{self.name}"
+        self.sprites_path = f"resources/enemies/{self.name}/{self.name}"
 
         self.idle_texture_pair = self.load_texture_pair(f"{self.sprites_path}_idle.png")
         self.fight_texture_pair = self.load_texture_pair(f"{self.sprites_path}_fight.png")

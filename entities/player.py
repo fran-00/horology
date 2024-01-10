@@ -25,7 +25,7 @@ class PlayerCharacter(Entity):
         self.set_animations()
 
     def set_sprite(self):
-        self.sprites_path = f"sprite_pack/player/hooded/hooded"
+        self.sprites_path = f"resources/player/hooded/hooded"
 
         self.idle_texture_pair = self.load_texture_pair(f"{self.sprites_path}_idle.png")
         self.melee_attack_texture_pair = self.load_texture_pair(f"{self.sprites_path}_melee.png")
