@@ -1,8 +1,8 @@
 import arcade
 
 from .combat import Combat
-from ...entities.enemies import EnemyCharacter
-from ...constants import Constants as c
+from ..entities.enemies import EnemyCharacter
+from ..constants import Constants as c
 
 
 class EnemyAI:

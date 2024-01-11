@@ -1,7 +1,7 @@
 import arcade
 
-from ...entities.weapons import Melee, Ranged
-from ...constants import Constants as c
+from ..entities.weapons import Melee, Ranged
+from ..constants import Constants as c
 
 
 class InventorySystem:

@@ -2,8 +2,8 @@ import math
 
 import arcade
 
-from ...entities.bullets import Bullet
-from ...constants import Constants as c
+from ..entities.bullets import Bullet
+from ..constants import Constants as c
 
 
 class Combat:

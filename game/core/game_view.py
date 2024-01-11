@@ -1,9 +1,9 @@
 import arcade
 
 from ..gui.hud import Hud
-from .utils.enemy_ai import EnemyAI
-from .utils.combat import Combat
-from .utils.inventory_system import InventorySystem
+from ..utils.enemy_ai import EnemyAI
+from ..utils.combat import Combat
+from ..utils.inventory_system import InventorySystem
 from ..constants import Constants as c
 
 
