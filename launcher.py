@@ -1,6 +1,6 @@
 import arcade
 
-from game.gui.start_view import StartView
+from game.views.start_view import StartView
 from game.constants import Constants as c
 
 
