@@ -1,7 +1,7 @@
 import arcade
 
 from game.views.start_view import StartView
-from game.views.main_menu import MainMenuView
+from game.views.main_menu_view import MainMenuView
 from game.constants import Constants as c
 
 
