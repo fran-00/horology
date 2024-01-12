@@ -79,6 +79,8 @@ class GameView(arcade.View):
             self.player.change_x = c.MOVEMENT_SPEED
         elif key == arcade.key.E:
             self.inventory_system.pick_up_items()
+        elif key == arcade.key.ESCAPE:
+            self.window.show_view(self.window.views["main_menu"])
 
     def on_key_release(self, key, modifiers):
         """ Handle Keys Released """
