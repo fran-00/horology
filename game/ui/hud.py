@@ -1,3 +1,5 @@
+from uuid import uuid4
+
 import arcade
 
 from ..constants import Constants as c
@@ -132,3 +134,26 @@ class Hud:
                     font_size=25,
                     font_name="Kenney Pixel"
             )
+
+    # def draw_minimap(self):
+    #     minimap_height = 256
+    #     minimap_width = 256
+    #     size = (minimap_width, minimap_height)
+    #     self.game_view.minimap_texture = arcade.Texture.create_empty(str(uuid4()), size)
+    #     self.game_view.minimap_sprite = arcade.Sprite(
+    #             center_x=self.game_view.view_left,
+    #             center_y=self.game_view.view_bottom,
+    #             texture=self.game_view.minimap_texture
+    #     )
+
+    #     self.game_view.minimap_sprite_list = arcade.SpriteList()
+    #     self.game_view.minimap_sprite_list.append(self.game_view.minimap_sprite)
+
+    # def update_minimap(self):
+    #     map_width = 2048
+    #     map_height = 2048
+    #     proj = 0, map_width, 0, map_height
+    #     with self.game_view.minimap_sprite_list.atlas.render_into(self.game_view.minimap_texture, projection=proj) as fbo:
+    #         fbo.clear(arcade.get_four_byte_color(arcade.color.ALMOND))
+    #         self.game_view.scene[c.LAYER_WALLS].draw()
+    #         self.game_view.player.draw()

@@ -85,3 +85,4 @@ def setup(game_view):
     )
 
     game_view.hud.load_hotbar_sprites()
+    # game_view.hud.draw_minimap()

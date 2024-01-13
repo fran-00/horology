@@ -47,6 +47,9 @@ class GameView(arcade.View):
         self.hud.draw_equipped_weapons()
         self.enemy_ai.draw_A_star_paths()
 
+        # self.hud.update_minimap()
+        # self.minimap_sprite_list.draw()
+
     def on_mouse_press(self, x, y, button, modifiers):
         """Handle mouse buttons pressed"""
         if button == arcade.MOUSE_BUTTON_LEFT:
