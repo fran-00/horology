@@ -58,7 +58,7 @@ class Hud:
 
     def draw_inventory(self):
         capacity = 10
-        hotbar_height = 80
+        hotbar_height = 40
         sprite_height = c.SPRITE_IMAGE_SIZE
 
         field_width = self.game_view.window.width / capacity
@@ -88,14 +88,14 @@ class Hud:
 
             hotkey_sprite = self.game_view.hotbar_sprite_list[i]
             hotkey_sprite.draw_scaled(center_x=((i * field_width) + self.game_view.view_left) + sprite_height / 2,
-                                      center_y=self.game_view.view_bottom + 40,
+                                      center_y=self.game_view.view_bottom + 20,
                                       scale=2.0)
             # Add whitespace so the item text doesn't hide behind the number pad sprite
             text = f"      {item_name}"
             arcade.draw_text(text,
                              ((i * field_width) + self.game_view.view_left) + sprite_height / 2,
-                             self.game_view.view_bottom + 40,
-                             arcade.color.WHITE,
-                             25,
-                             font_name="Kenney Pixel"
+                    self.game_view.view_bottom + 12,
+                    arcade.color.WHITE,
+                    25,
+                    font_name="Kenney Pixel"
             )
