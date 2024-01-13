@@ -1,11 +1,11 @@
 import arcade
 
-from ..core.game_view import GameView
 from ..core.setup import setup
 from ..constants import Constants as c
 
 
 class StartView(arcade.View):
+
     def on_show_view(self):
         arcade.set_background_color(arcade.color.BLACK)
 
@@ -19,6 +19,5 @@ class StartView(arcade.View):
                          arcade.color.GRAY, font_size=20, anchor_x="center")
 
     def on_mouse_press(self, _x, _y, _button, _modifiers):
-        game_view = GameView()
-        setup(game_view)
-        self.window.show_view(game_view)
+        self.window.show_view(self.window.views["game"])
+        setup(self.window.views["game"])
