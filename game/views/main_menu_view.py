@@ -57,7 +57,8 @@ class MainMenuView(arcade.View):
         self.window.show_view(self.window.views["settings"])
 
     def on_click_new_game(self, event):
-        pass
+        self.window.show_view(self.window.views["game"])
+        setup(self.window.views["game"])
 
     def on_click_quit(self, event):
         self.window.close()
