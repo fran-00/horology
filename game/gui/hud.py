@@ -14,7 +14,8 @@ class Hud:
         arcade.draw_text(health_string,
                          start_x=self.game_view.view_left + 750,
                          start_y=self.game_view.view_bottom + 0,
-                         font_size=12,
+                         font_size=25,
+                         font_name="Kenney Pixel",
                          color=arcade.color.WHITE)
 
     def draw_health_bar(self):
@@ -43,5 +44,8 @@ class Hud:
         for i, item in enumerate(self.game_view.player.inventory, 1):
             your_stuff = f"{i}: {item.name}"
             arcade.draw_text(your_stuff, start_x, start_y,
-                             arcade.csscolor.WHITE, 10, anchor_y="top")
+                             arcade.csscolor.WHITE,
+                             25,
+                             font_name="Kenney Pixel",
+                             anchor_y="top")
             start_y -= 20

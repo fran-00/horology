@@ -12,11 +12,11 @@ class StartView(arcade.View):
     def on_draw(self):
         self.clear()
         arcade.draw_text("Is this a GAME?", c.SCREEN_WIDTH / 2, c.SCREEN_HEIGHT / 2,
-                         arcade.color.WHITE, font_size=50, anchor_x="center")
+                         arcade.color.WHITE, font_size=50, font_name="Kenney Pixel", anchor_x="center")
         arcade.draw_text("Yes, it is!!!", c.SCREEN_WIDTH / 2, c.SCREEN_HEIGHT / 2 - 40,
-                         arcade.color.RED, font_size=20, anchor_x="center")
+                         arcade.color.RED, font_size=20, font_name="Kenney Pixel", anchor_x="center")
         arcade.draw_text("Click to start the game!", c.SCREEN_WIDTH / 2, c.SCREEN_HEIGHT / 2 - 70,
-                         arcade.color.GRAY, font_size=20, anchor_x="center")
+                         arcade.color.GRAY, font_size=20, font_name="Kenney Pixel", anchor_x="center")
 
     def on_mouse_press(self, _x, _y, _button, _modifiers):
         self.window.show_view(self.window.views["game"])

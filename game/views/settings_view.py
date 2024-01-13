@@ -13,6 +13,7 @@ class SettingsView(arcade.View):
             self.window.height - 50,
             arcade.color.WHITE,
             44,
+            font_name="Kenney Pixel",
             anchor_x="center",
             anchor_y="center",
             align="center",
