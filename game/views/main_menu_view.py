@@ -51,11 +51,9 @@ class MainMenuView(arcade.View):
 
     # call back methods for buttons:
     def on_click_resume(self, event):
-        print("show game view")
         self.window.show_view(self.window.views["game"])
 
     def on_click_settings(self, event):
-        print("show settings view")
         self.window.show_view(self.window.views["settings"])
 
     def on_click_new_game(self, event):
