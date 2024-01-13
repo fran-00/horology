@@ -1,6 +1,7 @@
 import arcade
 
 from game.views.start_view import StartView
+from game.views.settings_view import SettingsView
 from game.core.game_view import GameView
 from game.views.main_menu_view import MainMenuView
 from game.constants import Constants as c
@@ -12,6 +13,7 @@ class GameWindow(arcade.Window):
         self.views = {}
         self.views["game"] = GameView()
         self.views["main_menu"] = MainMenuView()
+        self.views["settings"] = SettingsView()
 
 
 def main():
