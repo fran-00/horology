@@ -64,7 +64,7 @@ class Hud:
                 margin=1,
         )[first_number_pad_sprite_index:last_number_pad_sprite_index]
 
-    def draw_inventory(self):
+    def draw_inventory_hotbar(self):
         capacity = 10
         hotbar_height = 40
         sprite_height = c.SPRITE_IMAGE_SIZE

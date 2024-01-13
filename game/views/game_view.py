@@ -43,7 +43,7 @@ class GameView(arcade.View):
         # Draw other stuff
         self.hud.draw_health_number()
         self.hud.draw_health_bar()
-        self.hud.draw_inventory()
+        self.hud.draw_inventory_hotbar()
         self.hud.draw_equipped_weapons()
         self.enemy_ai.draw_A_star_paths()
 
