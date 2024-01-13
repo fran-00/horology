@@ -77,3 +77,5 @@ def setup(game_view):
     # PHYSICS ENGINE (very basic)
     game_view.physics_engine = arcade.PhysicsEngineSimple(
         game_view.player, game_view.scene[c.LAYER_WALLS])
+
+    game_view.hud.load_hotbar_sprites()
