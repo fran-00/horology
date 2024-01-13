@@ -37,12 +37,16 @@ Currently you can't run it with Python 3.12: Pillow 9.3.0 does not support it an
 - [x] Move only with WASD. Click left mouse button to attack with a melee weapon, click right mouse button to attack with a "bullet".
 - [x] Add melee weapon implementation.
 - [ ] Add different sprites when characters take damage and when they attack melee or ranged.
-- [ ] Add a HUD with inventory, health, mana, quests...
-- [ ] Other enemies are already present on the map and start chasing the character if they're at a distance that depends on enemy type.
+- [ ] Add equipped weapon sprite to player's sprite when attacking.
+- [ ] Update sprite loading system to parse tilesets instead of a single file per frame.
+- [ ] Add a HUD with equipped weapons, health, mana, quests...
+- [ ] Add a way to open the inventory showing a pop up modal.
+- [ ] Add enemies already present on the map that start chasing the character if they're at a distance that depends on enemy type.
 - [ ] Add minimap at the top right of the viewport.
-- [ ] Add Main Menu to start and load game.
-- [ ] Window resizing does NOT scale the resolution but enlarges the portion of the visible map. (Or maybe not)
-- [x] Grab items by pressing E key.
+- [x] Add Main Menu to start a new game and open settings.
+- [ ] Add game settings (change resolution, difficulty...)
+- [ ] Window resizing does NOT scale the resolution but enlarges the portion of the visible map.
+- [x] Grab collectible items by pressing E key.
 - [ ] Add particle effects when a bullet hits a target or a wall.
 - [ ] Add sounds and music.
 - [x] Collectible objects are created directly in the map and program reads their characteristics.
