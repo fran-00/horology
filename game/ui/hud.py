@@ -48,13 +48,12 @@ class Hud:
         first_number_pad_sprite_index = 51
         last_number_pad_sprite_index = 61
 
-        self.game_view.hotbar_sprite_list = arcade.load_spritesheet(
-            file_name="resources/tilesets/input_prompts.png",
-            sprite_width=16,
-            sprite_height=16,
-            columns=34,
-            count=816,
-            margin=1,
+        self.game_view.hotbar_sprite_list = arcade.load_spritesheet(file_name="resources/tilesets/input_prompts.png",
+                                                                    sprite_width=16,
+                                                                    sprite_height=16,
+                                                                    columns=34,
+                                                                    count=816,
+                                                                    margin=1,
         )[first_number_pad_sprite_index:last_number_pad_sprite_index]
 
     def draw_inventory(self):
@@ -69,14 +68,23 @@ class Hud:
         y = vertical_hotbar_location
 
         arcade.draw_rectangle_filled(
-            x, y, self.game_view.window.width, hotbar_height, arcade.color.CHARCOAL
+            x,
+            y,
+            self.game_view.window.width,
+            hotbar_height,
+            arcade.color.CHARCOAL
         )
         for i in range(capacity):
             y = vertical_hotbar_location
             x = i * field_width + 5
             if i == self.game_view.selected_item - 1:
                 arcade.draw_lrtb_rectangle_outline(
-                    x - 6, x + field_width - 15, y + 25, y - 10, arcade.color.WHITE, 2
+                    x - 6,
+                    x + field_width - 15,
+                    y + 25,
+                    y - 10,
+                    arcade.color.WHITE,
+                    2
                 )
 
             if len(self.game_view.player.inventory) > i:
@@ -85,7 +93,15 @@ class Hud:
                 item_name = ""
 
             hotkey_sprite = self.game_view.hotbar_sprite_list[i]
-            hotkey_sprite.draw_scaled(x + sprite_height / 2, y + sprite_height / 2, 2.0)
+            hotkey_sprite.draw_scaled(x + sprite_height / 2,
+                                      y + sprite_height / 2,
+                                      2.0)
             # Add whitespace so the item text doesn't hide behind the number pad sprite
             text = f"      {item_name}"
-            arcade.draw_text(text, x, y, arcade.color.WHITE, 25, font_name="Kenney Pixel")
+            arcade.draw_text(text,
+                             x,
+                             y,
+                             arcade.color.WHITE,
+                             25,
+                             font_name="Kenney Pixel"
+            )
