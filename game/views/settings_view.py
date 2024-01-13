@@ -23,7 +23,6 @@ class SettingsView(arcade.View):
         pass
 
     def on_show_view(self):
-        arcade.set_background_color(arcade.color.PURPLE)
         arcade.set_viewport(0, self.window.width, 0, self.window.height)
 
     def on_key_press(self, symbol: int, modifiers: int):
