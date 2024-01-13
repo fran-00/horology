@@ -65,4 +65,5 @@ class MainMenuView(arcade.View):
         self.window.close()
 
     def on_key_press(self, key, _modifiers):
-        pass
+        if key == arcade.key.ESCAPE:
+            self.window.show_view(self.window.views["game"])
