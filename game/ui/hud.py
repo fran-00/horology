@@ -13,8 +13,8 @@ class Hud:
         health_string = f"{self.game_view.player.cur_health}/{self.game_view.player.max_health}"
         arcade.draw_text(
                 text=health_string,
-                start_x=self.game_view.view_left + 750,
-                start_y=self.game_view.view_bottom + 50,
+                start_x=self.game_view.view_left + (c.SCREEN_WIDTH / 2) + 155,
+                start_y=self.game_view.view_bottom + 51,
                 font_size=30,
                 font_name="Kenney Pixel",
                 color=arcade.color.WHITE
@@ -26,7 +26,7 @@ class Hud:
         # Draw the red background of the bar
         if self.game_view.player.cur_health < self.game_view.player.max_health:
             arcade.draw_rectangle_filled(
-                    center_x=self.game_view.view_left + 600,
+                    center_x=self.game_view.view_left + (c.SCREEN_WIDTH / 2),
                     center_y=self.game_view.view_bottom + 60,
                     width=300,
                     height=20,
@@ -37,7 +37,7 @@ class Hud:
         health_width = 300 * (self.game_view.player.cur_health / self.game_view.player.max_health)
         # Draw the green foreground of the bar
         arcade.draw_rectangle_filled(
-                center_x=(self.game_view.view_left + 600) - 0.5 * (300 - health_width),
+                center_x=(self.game_view.view_left + (c.SCREEN_WIDTH / 2)) - 0.5 * (300 - health_width),
                 center_y=self.game_view.view_bottom + 60,
                 width=health_width,
                 height=20,
