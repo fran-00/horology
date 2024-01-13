@@ -23,6 +23,7 @@ class GameView(arcade.View):
         self.enemy_ai = EnemyAI(self)
         self.combat = Combat(self)
         self.inventory_system = InventorySystem(self)
+        self.selected_item = 1
 
     def on_resize(self, width, height):
         """Handle window resizing"""
@@ -84,6 +85,26 @@ class GameView(arcade.View):
             pass
         elif key == arcade.key.ESCAPE:
             self.window.show_view(self.window.views["main_menu"])
+        elif key == arcade.key.KEY_1:
+            self.selected_item = 1
+        elif key == arcade.key.KEY_2:
+            self.selected_item = 2
+        elif key == arcade.key.KEY_3:
+            self.selected_item = 3
+        elif key == arcade.key.KEY_4:
+            self.selected_item = 4
+        elif key == arcade.key.KEY_5:
+            self.selected_item = 5
+        elif key == arcade.key.KEY_6:
+            self.selected_item = 6
+        elif key == arcade.key.KEY_7:
+            self.selected_item = 7
+        elif key == arcade.key.KEY_8:
+            self.selected_item = 8
+        elif key == arcade.key.KEY_9:
+            self.selected_item = 9
+        elif key == arcade.key.KEY_0:
+            self.selected_item = 10
 
     def on_key_release(self, key, modifiers):
         """ Handle Keys Released """
