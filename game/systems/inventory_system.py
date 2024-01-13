@@ -43,5 +43,11 @@ class InventorySystem:
         self.game_view.player.inventory.append(new_weapon)
         weapon.remove_from_sprite_lists()
 
-    def change_equipped_weapon(self, weapon):
-        pass
+    def change_equipped_weapon(self, number):
+        for i, weapon in enumerate(self.game_view.player.inventory):
+            if number == i + 1:
+                print(f"Weapon {weapon.name} equipped")
+                if weapon.weapon_type() == "melee":
+                    self.game_view.player.equipped_melee_weapon = weapon
+                elif weapon.weapon_type() == "ranged":
+                    self.game_view.player.equipped_ranged_weapon = weapon

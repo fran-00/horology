@@ -87,24 +87,34 @@ class GameView(arcade.View):
             self.window.show_view(self.window.views["main_menu"])
         elif key == arcade.key.KEY_1:
             self.selected_item = 1
+            self.inventory_system.change_equipped_weapon(1)
         elif key == arcade.key.KEY_2:
             self.selected_item = 2
+            self.inventory_system.change_equipped_weapon(2)
         elif key == arcade.key.KEY_3:
             self.selected_item = 3
+            self.inventory_system.change_equipped_weapon(3)
         elif key == arcade.key.KEY_4:
             self.selected_item = 4
+            self.inventory_system.change_equipped_weapon(4)
         elif key == arcade.key.KEY_5:
             self.selected_item = 5
+            self.inventory_system.change_equipped_weapon(5)
         elif key == arcade.key.KEY_6:
             self.selected_item = 6
+            self.inventory_system.change_equipped_weapon(6)
         elif key == arcade.key.KEY_7:
             self.selected_item = 7
+            self.inventory_system.change_equipped_weapon(7)
         elif key == arcade.key.KEY_8:
             self.selected_item = 8
+            self.inventory_system.change_equipped_weapon(8)
         elif key == arcade.key.KEY_9:
             self.selected_item = 9
+            self.inventory_system.change_equipped_weapon(9)
         elif key == arcade.key.KEY_0:
             self.selected_item = 10
+            self.inventory_system.change_equipped_weapon(10)
 
     def on_key_release(self, key, modifiers):
         """ Handle Keys Released """
