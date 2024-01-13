@@ -1,6 +1,8 @@
 import arcade
 import arcade.gui
 
+from ..core.setup import setup
+
 
 class MainMenuView(arcade.View):
     """
