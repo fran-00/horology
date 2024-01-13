@@ -98,6 +98,3 @@ class PlayerCharacter(Entity):
             # FIXME Fighting animation
             self.texture = self.ranged_attack_texture_pair[self.facing_direction]
             return
-
-    def manage_equipped_weapon(self):
-        pass
