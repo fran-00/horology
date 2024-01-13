@@ -37,6 +37,26 @@ class Hud:
                                      height=c.HEALTHBAR_HEIGHT,
                                      color=arcade.color.GREEN)
 
+    def load_hotbar_sprites(self):
+        """Load the sprites for the hotbar at the bottom of the screen.
+
+        Loads the controls sprite tileset and selects only the number pad button sprites.
+        These will be visual representations of number keypads (1️⃣, 2️⃣, 3️⃣, ..., 0️⃣)
+        to clarify that the hotkey bar can be accessed through these keypresses.
+        """
+
+        first_number_pad_sprite_index = 51
+        last_number_pad_sprite_index = 61
+
+        self.game_view.hotbar_sprite_list = arcade.load_spritesheet(
+            file_name="resources/tilesets/input_prompts.png",
+            sprite_width=16,
+            sprite_height=16,
+            columns=34,
+            count=816,
+            margin=1,
+        )[first_number_pad_sprite_index:last_number_pad_sprite_index]
+
     def draw_inventory(self):
         capacity = 10
         vertical_hotbar_location = 40
