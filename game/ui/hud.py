@@ -110,3 +110,25 @@ class Hud:
                     font_size=25,
                     font_name="Kenney Pixel"
             )
+
+    def draw_equipped_weapons(self):
+        if self.game_view.player.equipped_melee_weapon:
+            weapon_name = f"Melee weapon: {self.game_view.player.equipped_melee_weapon.name}"
+            arcade.draw_text(
+                    text=weapon_name,
+                    start_x=self.game_view.view_left + 10,
+                    start_y=self.game_view.view_bottom + c.SCREEN_HEIGHT - 30,
+                    color=arcade.color.WHITE,
+                    font_size=25,
+                    font_name="Kenney Pixel"
+            )
+        if self.game_view.player.equipped_ranged_weapon:
+            weapon_name = f"Ranged weapon: {self.game_view.player.equipped_ranged_weapon.name}"
+            arcade.draw_text(
+                    text=weapon_name,
+                    start_x=self.game_view.view_left + 10,
+                    start_y=self.game_view.view_bottom + c.SCREEN_HEIGHT - 60,
+                    color=arcade.color.WHITE,
+                    font_size=25,
+                    font_name="Kenney Pixel"
+            )

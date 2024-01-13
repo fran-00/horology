@@ -44,6 +44,7 @@ class GameView(arcade.View):
         self.hud.draw_health_number()
         self.hud.draw_health_bar()
         self.hud.draw_inventory()
+        self.hud.draw_equipped_weapons()
         self.enemy_ai.draw_A_star_paths()
 
     def on_mouse_press(self, x, y, button, modifiers):
