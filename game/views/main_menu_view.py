@@ -38,6 +38,7 @@ class MainMenuView(arcade.View):
         )
 
     def on_show_view(self):
+        arcade.set_viewport(0, self.window.width, 0, self.window.height)
         self.manager.enable()
         arcade.set_background_color(arcade.color.RED)
 
