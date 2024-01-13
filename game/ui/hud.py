@@ -58,31 +58,25 @@ class Hud:
 
     def draw_inventory(self):
         capacity = 10
-        vertical_hotbar_location = self.game_view.view_bottom + 70
         hotbar_height = 80
         sprite_height = c.SPRITE_IMAGE_SIZE
 
-        field_width = self.game_view.window.width / (capacity + 1)
+        field_width = self.game_view.window.width / capacity
 
-        x = self.game_view.window.width / 2
-        y = vertical_hotbar_location
-
-        arcade.draw_rectangle_filled(
-            center_x=self.game_view.view_left + 600,
-            center_y=self.game_view.view_bottom + 70,
+        arcade.draw_xywh_rectangle_filled(
+            bottom_left_x=self.game_view.view_left,
+            bottom_left_y=self.game_view.view_bottom,
             width=self.game_view.window.width,
             height=hotbar_height,
             color=arcade.color.CHARCOAL
         )
         for i in range(capacity):
-            y = vertical_hotbar_location
-            x = i * field_width + 5
             if i == self.game_view.selected_item - 1:
-                arcade.draw_lrtb_rectangle_outline(
-                    left=x - 6,
-                    right=x + field_width - 15,
-                    top=y + 25,
-                    bottom=y - 10,
+                arcade.draw_xywh_rectangle_outline(
+                    bottom_left_x=(i * field_width) + self.game_view.view_left,
+                    bottom_left_y=self.game_view.view_bottom,
+                    width=self.game_view.window.width / capacity,
+                    height=hotbar_height,
                     color=arcade.color.WHITE,
                     border_width =2
                 )
@@ -93,14 +87,14 @@ class Hud:
                 item_name = ""
 
             hotkey_sprite = self.game_view.hotbar_sprite_list[i]
-            hotkey_sprite.draw_scaled(x + sprite_height / 2,
-                                      y + sprite_height / 2,
-                                      2.0)
+            hotkey_sprite.draw_scaled(center_x=((i * field_width) + self.game_view.view_left) + sprite_height / 2,
+                                      center_y=self.game_view.view_bottom + 40,
+                                      scale=2.0)
             # Add whitespace so the item text doesn't hide behind the number pad sprite
             text = f"      {item_name}"
             arcade.draw_text(text,
-                             x,
-                             y,
+                             ((i * field_width) + self.game_view.view_left) + sprite_height / 2,
+                             self.game_view.view_bottom + 40,
                              arcade.color.WHITE,
                              25,
                              font_name="Kenney Pixel"
