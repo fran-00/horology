@@ -12,7 +12,7 @@ class Hud:
         # Draw how many hit points we have
         health_string = f"{self.game_view.player.cur_health}/{self.game_view.player.max_health}"
         arcade.draw_text(
-                health_string,
+                text=health_string,
                 start_x=self.game_view.view_left + 750,
                 start_y=self.game_view.view_bottom + 50,
                 font_size=30,
