@@ -76,7 +76,9 @@ class Combat:
         angle = math.atan2(y_diff, x_diff)
 
         if enemy.frame_count % 60 == 0:
-            bullet = arcade.Sprite("resources/4dEuclideanCube.png", c.SPRITE_SCALING_CURSE)
+            bullet = arcade.Sprite(
+                    filename="resources/4dEuclideanCube.png",
+                    scale=0.5)
             bullet.center_x = start_x
             bullet.center_y = start_y
 

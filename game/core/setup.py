@@ -50,7 +50,11 @@ def setup(game_view):
     }
 
     # Read in the tiled map
-    game_view.tile_map = arcade.load_tilemap(map_name, c.TILE_SCALING, layer_options)
+    game_view.tile_map = arcade.load_tilemap(
+                map_file=map_name,
+                scaling=c.TILE_SCALING,
+                layer_options=layer_options
+    )
 
     # Initialize Scene with our TileMap, this will automatically add all layers
     # from the map as SpriteLists in the scene in the proper order.
@@ -69,13 +73,15 @@ def setup(game_view):
     game_view.player.center_y = c.PLAYER_START_Y
     game_view.player_list.append(game_view.player)
     game_view.items_hit_list = arcade.check_for_collision_with_list(game_view.player,
-                                                               game_view.scene[c.LAYER_ITEMS])
+                                                                    game_view.scene[c.LAYER_ITEMS])
     game_view.spawn_trigger_hit_list = arcade.check_for_collision_with_list(game_view.player,
-                                                                       game_view.scene[c.LAYER_SPAWN_TRIGGER])
+                                                                            game_view.scene[c.LAYER_SPAWN_TRIGGER])
     game_view.scene.add_sprite("Player", game_view.player)
 
     # PHYSICS ENGINE (very basic)
     game_view.physics_engine = arcade.PhysicsEngineSimple(
-        game_view.player, game_view.scene[c.LAYER_WALLS])
+            game_view.player,
+            game_view.scene[c.LAYER_WALLS]
+    )
 
     game_view.hud.load_hotbar_sprites()
