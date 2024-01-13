@@ -14,32 +14,33 @@ class Hud:
         arcade.draw_text(
                 health_string,
                 start_x=self.game_view.view_left + 750,
-                start_y=self.game_view.view_bottom + 0,
-                font_size=25,
+                start_y=self.game_view.view_bottom + 50,
+                font_size=30,
                 font_name="Kenney Pixel",
                 color=arcade.color.WHITE
         )
 
     def draw_health_bar(self):
         """Render player HP bar"""
+        
         # Draw the red background of the bar
         if self.game_view.player.cur_health < self.game_view.player.max_health:
             arcade.draw_rectangle_filled(
                     center_x=self.game_view.view_left + 600,
-                    center_y=self.game_view.view_bottom + 10,
-                    width=c.HEALTHBAR_WIDTH,
-                    height=10,
+                    center_y=self.game_view.view_bottom + 60,
+                    width=300,
+                    height=20,
                     color=arcade.color.RED
             )
 
         # Calculate width based on health
-        health_width = c.HEALTHBAR_WIDTH * (self.game_view.player.cur_health / self.game_view.player.max_health)
+        health_width = 300 * (self.game_view.player.cur_health / self.game_view.player.max_health)
         # Draw the green foreground of the bar
         arcade.draw_rectangle_filled(
-                center_x=(self.game_view.view_left + 600) - 0.5 * (c.HEALTHBAR_WIDTH - health_width),
-                center_y=self.game_view.view_bottom - 10,
+                center_x=(self.game_view.view_left + 600) - 0.5 * (300 - health_width),
+                center_y=self.game_view.view_bottom + 60,
                 width=health_width,
-                height=c.HEALTHBAR_HEIGHT,
+                height=20,
                 color=arcade.color.GREEN
         )
 
