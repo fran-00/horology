@@ -58,9 +58,9 @@ class Hud:
 
     def draw_inventory(self):
         capacity = 10
-        vertical_hotbar_location = 40
+        vertical_hotbar_location = self.game_view.view_bottom + 70
         hotbar_height = 80
-        sprite_height = 16
+        sprite_height = c.SPRITE_IMAGE_SIZE
 
         field_width = self.game_view.window.width / (capacity + 1)
 
@@ -68,23 +68,23 @@ class Hud:
         y = vertical_hotbar_location
 
         arcade.draw_rectangle_filled(
-            x,
-            y,
-            self.game_view.window.width,
-            hotbar_height,
-            arcade.color.CHARCOAL
+            center_x=self.game_view.view_left + 600,
+            center_y=self.game_view.view_bottom + 70,
+            width=self.game_view.window.width,
+            height=hotbar_height,
+            color=arcade.color.CHARCOAL
         )
         for i in range(capacity):
             y = vertical_hotbar_location
             x = i * field_width + 5
             if i == self.game_view.selected_item - 1:
                 arcade.draw_lrtb_rectangle_outline(
-                    x - 6,
-                    x + field_width - 15,
-                    y + 25,
-                    y - 10,
-                    arcade.color.WHITE,
-                    2
+                    left=x - 6,
+                    right=x + field_width - 15,
+                    top=y + 25,
+                    bottom=y - 10,
+                    color=arcade.color.WHITE,
+                    border_width =2
                 )
 
             if len(self.game_view.player.inventory) > i:
