@@ -68,7 +68,7 @@ def setup(game_view):
     game_view.scene.add_sprite_list_after("Player", c.LAYER_SPAWN_TRIGGER)
 
     # Set up the player, specifically placing it at these coordinates.
-    game_view.player = PlayerCharacter()
+    game_view.player = PlayerCharacter("player")
     game_view.player.center_x = c.PLAYER_START_X
     game_view.player.center_y = c.PLAYER_START_Y
     game_view.player_list.append(game_view.player)

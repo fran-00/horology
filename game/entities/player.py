@@ -7,10 +7,10 @@ from ..constants import Constants as c
 class PlayerCharacter(Entity):
     """Player Sprite"""
 
-    def __init__(self):
+    def __init__(self, name):
+        super().__init__(name)
 
-        super().__init__("hooded")
-
+        self.name = name
         self.mouse_right_pressed = False
         self.mouse_left_pressed = False
         self.hp = 100
