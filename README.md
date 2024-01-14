@@ -23,10 +23,6 @@ Run the game:
 
     python launcher.py
 
-## Known Issues
-
-Currently you can't run it with Python 3.12: Pillow 9.3.0 does not support it and **Arcade** requires that specific version. If you are on Windows with Python 3.12 installed in your system you should use **pyenv** (with WSL) or **conda** instead. This probably will change when Arcade will be updated.
-
 ## TODO List
 
 - [x] Player must stand in the center of the viewport.
@@ -54,4 +50,11 @@ Currently you can't run it with Python 3.12: Pillow 9.3.0 does not support it an
 - [ ] Add the ability to enter indoor locations (caves, buildings, etc.) When player enters an indoor location, they're teleported to another map.
 - [x] Each type of ranged weapon has a different sprite for the bullets it produces.
 - [ ] Bullets must be removed from sprite list after traveling a certain distance (presumably when they exit the viewport), otherwise their path will never stop being calculated, consuming resources unnecessarily.
-- [ ] Fix an issue where enemies stop chasing the player when they are too close to a wall. It is likely due to an error in calculating the size of the grid during AStarBarrierList class initialization.
+
+## Known Issues
+
+- [ ] Fix an issue where enemies stop chasing the player when they are too close to a wall. It is likely due to an error in calculating the size of the grid during AStarBarrierList class initialization. It seems to fail in path calculation because it doesn't use the enemy's hitbox to calculate the collision but the center of their sprite instead.
+
+## Notes
+
+Currently you can't run it with Python 3.12: Pillow 9.3.0 does not support it and **Arcade** requires that specific version. If you are on Windows with Python 3.12 installed in your system you should use **pyenv** (with WSL) or **conda** instead. This probably will change when Arcade will be updated.
