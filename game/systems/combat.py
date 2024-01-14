@@ -128,6 +128,6 @@ class Combat:
         for enemy in enemy_hit_list:
             enemy.hp -= weapon.damage
             if enemy.hp <= 0:
-                enemy.remove_from_sprite_lists()
+                enemy.kill()
             else:
                 print(f"Enemy has {enemy.hp} remaining.")
