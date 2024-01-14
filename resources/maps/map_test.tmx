@@ -10,7 +10,7 @@
   <image source="../tilesets/Food.png" width="512" height="512"/>
  </tileset>
  <tileset firstgid="12353" name="bullets_tileset" tilewidth="64" tileheight="64" tilecount="99" columns="11">
-  <image source="../bullets_tileset.png" width="704" height="576"/>
+  <image source="../tilesets/bullets_tileset.png" width="704" height="576"/>
  </tileset>
  <tileset firstgid="12452" name="items" tilewidth="64" tileheight="64" tilecount="432" columns="16">
   <image source="../tilesets/items.png" width="1024" height="1734"/>
