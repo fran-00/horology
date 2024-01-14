@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="64" tileheight="64" infinite="0" nextlayerid="18" nextobjectid="32">
+<map version="1.10" tiledversion="1.10.2" orientation="orthogonal" renderorder="right-down" width="50" height="50" tilewidth="64" tileheight="64" infinite="0" nextlayerid="18" nextobjectid="38">
  <tileset firstgid="1" name="MISCELLANEA" tilewidth="64" tileheight="64" tilecount="8192" columns="128">
   <image source="../tilesets/MISCELLANEA.png" width="8192" height="4096"/>
  </tileset>
@@ -241,7 +241,7 @@
     <property name="name" value="Apple"/>
    </properties>
   </object>
-  <object id="22" gid="12368" x="464" y="2590" width="64" height="64">
+  <object id="22" gid="12368" x="480" y="2992.67" width="64" height="64">
    <properties>
     <property name="damage" type="int" value="1"/>
     <property name="name" value="green"/>
@@ -258,8 +258,8 @@
   <object id="24" gid="12386" x="239" y="2965" width="64" height="64">
    <properties>
     <property name="damage" type="int" value="2"/>
-    <property name="name" value="test"/>
-    <property name="weapon" value="melee"/>
+    <property name="name" value="white"/>
+    <property name="weapon" value="ranged"/>
    </properties>
   </object>
   <object id="25" gid="12676" x="643" y="2704" width="40" height="40">
@@ -290,6 +290,41 @@
    <properties>
     <property name="hp_restore" type="int" value="20"/>
     <property name="name" value="grape"/>
+   </properties>
+  </object>
+  <object id="32" gid="12430" x="812" y="2767" width="64" height="64">
+   <properties>
+    <property name="damage" type="int" value="1"/>
+    <property name="name" value="orange"/>
+    <property name="weapon" value="ranged"/>
+   </properties>
+  </object>
+  <object id="33" gid="12446" x="926" y="2741" width="64" height="64">
+   <properties>
+    <property name="damage" type="int" value="2"/>
+    <property name="name" value="brown"/>
+    <property name="weapon" value="ranged"/>
+   </properties>
+  </object>
+  <object id="34" gid="12397" x="1052" y="2777" width="64" height="64">
+   <properties>
+    <property name="damage" type="int" value="5"/>
+    <property name="name" value="violet"/>
+    <property name="weapon" value="ranged"/>
+   </properties>
+  </object>
+  <object id="35" gid="12353" x="1103" y="2992" width="64" height="64">
+   <properties>
+    <property name="damage" type="int" value="4"/>
+    <property name="name" value="grey"/>
+    <property name="weapon" value="ranged"/>
+   </properties>
+  </object>
+  <object id="37" gid="12378" x="968" y="2989" width="64" height="64">
+   <properties>
+    <property name="damage" type="int" value="3"/>
+    <property name="name" value="purple"/>
+    <property name="weapon" value="ranged"/>
    </properties>
   </object>
  </objectgroup>
