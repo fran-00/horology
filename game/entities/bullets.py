@@ -16,9 +16,9 @@ class Bullet(arcade.Sprite):
             sprite_height=c.SPRITE_SIZE,
             columns=7,
             count=7,
+            hit_box_algorithm='Simple'
         )
         self.texture = self.textures[0]
-        self.set_hit_box(self.texture.hit_box_points)
 
     def update_animation(self, delta_time: float = 1 / 60):
         self.cur_texture_index += 1
