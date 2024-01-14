@@ -7,7 +7,7 @@ class Bullet(arcade.Sprite):
     def __init__(self, name):
         super().__init__()
         self.cur_texture_index = 0
-        self.scale = c.CHARACTER_SCALING / 2
+        self.scale = c.CHARACTER_SCALING * 0.65
 
         tileset_path = f"resources/bullets/{name}.png"
         self.textures = arcade.load_spritesheet(
