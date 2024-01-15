@@ -34,7 +34,7 @@ Run the game:
 - [x] Add melee weapon implementation.
 - [ ] Add different sprites when characters take damage and when they attack melee or ranged.
 - [ ] Add equipped weapon sprite to player's sprite when attacking.
-- [ ] Update sprite loading system to parse tilesets instead of a single file per frame.
+- [ ] Update sprite loading system to parse tilesets instead of a single file per frame. Done for bullets, work in progress for player and enemies.
 - [x] Add a HUD with equipped weapons, health and weapon selection.
 - [ ] Add a way to open the inventory showing a pop up modal.
 - [ ] Add enemies already present on the map that start chasing the character if they're at a distance that depends on enemy type.
