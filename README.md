@@ -34,7 +34,7 @@ Run the game:
 - [x] Add melee weapon implementation.
 - [ ] Add different sprites when characters take damage and when they attack melee or ranged.
 - [ ] Add equipped weapon sprite to player's sprite when attacking.
-- [ ] Update sprite loading system to parse tilesets instead of a single file per frame. Done for bullets, work in progress for player and enemies.
+- [ ] Update sprite loading system to parse tilesets instead of a single file per frame. (Done for bullets, work in progress for player and enemies).
 - [x] Add a HUD with equipped weapons, health and weapon selection.
 - [ ] Add a way to open the inventory showing a pop up modal.
 - [ ] Add enemies already present on the map that start chasing the character if they're at a distance that depends on enemy type.
@@ -45,9 +45,10 @@ Run the game:
 - [x] Grab collectible items by pressing E key.
 - [ ] Add particle effects when a bullet hits a target or a wall.
 - [ ] Add sounds and music.
+- [ ] Add random npc spawning and following paths.
 - [x] Collectible objects are created directly in the map and program reads their characteristics.
 - [ ] Enemies pursue the player in paths that depend on the type of enemy: some are faster and more dangerous than others.
-- [ ] Add the ability to enter indoor locations (caves, buildings, etc.) When player enters an indoor location, they're teleported to another map.
+- [ ] Add the ability to enter indoor locations (caves, buildings, etc.) When player goes to a certain tile (like a door) they're teleported to another map.
 - [x] Each type of ranged weapon has a different sprite for the bullets it produces.
 - [ ] Bullets must be removed from sprite list after traveling a certain distance (presumably when they exit the viewport), otherwise their path will never stop being calculated, consuming resources unnecessarily.
 
