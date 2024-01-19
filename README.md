@@ -54,7 +54,7 @@ Run the game:
 
 ## Known Issues
 
-- [ ] Fix an issue where enemies stop chasing the player when they are too close to a wall. It is likely due to an error in calculating the size of the grid during AStarBarrierList class initialization. It seems to fail in path calculation because it doesn't use the enemy's hitbox to calculate the collision but the center of their sprite instead.
+- [ ] Fix an issue where enemies stop chasing the player when they are too close to a wall. It seems to fail in path calculation because it doesn't use the enemy's hitbox to calculate the collision but the center of their sprite instead.
 
 ## Notes
 
