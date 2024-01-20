@@ -36,7 +36,7 @@ Run the game:
 - [ ] Add equipped weapon sprite to player's sprite when attacking.
 - [ ] Update sprite loading system to parse tilesets instead of a single file per frame. (Done for bullets, work in progress for player and enemies).
 - [x] Add a HUD with equipped weapons, health and weapon selection.
-- [ ] Add a way to open the inventory showing a pop up modal.
+- [ ] Add a way to open the inventory showing a pop up modal pressing I key.
 - [ ] Add enemies already present on the map that start chasing the character if they're at a distance that depends on enemy type.
 - [ ] Add minimap at the top right of the viewport.
 - [x] Add Main Menu to start a new game and open settings.
