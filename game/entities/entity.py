@@ -4,6 +4,7 @@ from ..constants import Constants as c
 
 
 class Entity(arcade.Sprite):
+
     def __init__(self, name):
         super().__init__()
 

@@ -7,6 +7,7 @@ from ..constants import Constants as c
 
 
 class EnemySprite(Entity):
+
     def __init__(self, name):
 
         super().__init__(name)

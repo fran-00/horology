@@ -4,6 +4,7 @@ from ..constants import Constants as c
 
 
 class Bullet(arcade.Sprite):
+
     def __init__(self, name):
         super().__init__()
         self.cur_texture_index = 0

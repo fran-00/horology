@@ -7,6 +7,7 @@ from ..constants import Constants as c
 
 
 class Combat:
+
     def __init__(self, view):
         self.game_view = view
 

@@ -2,6 +2,7 @@ import arcade
 
 
 class ButtonStyle:
+
     def __init__(self):
         
         self.default_style = {

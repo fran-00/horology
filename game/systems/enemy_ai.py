@@ -6,6 +6,7 @@ from ..constants import Constants as c
 
 
 class EnemyAI:
+
     def __init__(self, view):
         self.game_view = view
         self.combat = Combat(self.game_view)

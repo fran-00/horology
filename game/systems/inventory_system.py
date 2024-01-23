@@ -5,6 +5,7 @@ from ..constants import Constants as c
 
 
 class InventorySystem:
+
     def __init__(self, view):
         self.game_view = view
 

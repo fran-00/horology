@@ -2,6 +2,7 @@ import arcade
 
 
 class SettingsView(arcade.View):
+
     def __init__(self):
         super().__init__()
 
