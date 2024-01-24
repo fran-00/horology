@@ -20,6 +20,8 @@ class StartView(arcade.View):
 
     def on_show_view(self):
         arcade.set_background_color(arcade.color.BLACK)
+        arcade.set_viewport(0, self.window.width, 0, self.window.height)
+        self.manager.enable()
 
     def on_draw(self):
         self.clear()
