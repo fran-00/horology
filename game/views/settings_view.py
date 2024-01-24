@@ -1,5 +1,7 @@
 import arcade
 
+from ..views.start_view import StartView
+
 
 class SettingsView(arcade.View):
 
@@ -29,4 +31,4 @@ class SettingsView(arcade.View):
 
     def on_key_press(self, symbol: int, modifiers: int):
         if symbol == arcade.key.ESCAPE:
-            self.window.show_view(self.window.views["main_menu"])
+            self.window.show_view(StartView())
