@@ -6,6 +6,18 @@ from ..constants import Constants as c
 
 class StartView(arcade.View):
 
+    def __init__(self):
+        super().__init__()
+
+        self.manager = arcade.gui.UIManager()
+        self.v_box = arcade.gui.UIBoxLayout()
+        self.add_buttons()
+        self.manager.add(
+            arcade.gui.UIAnchorWidget(
+                anchor_x="center_x", anchor_y="center_y", child=self.v_box
+            )
+        )
+
     def on_show_view(self):
         arcade.set_background_color(arcade.color.BLACK)
 
