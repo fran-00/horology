@@ -41,13 +41,6 @@ class MainMenuView(arcade.View):
                                               style=ButtonStyle().default_style)
         self.v_box.add(save_button.with_space_around(bottom=20))
 
-        # SETTINGS button
-        settings_button = arcade.gui.UIFlatButton(text="Settings",
-                                                  width=200,
-                                                  style=ButtonStyle().default_style)
-        self.v_box.add(settings_button.with_space_around(bottom=20))
-        settings_button.on_click = self.on_click_settings
-
         # NEW GAME button
         new_game_button = arcade.gui.UIFlatButton(text="New Game",
                                                   width=200,
@@ -79,9 +72,6 @@ class MainMenuView(arcade.View):
 
     def on_click_save(self, event):
         pass
-
-    def on_click_settings(self, event):
-        self.window.show_view(self.window.views["settings"])
 
     def on_click_new_game(self, event):
         self.window.show_view(self.window.views["game"])
