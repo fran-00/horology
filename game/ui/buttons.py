@@ -11,7 +11,7 @@ class ButtonStyle:
             "font_color": arcade.color.WHITE,
             "border_width": 2,
             "border_color": None,
-            "bg_color": arcade.color.REDWOOD,
+            "bg_color": arcade.color.BULGARIAN_ROSE,
 
             # used if button is pressed
             "bg_color_pressed": arcade.color.WHITE,
