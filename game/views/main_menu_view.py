@@ -18,6 +18,16 @@ class MainMenuView(arcade.View):
         # Create a vertical BoxGroup to align buttons
         self.v_box = arcade.gui.UIBoxLayout()
 
+        self.add_buttons()
+
+        # Create a widget to hold the v_box widget, that will center the buttons
+        self.manager.add(
+            arcade.gui.UIAnchorWidget(
+                anchor_x="center_x", anchor_y="center_y", child=self.v_box
+            )
+        )
+
+    def add_buttons(self):
         resume_button = arcade.gui.UIFlatButton(text="Resume Game",
                                                 width=200,
                                                 style=ButtonStyle().default_style)
@@ -41,12 +51,6 @@ class MainMenuView(arcade.View):
                                               style=ButtonStyle().default_style)
         self.v_box.add(quit_button.with_space_around(bottom=20))
         quit_button.on_click = self.on_click_quit
-        # Create a widget to hold the v_box widget, that will center the buttons
-        self.manager.add(
-            arcade.gui.UIAnchorWidget(
-                anchor_x="center_x", anchor_y="center_y", child=self.v_box
-            )
-        )
 
     def on_show_view(self):
         arcade.set_viewport(0, self.window.width, 0, self.window.height)
