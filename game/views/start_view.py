@@ -17,7 +17,3 @@ class StartView(arcade.View):
                          arcade.color.RED, font_size=20, font_name="Kenney Pixel", anchor_x="center")
         arcade.draw_text("Click to start the game!", c.SCREEN_WIDTH / 2, c.SCREEN_HEIGHT / 2 - 70,
                          arcade.color.GRAY, font_size=20, font_name="Kenney Pixel", anchor_x="center")
-
-    def on_mouse_press(self, _x, _y, _button, _modifiers):
-        self.window.show_view(self.window.views["game"])
-        setup(self.window.views["game"])
