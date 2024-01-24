@@ -1,5 +1,6 @@
 import arcade
 
+from ..core.setup import setup
 from ..ui.buttons import ButtonStyle
 from ..constants import Constants as c
 
