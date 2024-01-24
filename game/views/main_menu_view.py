@@ -35,6 +35,12 @@ class MainMenuView(arcade.View):
         self.v_box.add(resume_button.with_space_around(bottom=20))
         resume_button.on_click = self.on_click_resume
 
+        # SAVE Button
+        save_button = arcade.gui.UIFlatButton(text="Save",
+                                              width=200,
+                                              style=ButtonStyle().default_style)
+        self.v_box.add(save_button.with_space_around(bottom=20))
+
         # SETTINGS button
         settings_button = arcade.gui.UIFlatButton(text="Settings",
                                                   width=200,
@@ -70,6 +76,9 @@ class MainMenuView(arcade.View):
     # call back methods for buttons:
     def on_click_resume(self, event):
         self.window.show_view(self.window.views["game"])
+
+    def on_click_save(self, event):
+        pass
 
     def on_click_settings(self, event):
         self.window.show_view(self.window.views["settings"])
