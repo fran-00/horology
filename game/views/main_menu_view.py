@@ -28,24 +28,28 @@ class MainMenuView(arcade.View):
         )
 
     def add_buttons(self):
+        # RESUME button
         resume_button = arcade.gui.UIFlatButton(text="Resume Game",
                                                 width=200,
                                                 style=ButtonStyle().default_style)
         self.v_box.add(resume_button.with_space_around(bottom=20))
         resume_button.on_click = self.on_click_resume
 
+        # SETTINGS button
         settings_button = arcade.gui.UIFlatButton(text="Settings",
                                                   width=200,
                                                   style=ButtonStyle().default_style)
         self.v_box.add(settings_button.with_space_around(bottom=20))
         settings_button.on_click = self.on_click_settings
 
+        # NEW GAME button
         new_game_button = arcade.gui.UIFlatButton(text="New Game",
                                                   width=200,
                                                   style=ButtonStyle().default_style)
         self.v_box.add(new_game_button.with_space_around(bottom=20))
         new_game_button.on_click = self.on_click_new_game
-
+        
+        # QUIT button
         quit_button = arcade.gui.UIFlatButton(text="Quit",
                                               width=200,
                                               style=ButtonStyle().default_style)
