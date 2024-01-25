@@ -5,7 +5,7 @@ from ..core.setup import setup
 from ..ui.buttons import ButtonStyle
 
 
-class MainMenuView(arcade.View):
+class GameMenuView(arcade.View):
     """
     Accessed by hitting ESC key.
     """
