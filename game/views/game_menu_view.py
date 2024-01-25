@@ -40,13 +40,6 @@ class GameMenuView(arcade.View):
                                               width=200,
                                               style=ButtonStyle().default_style)
         self.v_box.add(save_button.with_space_around(bottom=20))
-
-        # NEW GAME button
-        new_game_button = arcade.gui.UIFlatButton(text="New Game",
-                                                  width=200,
-                                                  style=ButtonStyle().default_style)
-        self.v_box.add(new_game_button.with_space_around(bottom=20))
-        new_game_button.on_click = self.on_click_new_game
         
         # QUIT button
         quit_button = arcade.gui.UIFlatButton(text="Quit to Main Menu",
@@ -72,10 +65,6 @@ class GameMenuView(arcade.View):
 
     def on_click_save(self, event):
         pass
-
-    def on_click_new_game(self, event):
-        self.window.show_view(self.window.views["game"])
-        setup(self.window.views["game"])
 
     def on_click_quit(self, event):
         self.window.show_view(self.window.views["main_menu"])
