@@ -9,7 +9,7 @@ class SettingsView(arcade.View):
         super().__init__()
 
     def on_draw(self):
-        arcade.start_render()
+        self.clear()
         arcade.draw_text(
             "Settings",
             self.window.width / 2,
