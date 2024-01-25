@@ -49,7 +49,7 @@ class GameMenuView(arcade.View):
         new_game_button.on_click = self.on_click_new_game
         
         # QUIT button
-        quit_button = arcade.gui.UIFlatButton(text="Quit",
+        quit_button = arcade.gui.UIFlatButton(text="Quit to Main Menu",
                                               width=200,
                                               style=ButtonStyle().default_style)
         self.v_box.add(quit_button.with_space_around(bottom=20))
@@ -78,7 +78,7 @@ class GameMenuView(arcade.View):
         setup(self.window.views["game"])
 
     def on_click_quit(self, event):
-        self.window.close()
+        self.window.show_view(self.window.views["main_menu"])
 
     def on_key_press(self, key, _modifiers):
         if key == arcade.key.ESCAPE:
