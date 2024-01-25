@@ -1,6 +1,6 @@
 import arcade
 
-from ..views.start_view import MainMenuView
+from .main_menu_view import MainMenuView
 
 
 class SettingsView(arcade.View):
