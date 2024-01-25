@@ -5,7 +5,7 @@ from ..ui.buttons import ButtonStyle
 from ..constants import Constants as c
 
 
-class StartView(arcade.View):
+class MainMenuView(arcade.View):
 
     def __init__(self):
         super().__init__()

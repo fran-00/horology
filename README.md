@@ -55,7 +55,7 @@ Run the game:
 ## Known Issues
 
 - [ ] Fix an issue where enemies stop chasing the player when they are too close to a wall. It seems to fail in path calculation because it doesn't use the enemy's hitbox to calculate the collision but the center of their sprite instead.
-- [X] After moving the settings access from the game menu to the start menu, they pop up randomly when shooting with a ranged weapon. UPDATE: Fixed, on_hide_view method of StartView was missing and was causing buttons to remain invisible during game.
+- [X] After moving the settings access from the game menu to the start menu, they pop up randomly when shooting with a ranged weapon. UPDATE: Fixed, on_hide_view method of MainMenuView was missing and was causing buttons to remain invisible during game.
 
 ## Notes
 

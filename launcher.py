@@ -1,6 +1,6 @@
 import arcade
 
-from game.views.start_view import StartView
+from game.views.start_view import MainMenuView
 from game.views.game_view import GameView
 from game.views.game_menu_view import GameMenuView
 from game.views.settings_view import SettingsView
@@ -18,7 +18,7 @@ class GameWindow(arcade.Window):
 
 def main():
     window = GameWindow()
-    menu_view = StartView()
+    menu_view = MainMenuView()
     window.show_view(menu_view)
     arcade.run()
 
