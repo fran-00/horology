@@ -46,6 +46,9 @@ class StartView(arcade.View):
         arcade.set_viewport(0, self.window.width, 0, self.window.height)
         self.manager.enable()
 
+    def on_hide_view(self):
+        self.manager.disable()
+
     def on_draw(self):
         self.clear()
         self.manager.draw()
