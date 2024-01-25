@@ -27,6 +27,12 @@ class MainMenuView(arcade.View):
         self.v_box.add(new_game_button.with_space_around(bottom=20))
         new_game_button.on_click = self.on_click_new_game
 
+        # LOAD Button
+        load_button = arcade.gui.UIFlatButton(text="Load Game",
+                                              width=200,
+                                              style=ButtonStyle().default_style)
+        self.v_box.add(load_button.with_space_around(bottom=20))
+
         # SETTINGS button
         settings_button = arcade.gui.UIFlatButton(text="Settings",
                                                   width=200,
@@ -61,6 +67,9 @@ class MainMenuView(arcade.View):
     def on_click_new_game(self, event):
         self.window.show_view(self.window.views["game"])
         setup(self.window.views["game"])
+
+    def on_click_load(self, event):
+        pass
 
     def on_click_settings(self, event):
         self.window.show_view(self.window.views["settings"])
