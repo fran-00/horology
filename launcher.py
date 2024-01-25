@@ -12,13 +12,14 @@ class GameWindow(arcade.Window):
         super().__init__(c.SCREEN_WIDTH, c.SCREEN_HEIGHT, c.SCREEN_TITLE, resizable=True)
         self.views = {}
         self.views["game"] = GameView()
-        self.views["main_menu"] = GameMenuView()
+        self.views["main_menu"] = MainMenuView()
+        self.views["game_menu"] = GameMenuView()
         self.views["settings"] = SettingsView()
 
 
 def main():
     window = GameWindow()
-    menu_view = MainMenuView()
+    menu_view = window.views["main_menu"]
     window.show_view(menu_view)
     arcade.run()
 

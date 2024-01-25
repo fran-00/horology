@@ -88,7 +88,7 @@ class GameView(arcade.View):
             # TODO: show inventory modal
             pass
         elif key == arcade.key.ESCAPE:
-            self.window.show_view(self.window.views["main_menu"])
+            self.window.show_view(self.window.views["game_menu"])
         elif key == arcade.key.KEY_1:
             self.selected_item = 1
             self.inventory_system.change_equipped_weapon(1)
