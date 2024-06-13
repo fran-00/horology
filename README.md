@@ -21,7 +21,7 @@ Install project requirements:
 
 Run the game:
 
-    python launcher.py
+    python -m game
 
 ## TODO List
 
