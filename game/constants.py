@@ -5,7 +5,7 @@ class Constants:
     # Self explenatory
     SCREEN_WIDTH = 1366
     SCREEN_HEIGHT = 768
-    SCREEN_TITLE = "Giuoco"
+    SCREEN_TITLE = "Horology"
 
     # Constants used to scale our sprites from their original size
     SPRITE_SCALING = 1
