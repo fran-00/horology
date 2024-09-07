@@ -7,8 +7,8 @@ A 2D tiled-based game made with **Python**, [Arcade](https://api.arcade.academy/
 To run the game you need **Python** installed in your system, and that system really should be a Linux based one. Clone this project:
 
 ```shell
-git clone https://github.com/fran-00/groi_2D.git
-cd groi_2D
+git clone https://github.com/fran-00/horology.git
+cd horology
 ```
 
 Create a new virtual environment with **pyenv** (Python <= 3.11 should be fine) and activate it:
