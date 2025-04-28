@@ -35,8 +35,10 @@ class EnemyAI:
 
     def spawn_enemies(self):
         """Spawn an enemy when a spawn point is triggered"""
-        spawn_points_touched_list = arcade.check_for_collision_with_list(self.game_view.player,
-                                                                         self.game_view.scene[c.LAYER_SPAWN_TRIGGER])
+        spawn_points_touched_list = arcade.check_for_collision_with_list(
+            self.game_view.player,
+            self.game_view.scene[c.LAYER_SPAWN_TRIGGER]
+        )
         if spawn_points_touched_list != []:
             for spawn_point in spawn_points_touched_list:
                 enemy_name = spawn_point.properties["name"]
@@ -46,7 +48,13 @@ class EnemyAI:
                 spawn_point.kill()
                 print("Prepare to fight! Spawn point touched!")
 
-            enemy = EnemyCharacter(enemy_name, enemy_hp, enemy_damage, self.game_view.player, self.game_view.scene[c.LAYER_WALLS])
+            enemy = EnemyCharacter(
+                enemy_name,
+                enemy_hp,
+                enemy_damage,
+                self.game_view.player,
+                self.game_view.scene[c.LAYER_WALLS]
+            )
             # Position the enemy 100 pixels away horizontally
             enemy.center_x = spawn_point.center_x + 100
             enemy.center_y = spawn_point.center_y
@@ -56,8 +64,10 @@ class EnemyAI:
 
     def get_damage_from_enemy(self):
         """Handle fights with enemies"""
-        enemies_hit_list = arcade.check_for_collision_with_list(self.game_view.player,
-                                                                self.game_view.scene[c.LAYER_ENEMIES])
+        enemies_hit_list = arcade.check_for_collision_with_list(
+            self.game_view.player,
+            self.game_view.scene[c.LAYER_ENEMIES]
+        )
         # If player touch an ENEMY, she loses as many hp as is written on damage property
         if self.game_view.player.cur_health > 0:
             for enemy in enemies_hit_list:

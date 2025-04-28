@@ -78,8 +78,9 @@ class Combat:
 
         if enemy.frame_count % 60 == 0:
             bullet = arcade.Sprite(
-                    filename="resources/tilesets/4dEuclideanCube.png",
-                    scale=0.5)
+                filename="resources/tilesets/4dEuclideanCube.png",
+                scale=0.5
+            )
             bullet.center_x = start_x
             bullet.center_y = start_y
 
@@ -97,14 +98,21 @@ class Combat:
         for bullet in self.game_view.scene[c.LAYER_PLAYER_BULLETS]:
             # Check this bullet to see if it hit an enemy or a wall
             enemy_hit_list = arcade.check_for_collision_with_list(
-                bullet, self.game_view.scene[c.LAYER_ENEMIES])
+                bullet,
+                self.game_view.scene[c.LAYER_ENEMIES]
+            )
             wall_hit_list = arcade.check_for_collision_with_list(
-                bullet, self.game_view.scene[c.LAYER_WALLS])
+                bullet,
+                self.game_view.scene[c.LAYER_WALLS]
+            )
             # If it did, get rid of the bullet
             if len(enemy_hit_list) > 0:
                 bullet.remove_from_sprite_lists()
 
-            self.damage_enemy(enemy_hit_list, self.game_view.player.equipped_ranged_weapon)
+            self.damage_enemy(
+                enemy_hit_list,
+                self.game_view.player.equipped_ranged_weapon
+            )
 
             # Remove bullet if it hits an obstacle which is not an enemy:
             for _ in wall_hit_list:
@@ -115,15 +123,20 @@ class Combat:
     def remove_far_bullets(self, bullet):
         """Delete bullets to prevent them from travelling forever and go out of screen"""
         if ((bullet.center_y > self.game_view.player.center_y + 400)
-                or (bullet.center_y < self.game_view.player.center_y - 400)
-                or (bullet.center_x > self.game_view.player.center_x + 400)
-                or (bullet.center_x < self.game_view.player.center_x - 400)):
+            or (bullet.center_y < self.game_view.player.center_y - 400)
+            or (bullet.center_x > self.game_view.player.center_x + 400)
+            or (bullet.center_x < self.game_view.player.center_x - 400)):
             bullet.remove_from_sprite_lists()
 
     def update_melee_attacks(self):
         enemy_hit_list = arcade.check_for_collision_with_list(
-            self.game_view.player, self.game_view.scene[c.LAYER_ENEMIES])
-        self.damage_enemy(enemy_hit_list, self.game_view.player.equipped_melee_weapon)
+            self.game_view.player,
+            self.game_view.scene[c.LAYER_ENEMIES]
+        )
+        self.damage_enemy(
+            enemy_hit_list,
+            self.game_view.player.equipped_melee_weapon
+        )
 
     def damage_enemy(self, enemy_hit_list, weapon):
         for enemy in enemy_hit_list:
