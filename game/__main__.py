@@ -9,7 +9,12 @@ from game.constants import Constants as c
 
 class GameWindow(arcade.Window):
     def __init__(self):
-        super().__init__(c.SCREEN_WIDTH, c.SCREEN_HEIGHT, c.SCREEN_TITLE, resizable=True)
+        super().__init__(
+            c.SCREEN_WIDTH,
+            c.SCREEN_HEIGHT,
+            c.SCREEN_TITLE,
+            resizable=True
+        )
         self.views = {}
         self.views["game"] = GameView()
         self.views["main_menu"] = MainMenuView()
@@ -22,6 +27,7 @@ def main():
     menu_view = window.views["main_menu"]
     window.show_view(menu_view)
     arcade.run()
+
 
 if __name__ == "__main__":
     main()

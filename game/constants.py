@@ -1,8 +1,5 @@
-import arcade
-
-
 class Constants:
-    # Self explenatory
+
     SCREEN_WIDTH = 1366
     SCREEN_HEIGHT = 768
     SCREEN_TITLE = "Horology"
@@ -39,13 +36,13 @@ class Constants:
     ENEMY_COUNT = 2
     ENEMY_SPEED = 0.5
 
-    LAYER_FOREGROUND = 'Foreground'
-    LAYER_ENEMIES = 'Enemies'
-    LAYER_PLAYER_BULLETS = 'Player_Bullets'
-    LAYER_ENEMIES_BULLETS = 'Enemies_Bullets'
-    LAYER_SPAWN_TRIGGER = 'Spawn_trigger'
-    LAYER_ITEMS = 'Items'
-    LAYER_WALLS = 'Walls'
-    LAYER_STUFF = 'Stuff'
-    LAYER_GROUND = 'Ground'
-    LAYER_BACKGROUND = 'Background'
+    LAYER_FOREGROUND = "Foreground"
+    LAYER_ENEMIES = "Enemies"
+    LAYER_PLAYER_BULLETS = "Player_Bullets"
+    LAYER_ENEMIES_BULLETS = "Enemies_Bullets"
+    LAYER_SPAWN_TRIGGER = "Spawn_trigger"
+    LAYER_ITEMS = "Items"
+    LAYER_WALLS = "Walls"
+    LAYER_STUFF = "Stuff"
+    LAYER_GROUND = "Ground"
+    LAYER_BACKGROUND = "Background"
