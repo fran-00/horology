@@ -121,7 +121,7 @@ class GameView(arcade.View):
             self.inventory_system.change_equipped_weapon(10)
 
     def on_key_release(self, key, modifiers):
-        """ Handle Keys Released """
+        """Handle Keys Released"""
         if key in [arcade.key.W, arcade.key.S]:
             self.player.change_y = 0
         elif key in [arcade.key.A, arcade.key.D]:
@@ -164,13 +164,15 @@ class GameView(arcade.View):
             self.view_left = int(self.view_left)
 
             # Do the scrolling
-            arcade.set_viewport(self.view_left,
-                                c.SCREEN_WIDTH + self.view_left,
-                                self.view_bottom,
-                                c.SCREEN_HEIGHT + self.view_bottom)
+            arcade.set_viewport(
+                self.view_left,
+                c.SCREEN_WIDTH + self.view_left,
+                self.view_bottom,
+                c.SCREEN_HEIGHT + self.view_bottom,
+            )
 
     def on_update(self, delta_time):
-        """ Handle movements and game logic"""
+        """Handle movements and game logic"""
         self.physics_engine.update()
         self.player_list.update_animation()
 

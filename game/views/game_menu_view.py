@@ -23,33 +23,46 @@ class GameMenuView(arcade.View):
         # Create a widget to hold the v_box widget, that will center the buttons
         self.manager.add(
             arcade.gui.UIAnchorWidget(
-                anchor_x="center_x", anchor_y="center_y", child=self.v_box
+                anchor_x="center_x",
+                anchor_y="center_y",
+                child=self.v_box
             )
         )
 
     def add_buttons(self):
         # RESUME button
-        resume_button = arcade.gui.UIFlatButton(text="Resume Game",
-                                                width=200,
-                                                style=ButtonStyle().default_style)
+        resume_button = arcade.gui.UIFlatButton(
+            text="Resume Game",
+            width=200,
+            style=ButtonStyle().default_style
+        )
         self.v_box.add(resume_button.with_space_around(bottom=20))
         resume_button.on_click = self.on_click_resume
 
         # SAVE Button
-        save_button = arcade.gui.UIFlatButton(text="Save",
-                                              width=200,
-                                              style=ButtonStyle().default_style)
+        save_button = arcade.gui.UIFlatButton(
+            text="Save",
+            width=200,
+            style=ButtonStyle().default_style
+        )
         self.v_box.add(save_button.with_space_around(bottom=20))
         
         # QUIT button
-        quit_button = arcade.gui.UIFlatButton(text="Quit to Main Menu",
-                                              width=200,
-                                              style=ButtonStyle().default_style)
+        quit_button = arcade.gui.UIFlatButton(
+            text="Quit to Main Menu",
+            width=200,
+            style=ButtonStyle().default_style
+        )
         self.v_box.add(quit_button.with_space_around(bottom=20))
         quit_button.on_click = self.on_click_quit
 
     def on_show_view(self):
-        arcade.set_viewport(0, self.window.width, 0, self.window.height)
+        arcade.set_viewport(
+            0,
+            self.window.width,
+            0,
+            self.window.height
+        )
         self.manager.enable()
 
     def on_hide_view(self):

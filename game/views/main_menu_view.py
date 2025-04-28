@@ -15,35 +15,45 @@ class MainMenuView(arcade.View):
         self.add_buttons()
         self.manager.add(
             arcade.gui.UIAnchorWidget(
-                anchor_x="center_x", anchor_y="center_y", child=self.v_box
+                anchor_x="center_x",
+                anchor_y="center_y",
+                child=self.v_box
             )
         )
 
     def add_buttons(self):
         # NEW GAME button
-        new_game_button = arcade.gui.UIFlatButton(text="New Game",
-                                                  width=200,
-                                                  style=ButtonStyle().default_style)
+        new_game_button = arcade.gui.UIFlatButton(
+            text="New Game",
+            width=200,
+            style=ButtonStyle().default_style
+        )
         self.v_box.add(new_game_button.with_space_around(bottom=20))
         new_game_button.on_click = self.on_click_new_game
 
         # LOAD Button
-        load_button = arcade.gui.UIFlatButton(text="Load Game",
-                                              width=200,
-                                              style=ButtonStyle().default_style)
+        load_button = arcade.gui.UIFlatButton(
+            text="Load Game",
+            width=200,
+            style=ButtonStyle().default_style
+        )
         self.v_box.add(load_button.with_space_around(bottom=20))
 
         # SETTINGS button
-        settings_button = arcade.gui.UIFlatButton(text="Settings",
-                                                  width=200,
-                                                  style=ButtonStyle().default_style)
+        settings_button = arcade.gui.UIFlatButton(
+            text="Settings",
+            width=200,
+            style=ButtonStyle().default_style
+        )
         self.v_box.add(settings_button.with_space_around(bottom=20))
         settings_button.on_click = self.on_click_settings
 
         # QUIT button
-        quit_button = arcade.gui.UIFlatButton(text="Quit",
-                                              width=200,
-                                              style=ButtonStyle().default_style)
+        quit_button = arcade.gui.UIFlatButton(
+            text="Quit",
+            width=200,
+            style=ButtonStyle().default_style
+        )
         self.v_box.add(quit_button.with_space_around(bottom=20))
         quit_button.on_click = self.on_click_quit
 
@@ -58,10 +68,24 @@ class MainMenuView(arcade.View):
     def on_draw(self):
         self.clear()
         self.manager.draw()
-        arcade.draw_text("Is this a GAME?", c.SCREEN_WIDTH / 2, c.SCREEN_HEIGHT - 100,
-                         arcade.color.WHITE, font_size=70, font_name="Kenney Pixel", anchor_x="center")
-        arcade.draw_text("Yes, it is!!!", c.SCREEN_WIDTH / 2, c.SCREEN_HEIGHT - 150,
-                         arcade.color.RED, font_size=50, font_name="Kenney Pixel", anchor_x="center")
+        arcade.draw_text(
+            "Is this a GAME?",
+            c.SCREEN_WIDTH / 2,
+            c.SCREEN_HEIGHT - 100,
+            arcade.color.WHITE,
+            font_size=70,
+            font_name="Kenney Pixel",
+            anchor_x="center"
+        )
+        arcade.draw_text(
+            "Yes, it is!!!",
+            c.SCREEN_WIDTH / 2,
+            c.SCREEN_HEIGHT - 150,
+            arcade.color.RED,
+            font_size=50,
+            font_name="Kenney Pixel",
+            anchor_x="center"
+        )
 
     # Call back methods for buttons:
     def on_click_new_game(self, event):
