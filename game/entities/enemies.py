@@ -18,25 +18,35 @@ class EnemySprite(Entity):
     def set_sprite(self):
         self.sprites_path = f"resources/enemies/{self.name}/{self.name}"
 
-        self.idle_texture_pair = self.load_texture_pair(f"{self.sprites_path}_idle.png")
-        self.fight_texture_pair = self.load_texture_pair(f"{self.sprites_path}_fight.png")
+        self.idle_texture_pair = self.load_texture_pair(
+            f"{self.sprites_path}_idle.png"
+        )
+        self.fight_texture_pair = self.load_texture_pair(
+            f"{self.sprites_path}_fight.png"
+        )
 
     def set_animations(self):
         self.walk_textures = []
         for i in range(5):
-            texture = self.load_texture_pair(f"{self.sprites_path}_walk{i}.png")
+            texture = self.load_texture_pair(
+                f"{self.sprites_path}_walk{i}.png"
+            )
             self.walk_textures.append(texture)
 
         # Load textures for walking south
         self.walkfront_textures = []
         for i in range(5):
-            texture = self.load_texture_pair(f"{self.sprites_path}_walkfront{i}.png")
+            texture = self.load_texture_pair(
+                f"{self.sprites_path}_walkfront{i}.png"
+            )
             self.walkfront_textures.append(texture)
 
         # Load textures for walking north
         self.walkback_textures = []
         for i in range(5):
-            texture = self.load_texture_pair(f"{self.sprites_path}_walkback{i}.png")
+            texture = self.load_texture_pair(
+                f"{self.sprites_path}_walkback{i}.png"
+            )
             self.walkback_textures.append(texture)
 
         # Set the initial texture
@@ -92,28 +102,32 @@ class EnemyCharacter(EnemySprite):
         self.wall_list = wall_list
         self.path = None
         self.frame_count = 0
-        
+
         playing_field_left_boundary = -c.SPRITE_SIZE * 50
         playing_field_right_boundary = c.SPRITE_SIZE * 50
         playing_field_top_boundary = c.SPRITE_SIZE * 50
         playing_field_bottom_boundary = -c.SPRITE_SIZE * 50
-        
-        self.barrier_list = arcade.AStarBarrierList(self,
-                                                    self.wall_list,
-                                                    c.SPRITE_SIZE,
-                                                    playing_field_left_boundary,
-                                                    playing_field_right_boundary,
-                                                    playing_field_bottom_boundary,
-                                                    playing_field_top_boundary)
+
+        self.barrier_list = arcade.AStarBarrierList(
+            self,
+            self.wall_list,
+            c.SPRITE_SIZE,
+            playing_field_left_boundary,
+            playing_field_right_boundary,
+            playing_field_bottom_boundary,
+            playing_field_top_boundary,
+        )
 
     def update_path(self, delta_time):
-        self.path = arcade.astar_calculate_path(self.position,
-                                                self.player.position,
-                                                self.barrier_list,
-                                                diagonal_movement=True)
+        self.path = arcade.astar_calculate_path(
+            self.position,
+            self.player.position,
+            self.barrier_list,
+            diagonal_movement=True,
+        )
         if self.path:
             arcade.draw_line_strip(self.path, arcade.color.BLUE, 2)
-        
+
         if self.path and len(self.path) > 1:
             if self.center_x < self.path[1][0]:
                 self.center_x += min(c.ENEMY_SPEED, self.path[1][0] - self.center_x)

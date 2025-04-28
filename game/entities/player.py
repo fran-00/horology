@@ -27,26 +27,38 @@ class PlayerCharacter(Entity):
     def set_sprite(self):
         self.sprites_path = f"resources/player/hooded/hooded"
 
-        self.idle_texture_pair = self.load_texture_pair(f"{self.sprites_path}_idle.png")
-        self.melee_attack_texture_pair = self.load_texture_pair(f"{self.sprites_path}_melee.png")
-        self.ranged_attack_texture_pair = self.load_texture_pair(f"{self.sprites_path}_ranged.png")
+        self.idle_texture_pair = self.load_texture_pair(
+            f"{self.sprites_path}_idle.png"
+        )
+        self.melee_attack_texture_pair = self.load_texture_pair(
+            f"{self.sprites_path}_melee.png"
+        )
+        self.ranged_attack_texture_pair = self.load_texture_pair(
+            f"{self.sprites_path}_ranged.png"
+        )
 
     def set_animations(self):
         self.walk_textures = []
         for i in range(8):
-            texture = self.load_texture_pair(f"{self.sprites_path}_walk{i}.png")
+            texture = self.load_texture_pair(
+                f"{self.sprites_path}_walk{i}.png"
+            )
             self.walk_textures.append(texture)
 
         # Load textures for walking south
         self.walkfront_textures = []
         for i in range(8):
-            texture = self.load_texture_pair(f"{self.sprites_path}_walkfront{i}.png")
+            texture = self.load_texture_pair(
+                f"{self.sprites_path}_walkfront{i}.png"
+            )
             self.walkfront_textures.append(texture)
 
         # Load textures for walking north
         self.walkback_textures = []
         for i in range(8):
-            texture = self.load_texture_pair(f"{self.sprites_path}_walkback{i}.png")
+            texture = self.load_texture_pair(
+                f"{self.sprites_path}_walkback{i}.png"
+            )
             self.walkback_textures.append(texture)
 
         # Set the initial texture
@@ -57,7 +69,7 @@ class PlayerCharacter(Entity):
         # self.set_hit_box([[-22, -64], [22, -64], [22, 28], [-22, 28]])
         self.set_hit_box(self.texture.hit_box_points)
 
-    def update_animation(self, delta_time: float = 1/60):
+    def update_animation(self, delta_time: float = 1 / 60):
         # Figure out if we need to flip face left or right
         if self.change_x < 0 and self.facing_direction == c.RIGHT_FACING:
             self.facing_direction = c.LEFT_FACING

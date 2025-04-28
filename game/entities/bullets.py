@@ -17,7 +17,7 @@ class Bullet(arcade.Sprite):
             sprite_height=c.SPRITE_SIZE,
             columns=7,
             count=7,
-            hit_box_algorithm='Simple'
+            hit_box_algorithm="Simple",
         )
         self.texture = self.textures[0]
 

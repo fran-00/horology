@@ -19,5 +19,5 @@ class Entity(arcade.Sprite):
         # Load a texture pair, with the second being a mirror image.
         return [
             arcade.load_texture(filename),
-            arcade.load_texture(filename, flipped_horizontally=True)
+            arcade.load_texture(filename, flipped_horizontally=True),
         ]
