@@ -1,20 +1,23 @@
-import arcade
+from arcade import View, draw_text, set_background_color, set_viewport
+from arcade.gui import UIAnchorWidget, UIBoxLayout, UIFlatButton, UIManager
+from arcade.color import BLACK, RED, WHITE
+from arcade.key import ESCAPE
 
 from ..core.setup import setup
 from ..ui.buttons import ButtonStyle
 from ..constants import Constants as c
 
 
-class MainMenuView(arcade.View):
+class MainMenuView(View):
 
     def __init__(self):
         super().__init__()
 
-        self.manager = arcade.gui.UIManager()
-        self.v_box = arcade.gui.UIBoxLayout()
+        self.manager = UIManager()
+        self.v_box = UIBoxLayout()
         self.add_buttons()
         self.manager.add(
-            arcade.gui.UIAnchorWidget(
+            UIAnchorWidget(
                 anchor_x="center_x",
                 anchor_y="center_y",
                 child=self.v_box
@@ -23,7 +26,7 @@ class MainMenuView(arcade.View):
 
     def add_buttons(self):
         # NEW GAME button
-        new_game_button = arcade.gui.UIFlatButton(
+        new_game_button = UIFlatButton(
             text="New Game",
             width=200,
             style=ButtonStyle().default_style
@@ -32,7 +35,7 @@ class MainMenuView(arcade.View):
         new_game_button.on_click = self.on_click_new_game
 
         # LOAD Button
-        load_button = arcade.gui.UIFlatButton(
+        load_button = UIFlatButton(
             text="Load Game",
             width=200,
             style=ButtonStyle().default_style
@@ -40,7 +43,7 @@ class MainMenuView(arcade.View):
         self.v_box.add(load_button.with_space_around(bottom=20))
 
         # SETTINGS button
-        settings_button = arcade.gui.UIFlatButton(
+        settings_button = UIFlatButton(
             text="Settings",
             width=200,
             style=ButtonStyle().default_style
@@ -49,7 +52,7 @@ class MainMenuView(arcade.View):
         settings_button.on_click = self.on_click_settings
 
         # QUIT button
-        quit_button = arcade.gui.UIFlatButton(
+        quit_button = UIFlatButton(
             text="Quit",
             width=200,
             style=ButtonStyle().default_style
@@ -58,8 +61,8 @@ class MainMenuView(arcade.View):
         quit_button.on_click = self.on_click_quit
 
     def on_show_view(self):
-        arcade.set_background_color(arcade.color.BLACK)
-        arcade.set_viewport(0, self.window.width, 0, self.window.height)
+        set_background_color(BLACK)
+        set_viewport(0, self.window.width, 0, self.window.height)
         self.manager.enable()
 
     def on_hide_view(self):
@@ -68,20 +71,20 @@ class MainMenuView(arcade.View):
     def on_draw(self):
         self.clear()
         self.manager.draw()
-        arcade.draw_text(
+        draw_text(
             "Is this a GAME?",
             c.SCREEN_WIDTH / 2,
             c.SCREEN_HEIGHT - 100,
-            arcade.color.WHITE,
+            WHITE,
             font_size=70,
             font_name="Kenney Pixel",
             anchor_x="center"
         )
-        arcade.draw_text(
+        draw_text(
             "Yes, it is!!!",
             c.SCREEN_WIDTH / 2,
             c.SCREEN_HEIGHT - 150,
-            arcade.color.RED,
+            RED,
             font_size=50,
             font_name="Kenney Pixel",
             anchor_x="center"
@@ -102,5 +105,5 @@ class MainMenuView(arcade.View):
         self.window.close()
 
     def on_key_press(self, key, _modifiers):
-        if key == arcade.key.ESCAPE:
+        if key == ESCAPE:
             self.window.close()

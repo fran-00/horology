@@ -1,11 +1,11 @@
-import arcade
-import arcade.gui
+from arcade import View, set_viewport
+from arcade.gui import UIAnchorWidget, UIManager, UIBoxLayout, UIFlatButton
+from arcade.key import ESCAPE
 
-from ..core.setup import setup
 from ..ui.buttons import ButtonStyle
 
 
-class GameMenuView(arcade.View):
+class GameMenuView(View):
     """
     Accessed by hitting ESC key.
     """
@@ -13,16 +13,16 @@ class GameMenuView(arcade.View):
         super().__init__()
 
         # --- Required for all code that uses UI element, a UIManager to handle the UI.
-        self.manager = arcade.gui.UIManager()
+        self.manager = UIManager()
 
         # Create a vertical BoxGroup to align buttons
-        self.v_box = arcade.gui.UIBoxLayout()
+        self.v_box = UIBoxLayout()
 
         self.add_buttons()
 
         # Create a widget to hold the v_box widget, that will center the buttons
         self.manager.add(
-            arcade.gui.UIAnchorWidget(
+            UIAnchorWidget(
                 anchor_x="center_x",
                 anchor_y="center_y",
                 child=self.v_box
@@ -31,7 +31,7 @@ class GameMenuView(arcade.View):
 
     def add_buttons(self):
         # RESUME button
-        resume_button = arcade.gui.UIFlatButton(
+        resume_button = UIFlatButton(
             text="Resume Game",
             width=200,
             style=ButtonStyle().default_style
@@ -40,7 +40,7 @@ class GameMenuView(arcade.View):
         resume_button.on_click = self.on_click_resume
 
         # SAVE Button
-        save_button = arcade.gui.UIFlatButton(
+        save_button = UIFlatButton(
             text="Save",
             width=200,
             style=ButtonStyle().default_style
@@ -48,7 +48,7 @@ class GameMenuView(arcade.View):
         self.v_box.add(save_button.with_space_around(bottom=20))
         
         # QUIT button
-        quit_button = arcade.gui.UIFlatButton(
+        quit_button = UIFlatButton(
             text="Quit to Main Menu",
             width=200,
             style=ButtonStyle().default_style
@@ -57,7 +57,7 @@ class GameMenuView(arcade.View):
         quit_button.on_click = self.on_click_quit
 
     def on_show_view(self):
-        arcade.set_viewport(
+        set_viewport(
             0,
             self.window.width,
             0,
@@ -83,5 +83,5 @@ class GameMenuView(arcade.View):
         self.window.show_view(self.window.views["main_menu"])
 
     def on_key_press(self, key, _modifiers):
-        if key == arcade.key.ESCAPE:
+        if key == ESCAPE:
             self.window.show_view(self.window.views["game"])

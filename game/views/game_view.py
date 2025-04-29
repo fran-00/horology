@@ -1,4 +1,8 @@
-import arcade
+from arcade import View, MOUSE_BUTTON_LEFT, MOUSE_BUTTON_RIGHT, set_viewport
+from arcade.key import (
+    A, D, E, ESCAPE, I, S, W,
+    KEY_0, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9
+)
 
 from ..ui.hud import Hud
 from ..systems.enemy_ai import EnemyAI
@@ -7,7 +11,7 @@ from ..systems.inventory_system import InventorySystem
 from ..constants import Constants as c
 
 
-class GameView(arcade.View):
+class GameView(View):
     """Main application class"""
 
     def __init__(self):
@@ -52,14 +56,14 @@ class GameView(arcade.View):
 
     def on_mouse_press(self, x, y, button, modifiers):
         """Handle mouse buttons pressed"""
-        if button == arcade.MOUSE_BUTTON_LEFT:
+        if button == MOUSE_BUTTON_LEFT:
             if not self.player.equipped_melee_weapon:
                 print("You have no melee weapons")
                 return
             self.player.mouse_left_pressed = True
             self.combat.update_melee_attacks()
 
-        if button == arcade.MOUSE_BUTTON_RIGHT:
+        if button == MOUSE_BUTTON_RIGHT:
             if not self.player.equipped_ranged_weapon:
                 print("You have no ranged weapons")
                 return
@@ -74,57 +78,57 @@ class GameView(arcade.View):
 
     def on_key_press(self, key, modifiers):
         """Handle Keys Pressed"""
-        if key == arcade.key.W:
+        if key == W:
             self.player.change_y = c.MOVEMENT_SPEED
-        elif key == arcade.key.S:
+        elif key == S:
             self.player.change_y = -c.MOVEMENT_SPEED
-        elif key == arcade.key.A:
+        elif key == A:
             self.player.change_x = -c.MOVEMENT_SPEED
-        elif key == arcade.key.D:
+        elif key == D:
             self.player.change_x = c.MOVEMENT_SPEED
-        elif key == arcade.key.E:
+        elif key == E:
             self.inventory_system.pick_up_items()
-        elif key == arcade.key.I:
+        elif key == I:
             # TODO: show inventory modal
             pass
-        elif key == arcade.key.ESCAPE:
+        elif key == ESCAPE:
             self.window.show_view(self.window.views["game_menu"])
-        elif key == arcade.key.KEY_1:
+        elif key == KEY_1:
             self.selected_item = 1
             self.inventory_system.change_equipped_weapon(1)
-        elif key == arcade.key.KEY_2:
+        elif key == KEY_2:
             self.selected_item = 2
             self.inventory_system.change_equipped_weapon(2)
-        elif key == arcade.key.KEY_3:
+        elif key == KEY_3:
             self.selected_item = 3
             self.inventory_system.change_equipped_weapon(3)
-        elif key == arcade.key.KEY_4:
+        elif key == KEY_4:
             self.selected_item = 4
             self.inventory_system.change_equipped_weapon(4)
-        elif key == arcade.key.KEY_5:
+        elif key == KEY_5:
             self.selected_item = 5
             self.inventory_system.change_equipped_weapon(5)
-        elif key == arcade.key.KEY_6:
+        elif key == KEY_6:
             self.selected_item = 6
             self.inventory_system.change_equipped_weapon(6)
-        elif key == arcade.key.KEY_7:
+        elif key == KEY_7:
             self.selected_item = 7
             self.inventory_system.change_equipped_weapon(7)
-        elif key == arcade.key.KEY_8:
+        elif key == KEY_8:
             self.selected_item = 8
             self.inventory_system.change_equipped_weapon(8)
-        elif key == arcade.key.KEY_9:
+        elif key == KEY_9:
             self.selected_item = 9
             self.inventory_system.change_equipped_weapon(9)
-        elif key == arcade.key.KEY_0:
+        elif key == KEY_0:
             self.selected_item = 10
             self.inventory_system.change_equipped_weapon(10)
 
     def on_key_release(self, key, modifiers):
         """Handle Keys Released"""
-        if key in [arcade.key.W, arcade.key.S]:
+        if key in [W, S]:
             self.player.change_y = 0
-        elif key in [arcade.key.A, arcade.key.D]:
+        elif key in [A, D]:
             self.player.change_x = 0
 
     def manage_scrolling(self):
@@ -164,7 +168,7 @@ class GameView(arcade.View):
             self.view_left = int(self.view_left)
 
             # Do the scrolling
-            arcade.set_viewport(
+            set_viewport(
                 self.view_left,
                 c.SCREEN_WIDTH + self.view_left,
                 self.view_bottom,
