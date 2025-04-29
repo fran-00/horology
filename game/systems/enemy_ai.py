@@ -1,4 +1,5 @@
-import arcade
+from arcade import check_for_collision_with_list, draw_line_strip
+from arcade.color import BLUE
 
 from .combat import Combat
 from ..entities.enemies import EnemyCharacter
@@ -31,11 +32,11 @@ class EnemyAI:
     def draw_A_star_paths(self):
         for enemy in self.game_view.scene[c.LAYER_ENEMIES]:
             if enemy.path:
-                arcade.draw_line_strip(enemy.path, arcade.color.BLUE, 2)
+                draw_line_strip(enemy.path, BLUE, 2)
 
     def spawn_enemies(self):
         """Spawn an enemy when a spawn point is triggered"""
-        spawn_points_touched_list = arcade.check_for_collision_with_list(
+        spawn_points_touched_list = check_for_collision_with_list(
             self.game_view.player,
             self.game_view.scene[c.LAYER_SPAWN_TRIGGER]
         )
@@ -64,7 +65,7 @@ class EnemyAI:
 
     def get_damage_from_enemy(self):
         """Handle fights with enemies"""
-        enemies_hit_list = arcade.check_for_collision_with_list(
+        enemies_hit_list = check_for_collision_with_list(
             self.game_view.player,
             self.game_view.scene[c.LAYER_ENEMIES]
         )

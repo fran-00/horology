@@ -1,6 +1,6 @@
 import math
 
-import arcade
+from arcade import Sprite, check_for_collision_with_list
 
 from ..entities.bullets import Bullet
 from ..constants import Constants as c
@@ -77,7 +77,7 @@ class Combat:
         angle = math.atan2(y_diff, x_diff)
 
         if enemy.frame_count % 60 == 0:
-            bullet = arcade.Sprite(
+            bullet = Sprite(
                 filename="resources/tilesets/4dEuclideanCube.png",
                 scale=0.5
             )
@@ -97,11 +97,11 @@ class Combat:
 
         for bullet in self.game_view.scene[c.LAYER_PLAYER_BULLETS]:
             # Check this bullet to see if it hit an enemy or a wall
-            enemy_hit_list = arcade.check_for_collision_with_list(
+            enemy_hit_list = check_for_collision_with_list(
                 bullet,
                 self.game_view.scene[c.LAYER_ENEMIES]
             )
-            wall_hit_list = arcade.check_for_collision_with_list(
+            wall_hit_list = check_for_collision_with_list(
                 bullet,
                 self.game_view.scene[c.LAYER_WALLS]
             )
@@ -129,7 +129,7 @@ class Combat:
             bullet.remove_from_sprite_lists()
 
     def update_melee_attacks(self):
-        enemy_hit_list = arcade.check_for_collision_with_list(
+        enemy_hit_list = check_for_collision_with_list(
             self.game_view.player,
             self.game_view.scene[c.LAYER_ENEMIES]
         )

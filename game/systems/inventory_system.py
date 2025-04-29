@@ -1,4 +1,4 @@
-import arcade
+from arcade import check_for_collision_with_list
 
 from ..entities.weapons import Melee, Ranged
 from ..constants import Constants as c
@@ -12,8 +12,10 @@ class InventorySystem:
     def pick_up_items(self):
         """Handle pick up items: WEAPONS AND CONSUMABLES THAT RESTORE HEALTH"""
         # Generate a list of all sprites from the item layer of the map that collided with the player.
-        items_hit_list = arcade.check_for_collision_with_list(self.game_view.player,
-                                                              self.game_view.scene[c.LAYER_ITEMS])
+        items_hit_list = check_for_collision_with_list(
+            self.game_view.player,
+            self.game_view.scene[c.LAYER_ITEMS]
+        )
 
         for item in items_hit_list:
             # If player's health isn't full, loop through each colliding sprite,
