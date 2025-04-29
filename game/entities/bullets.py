@@ -1,9 +1,9 @@
-import arcade
+from arcade import Sprite, load_spritesheet
 
 from ..constants import Constants as c
 
 
-class Bullet(arcade.Sprite):
+class Bullet(Sprite):
 
     def __init__(self, name):
         super().__init__()
@@ -11,7 +11,7 @@ class Bullet(arcade.Sprite):
         self.scale = c.CHARACTER_SCALING * 0.65
 
         tileset_path = f"resources/bullets/{name}.png"
-        self.textures = arcade.load_spritesheet(
+        self.textures = load_spritesheet(
             tileset_path,
             sprite_width=c.SPRITE_SIZE,
             sprite_height=c.SPRITE_SIZE,

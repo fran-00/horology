@@ -1,9 +1,9 @@
-import arcade
+from arcade import Sprite, load_texture
 
 from ..constants import Constants as c
 
 
-class Entity(arcade.Sprite):
+class Entity(Sprite):
 
     def __init__(self, name):
         super().__init__()
@@ -18,6 +18,6 @@ class Entity(arcade.Sprite):
     def load_texture_pair(self, filename):
         # Load a texture pair, with the second being a mirror image.
         return [
-            arcade.load_texture(filename),
-            arcade.load_texture(filename, flipped_horizontally=True),
+            load_texture(filename),
+            load_texture(filename, flipped_horizontally=True),
         ]

@@ -1,6 +1,5 @@
-import math
-
-import arcade
+from arcade import AStarBarrierList, astar_calculate_path, draw_line_strip
+from arcade.color import BLUE
 
 from .entity import Entity
 from ..constants import Constants as c
@@ -108,7 +107,7 @@ class EnemyCharacter(EnemySprite):
         playing_field_top_boundary = c.SPRITE_SIZE * 50
         playing_field_bottom_boundary = -c.SPRITE_SIZE * 50
 
-        self.barrier_list = arcade.AStarBarrierList(
+        self.barrier_list = AStarBarrierList(
             self,
             self.wall_list,
             c.SPRITE_SIZE,
@@ -119,14 +118,14 @@ class EnemyCharacter(EnemySprite):
         )
 
     def update_path(self, delta_time):
-        self.path = arcade.astar_calculate_path(
+        self.path = astar_calculate_path(
             self.position,
             self.player.position,
             self.barrier_list,
             diagonal_movement=True,
         )
         if self.path:
-            arcade.draw_line_strip(self.path, arcade.color.BLUE, 2)
+            draw_line_strip(self.path, BLUE, 2)
 
         if self.path and len(self.path) > 1:
             if self.center_x < self.path[1][0]:
