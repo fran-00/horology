@@ -1,4 +1,11 @@
-import arcade
+from arcade import (
+    draw_text,
+    draw_xywh_rectangle_outline,
+    draw_rectangle_filled,
+    draw_xywh_rectangle_filled,
+    load_spritesheet
+)
+from arcade.color import CHARCOAL, GREEN, RED, WHITE
 
 from ..constants import Constants as c
 
@@ -14,13 +21,13 @@ class Hud:
         health_string = (
             f"{self.game_view.player.cur_health}/{self.game_view.player.max_health}"
         )
-        arcade.draw_text(
+        draw_text(
             text=health_string,
             start_x=self.game_view.view_left + (c.SCREEN_WIDTH / 2) + 155,
             start_y=self.game_view.view_bottom + 51,
             font_size=30,
             font_name="Kenney Pixel",
-            color=arcade.color.WHITE,
+            color=WHITE,
         )
 
     def draw_health_bar(self):
@@ -28,12 +35,12 @@ class Hud:
 
         # Draw the red background of the bar
         if self.game_view.player.cur_health < self.game_view.player.max_health:
-            arcade.draw_rectangle_filled(
+            draw_rectangle_filled(
                 center_x=self.game_view.view_left + (c.SCREEN_WIDTH / 2),
                 center_y=self.game_view.view_bottom + 60,
                 width=300,
                 height=20,
-                color=arcade.color.RED,
+                color=RED,
             )
 
         # Calculate width based on health
@@ -41,13 +48,13 @@ class Hud:
             self.game_view.player.cur_health / self.game_view.player.max_health
         )
         # Draw the green foreground of the bar
-        arcade.draw_rectangle_filled(
+        draw_rectangle_filled(
             center_x=(self.game_view.view_left + (c.SCREEN_WIDTH / 2))
             - 0.5 * (300 - health_width),
             center_y=self.game_view.view_bottom + 60,
             width=health_width,
             height=20,
-            color=arcade.color.GREEN,
+            color=GREEN,
         )
 
     def load_hotbar_sprites(self):
@@ -61,7 +68,7 @@ class Hud:
         first_number_pad_sprite_index = 51
         last_number_pad_sprite_index = 61
 
-        self.game_view.hotbar_sprite_list = arcade.load_spritesheet(
+        self.game_view.hotbar_sprite_list = load_spritesheet(
             file_name="resources/tilesets/input_prompts.png",
             sprite_width=16,
             sprite_height=16,
@@ -77,21 +84,21 @@ class Hud:
 
         field_width = self.game_view.window.width / capacity
 
-        arcade.draw_xywh_rectangle_filled(
+        draw_xywh_rectangle_filled(
             bottom_left_x=self.game_view.view_left,
             bottom_left_y=self.game_view.view_bottom,
             width=self.game_view.window.width,
             height=hotbar_height,
-            color=arcade.color.CHARCOAL,
+            color=CHARCOAL,
         )
         for i in range(capacity):
             if i == self.game_view.selected_item - 1:
-                arcade.draw_xywh_rectangle_outline(
+                draw_xywh_rectangle_outline(
                     bottom_left_x=(i * field_width) + self.game_view.view_left,
                     bottom_left_y=self.game_view.view_bottom,
                     width=self.game_view.window.width / capacity,
                     height=hotbar_height,
-                    color=arcade.color.WHITE,
+                    color=WHITE,
                     border_width=2,
                 )
 
@@ -109,12 +116,12 @@ class Hud:
             )
             # Add whitespace so the item text doesn't hide behind the number pad sprite
             text = f"      {item_name}"
-            arcade.draw_text(
+            draw_text(
                 text=text,
                 start_x=((i * field_width) + self.game_view.view_left)
                 + sprite_height / 2,
                 start_y=self.game_view.view_bottom + 12,
-                color=arcade.color.WHITE,
+                color=WHITE,
                 font_size=25,
                 font_name="Kenney Pixel",
             )
@@ -124,11 +131,11 @@ class Hud:
             weapon_name = (
                 f"Melee weapon: {self.game_view.player.equipped_melee_weapon.name}"
             )
-            arcade.draw_text(
+            draw_text(
                 text=weapon_name,
                 start_x=self.game_view.view_left + 10,
                 start_y=self.game_view.view_bottom + c.SCREEN_HEIGHT - 30,
-                color=arcade.color.WHITE,
+                color=WHITE,
                 font_size=25,
                 font_name="Kenney Pixel",
             )
@@ -136,11 +143,11 @@ class Hud:
             weapon_name = (
                 f"Ranged weapon: {self.game_view.player.equipped_ranged_weapon.name}"
             )
-            arcade.draw_text(
+            draw_text(
                 text=weapon_name,
                 start_x=self.game_view.view_left + 10,
                 start_y=self.game_view.view_bottom + c.SCREEN_HEIGHT - 60,
-                color=arcade.color.WHITE,
+                color=WHITE,
                 font_size=25,
                 font_name="Kenney Pixel",
             )
