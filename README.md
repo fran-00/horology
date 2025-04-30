@@ -2,20 +2,21 @@
 
 A 2D tiled-based game made with **Python**, [Arcade](https://api.arcade.academy/en/latest/) and [Tiled](https://www.mapeditor.org/).
 
+Warning: I am updating Arcade version to 3.1.0, in the meantime some features may not work.
+
 ## How to install
 
-To run the game you need **Python** installed in your system, and that system really should be a Linux based one. Clone this project:
+To run the game you need **Python** installed in your system. Clone this project:
 
 ```shell
 git clone https://github.com/fran-00/horology.git
 cd horology
 ```
 
-Create a new virtual environment with **pyenv** (Python <= 3.11 should be fine) and activate it:
+Create a new virtual environment with **pyenv** (Python > 3.9 should be fine) and activate it:
 
 ```shell
-python install 3.11.4
-pyenv virtualenv 3.11.4 horology
+pyenv virtualenv 3.13.3 horology
 pyenv activate horology
 ```
 
@@ -63,7 +64,3 @@ python -m game
 
 - [ ] Fix an issue where enemies stop chasing the player when they are too close to a wall. It seems to fail in path calculation because it doesn't use the enemy's hitbox to calculate the collision but the center of their sprite instead.
 - [X] After moving the settings access from the game menu to the start menu, they pop up randomly when shooting with a ranged weapon. UPDATE: Fixed, on_hide_view method of MainMenuView was missing and was causing buttons to remain invisible during game.
-
-## Notes
-
-Currently you can't run it with Python 3.12: Pillow 9.3.0 does not support it and **Arcade** requires that specific version. If you are on Windows with Python 3.12 installed in your system you should use **pyenv** (with WSL) or **conda** instead. This probably will change when Arcade will be updated.
