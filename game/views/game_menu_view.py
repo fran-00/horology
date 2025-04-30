@@ -1,4 +1,4 @@
-from arcade import View, set_viewport
+from arcade import View
 from arcade.gui import UIAnchorWidget, UIManager, UIBoxLayout, UIFlatButton
 from arcade.key import ESCAPE
 
@@ -57,12 +57,6 @@ class GameMenuView(View):
         quit_button.on_click = self.on_click_quit
 
     def on_show_view(self):
-        set_viewport(
-            0,
-            self.window.width,
-            0,
-            self.window.height
-        )
         self.manager.enable()
 
     def on_hide_view(self):
