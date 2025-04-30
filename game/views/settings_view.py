@@ -1,4 +1,4 @@
-from arcade import View, draw_text, set_viewport
+from arcade import View, draw_text
 from arcade.color import WHITE
 from arcade.key import ESCAPE
 
@@ -29,7 +29,7 @@ class SettingsView(View):
         pass
 
     def on_show_view(self):
-        set_viewport(0, self.window.width, 0, self.window.height)
+        pass
 
     def on_key_press(self, symbol: int, modifiers: int):
         if symbol == ESCAPE:

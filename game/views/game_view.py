@@ -1,4 +1,4 @@
-from arcade import View, MOUSE_BUTTON_LEFT, MOUSE_BUTTON_RIGHT, set_viewport
+from arcade import View, MOUSE_BUTTON_LEFT, MOUSE_BUTTON_RIGHT
 from arcade.key import (
     A, D, E, ESCAPE, I, S, W,
     KEY_0, KEY_1, KEY_2, KEY_3, KEY_4, KEY_5, KEY_6, KEY_7, KEY_8, KEY_9
@@ -166,14 +166,6 @@ class GameView(View):
             # don't line up on the screen (i think it may be quite interesting...)
             self.view_bottom = int(self.view_bottom)
             self.view_left = int(self.view_left)
-
-            # Do the scrolling
-            set_viewport(
-                self.view_left,
-                c.SCREEN_WIDTH + self.view_left,
-                self.view_bottom,
-                c.SCREEN_HEIGHT + self.view_bottom,
-            )
 
     def on_update(self, delta_time):
         """Handle movements and game logic"""
