@@ -1,5 +1,5 @@
 from arcade import View
-from arcade.gui import UIAnchorWidget, UIManager, UIBoxLayout, UIFlatButton
+from arcade.gui import UIAnchorLayout, UIManager, UIBoxLayout, UIFlatButton
 from arcade.key import ESCAPE
 
 from ..ui.buttons import ButtonStyle
@@ -22,7 +22,7 @@ class GameMenuView(View):
 
         # Create a widget to hold the v_box widget, that will center the buttons
         self.manager.add(
-            UIAnchorWidget(
+            UIAnchorLayout(
                 anchor_x="center_x",
                 anchor_y="center_y",
                 child=self.v_box
