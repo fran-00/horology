@@ -1,5 +1,5 @@
-from arcade import View, draw_text, set_background_color, set_viewport
-from arcade.gui import UIAnchorWidget, UIBoxLayout, UIFlatButton, UIManager
+from arcade import View, draw_text, set_background_color
+from arcade.gui import UIAnchorLayout, UIBoxLayout, UIFlatButton, UIManager
 from arcade.color import BLACK, RED, WHITE
 from arcade.key import ESCAPE
 
@@ -15,9 +15,9 @@ class MainMenuView(View):
 
         self.manager = UIManager()
         self.v_box = UIBoxLayout()
-        self.add_buttons()
+        # self.add_buttons()
         self.manager.add(
-            UIAnchorWidget(
+            UIAnchorLayout(
                 anchor_x="center_x",
                 anchor_y="center_y",
                 child=self.v_box
@@ -62,7 +62,6 @@ class MainMenuView(View):
 
     def on_show_view(self):
         set_background_color(BLACK)
-        set_viewport(0, self.window.width, 0, self.window.height)
         self.manager.enable()
 
     def on_hide_view(self):
