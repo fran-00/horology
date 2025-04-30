@@ -1,8 +1,8 @@
 from arcade import (
     draw_text,
-    draw_xywh_rectangle_outline,
-    draw_rectangle_filled,
-    draw_xywh_rectangle_filled,
+    # draw_xywh_rectangle_outline,
+    # draw_rectangle_filled,
+    # draw_xywh_rectangle_filled,
     load_spritesheet
 )
 from arcade.color import CHARCOAL, GREEN, RED, WHITE
@@ -23,8 +23,8 @@ class Hud:
         )
         draw_text(
             text=health_string,
-            start_x=self.game_view.view_left + (c.SCREEN_WIDTH / 2) + 155,
-            start_y=self.game_view.view_bottom + 51,
+            x=self.game_view.view_left + (c.SCREEN_WIDTH / 2) + 155,
+            y=self.game_view.view_bottom + 51,
             font_size=30,
             font_name="Kenney Pixel",
             color=WHITE,
@@ -34,28 +34,28 @@ class Hud:
         """Render player HP bar"""
 
         # Draw the red background of the bar
-        if self.game_view.player.cur_health < self.game_view.player.max_health:
-            draw_rectangle_filled(
-                center_x=self.game_view.view_left + (c.SCREEN_WIDTH / 2),
-                center_y=self.game_view.view_bottom + 60,
-                width=300,
-                height=20,
-                color=RED,
-            )
+        # if self.game_view.player.cur_health < self.game_view.player.max_health:
+        #     draw_rectangle_filled(
+        #         center_x=self.game_view.view_left + (c.SCREEN_WIDTH / 2),
+        #         center_y=self.game_view.view_bottom + 60,
+        #         width=300,
+        #         height=20,
+        #         color=RED,
+        #     )
 
         # Calculate width based on health
         health_width = 300 * (
             self.game_view.player.cur_health / self.game_view.player.max_health
         )
         # Draw the green foreground of the bar
-        draw_rectangle_filled(
-            center_x=(self.game_view.view_left + (c.SCREEN_WIDTH / 2))
-            - 0.5 * (300 - health_width),
-            center_y=self.game_view.view_bottom + 60,
-            width=health_width,
-            height=20,
-            color=GREEN,
-        )
+        # draw_rectangle_filled(
+        #     center_x=(self.game_view.view_left + (c.SCREEN_WIDTH / 2))
+        #     - 0.5 * (300 - health_width),
+        #     center_y=self.game_view.view_bottom + 60,
+        #     width=health_width,
+        #     height=20,
+        #     color=GREEN,
+        # )
 
     def load_hotbar_sprites(self):
         """Load the sprites for the hotbar at the bottom of the screen.
@@ -70,12 +70,12 @@ class Hud:
 
         self.game_view.hotbar_sprite_list = load_spritesheet(
             file_name="resources/tilesets/input_prompts.png",
-            sprite_width=16,
-            sprite_height=16,
-            columns=34,
-            count=816,
-            margin=1,
-        )[first_number_pad_sprite_index:last_number_pad_sprite_index]
+            # sprite_width=16,
+            # sprite_height=16,
+            # columns=34,
+            # count=816,
+            # margin=1,
+        )
 
     def draw_inventory_hotbar(self):
         capacity = 10
@@ -84,23 +84,23 @@ class Hud:
 
         field_width = self.game_view.window.width / capacity
 
-        draw_xywh_rectangle_filled(
-            bottom_left_x=self.game_view.view_left,
-            bottom_left_y=self.game_view.view_bottom,
-            width=self.game_view.window.width,
-            height=hotbar_height,
-            color=CHARCOAL,
-        )
+        # draw_xywh_rectangle_filled(
+        #     bottom_left_x=self.game_view.view_left,
+        #     bottom_left_y=self.game_view.view_bottom,
+        #     width=self.game_view.window.width,
+        #     height=hotbar_height,
+        #     color=CHARCOAL,
+        # )
         for i in range(capacity):
-            if i == self.game_view.selected_item - 1:
-                draw_xywh_rectangle_outline(
-                    bottom_left_x=(i * field_width) + self.game_view.view_left,
-                    bottom_left_y=self.game_view.view_bottom,
-                    width=self.game_view.window.width / capacity,
-                    height=hotbar_height,
-                    color=WHITE,
-                    border_width=2,
-                )
+            # if i == self.game_view.selected_item - 1:
+            #     draw_xywh_rectangle_outline(
+            #         bottom_left_x=(i * field_width) + self.game_view.view_left,
+            #         bottom_left_y=self.game_view.view_bottom,
+            #         width=self.game_view.window.width / capacity,
+            #         height=hotbar_height,
+            #         color=WHITE,
+            #         border_width=2,
+            #     )
 
             if len(self.game_view.player.inventory) > i:
                 item_name = self.game_view.player.inventory[i].name
