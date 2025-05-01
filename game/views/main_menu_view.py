@@ -4,7 +4,6 @@ from arcade.color import BLACK, RED, WHITE
 from arcade.key import ESCAPE
 
 from ..core.setup import setup
-from ..ui.buttons import ButtonStyle
 from ..constants import Constants as c
 
 
@@ -29,7 +28,6 @@ class MainMenuView(View):
         new_game_button = UIFlatButton(
             text="New Game",
             width=200,
-            style=ButtonStyle().default_style
         )
         self.v_box.add(new_game_button.with_space_around(bottom=20))
         new_game_button.on_click = self.on_click_new_game
@@ -38,7 +36,6 @@ class MainMenuView(View):
         load_button = UIFlatButton(
             text="Load Game",
             width=200,
-            style=ButtonStyle().default_style
         )
         self.v_box.add(load_button.with_space_around(bottom=20))
 
@@ -46,7 +43,6 @@ class MainMenuView(View):
         settings_button = UIFlatButton(
             text="Settings",
             width=200,
-            style=ButtonStyle().default_style
         )
         self.v_box.add(settings_button.with_space_around(bottom=20))
         settings_button.on_click = self.on_click_settings
@@ -55,7 +51,6 @@ class MainMenuView(View):
         quit_button = UIFlatButton(
             text="Quit",
             width=200,
-            style=ButtonStyle().default_style
         )
         self.v_box.add(quit_button.with_space_around(bottom=20))
         quit_button.on_click = self.on_click_quit

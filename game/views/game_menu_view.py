@@ -2,8 +2,6 @@ from arcade import View
 from arcade.gui import UIAnchorLayout, UIManager, UIBoxLayout, UIFlatButton
 from arcade.key import ESCAPE
 
-from ..ui.buttons import ButtonStyle
-
 
 class GameMenuView(View):
     """
@@ -34,7 +32,6 @@ class GameMenuView(View):
         resume_button = UIFlatButton(
             text="Resume Game",
             width=200,
-            style=ButtonStyle().default_style
         )
         self.v_box.add(resume_button.with_space_around(bottom=20))
         resume_button.on_click = self.on_click_resume
@@ -43,7 +40,6 @@ class GameMenuView(View):
         save_button = UIFlatButton(
             text="Save",
             width=200,
-            style=ButtonStyle().default_style
         )
         self.v_box.add(save_button.with_space_around(bottom=20))
         
@@ -51,7 +47,6 @@ class GameMenuView(View):
         quit_button = UIFlatButton(
             text="Quit to Main Menu",
             width=200,
-            style=ButtonStyle().default_style
         )
         self.v_box.add(quit_button.with_space_around(bottom=20))
         quit_button.on_click = self.on_click_quit
