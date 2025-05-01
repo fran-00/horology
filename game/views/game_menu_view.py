@@ -33,7 +33,7 @@ class GameMenuView(View):
             text="Resume Game",
             width=200,
         )
-        self.v_box.add(resume_button.with_space_around(bottom=20))
+        self.v_box.add(resume_button)
         resume_button.on_click = self.on_click_resume
 
         # SAVE Button
@@ -41,14 +41,14 @@ class GameMenuView(View):
             text="Save",
             width=200,
         )
-        self.v_box.add(save_button.with_space_around(bottom=20))
+        self.v_box.add(save_button)
         
         # QUIT button
         quit_button = UIFlatButton(
             text="Quit to Main Menu",
             width=200,
         )
-        self.v_box.add(quit_button.with_space_around(bottom=20))
+        self.v_box.add(quit_button)
         quit_button.on_click = self.on_click_quit
 
     def on_show_view(self):

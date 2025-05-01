@@ -29,7 +29,7 @@ class MainMenuView(View):
             text="New Game",
             width=200,
         )
-        self.v_box.add(new_game_button.with_space_around(bottom=20))
+        self.v_box.add(new_game_button)
         new_game_button.on_click = self.on_click_new_game
 
         # LOAD Button
@@ -37,14 +37,14 @@ class MainMenuView(View):
             text="Load Game",
             width=200,
         )
-        self.v_box.add(load_button.with_space_around(bottom=20))
+        self.v_box.add(load_button)
 
         # SETTINGS button
         settings_button = UIFlatButton(
             text="Settings",
             width=200,
         )
-        self.v_box.add(settings_button.with_space_around(bottom=20))
+        self.v_box.add(settings_button)
         settings_button.on_click = self.on_click_settings
 
         # QUIT button
@@ -52,7 +52,7 @@ class MainMenuView(View):
             text="Quit",
             width=200,
         )
-        self.v_box.add(quit_button.with_space_around(bottom=20))
+        self.v_box.add(quit_button)
         quit_button.on_click = self.on_click_quit
 
     def on_show_view(self):
