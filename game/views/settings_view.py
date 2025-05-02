@@ -1,6 +1,5 @@
-from arcade import View, draw_text
-from arcade.color import WHITE
-from arcade.key import ESCAPE
+import arcade
+from arcade.gui import UIAnchorLayout, UIFlatButton, UIGridLayout, UIView
 
 from .main_menu_view import MainMenuView
 
@@ -32,5 +31,5 @@ class SettingsView(View):
         pass
 
     def on_key_press(self, symbol: int, modifiers: int):
-        if symbol == ESCAPE:
+        if symbol == arcade.key.ESCAPE:
             self.window.show_view(MainMenuView())
