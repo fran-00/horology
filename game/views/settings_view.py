@@ -4,31 +4,10 @@ from arcade.gui import UIAnchorLayout, UIFlatButton, UIGridLayout, UIView
 from .main_menu_view import MainMenuView
 
 
-class SettingsView(View):
+class SettingsView(UIView):
 
     def __init__(self):
         super().__init__()
-
-    def on_draw(self):
-        self.clear()
-        draw_text(
-            "Settings",
-            self.window.width / 2,
-            self.window.height - 50,
-            WHITE,
-            44,
-            font_name="Kenney Pixel",
-            anchor_x="center",
-            anchor_y="center",
-            align="center",
-            width=self.window.width,
-        )
-
-    def setup(self):
-        pass
-
-    def on_show_view(self):
-        pass
 
     def on_key_press(self, symbol: int, modifiers: int):
         if symbol == arcade.key.ESCAPE:
