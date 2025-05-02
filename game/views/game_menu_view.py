@@ -3,28 +3,21 @@ from arcade.gui import UIAnchorLayout, UIFlatButton, UIGridLayout, UIView
 
 
 class GameMenuView(UIView):
-    """
-    Accessed by hitting ESC key.
-    """
+    """Accessed by pressing ESC key."""
     def __init__(self):
         super().__init__()
+        self.background_color = arcade.uicolor.BLACK
 
-        # --- Required for all code that uses UI element, a UIManager to handle the UI.
-        self.manager = UIManager()
-
-        # Create a vertical BoxGroup to align buttons
-        self.v_box = UIBoxLayout()
-
-        self.add_buttons()
-
-        # Create a widget to hold the v_box widget, that will center the buttons
-        self.manager.add(
-            UIAnchorLayout(
-                anchor_x="center_x",
-                anchor_y="center_y",
-                child=self.v_box
-            )
+        self.grid = UIGridLayout(
+            column_count=1,
+            row_count=3,
+            size_hint=(0, 0),
+            vertical_spacing=10,
+            horizontal_spacing=10,
         )
+
+        self.ui.add(UIAnchorLayout(children=[self.grid]))
+        self.add_buttons()
 
     def add_buttons(self):
         # RESUME button
