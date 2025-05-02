@@ -1,13 +1,10 @@
-from arcade import View, draw_text, set_background_color
-from arcade.gui import UIAnchorLayout, UIBoxLayout, UIFlatButton, UIManager
-from arcade.color import BLACK, RED, WHITE
-from arcade.key import ESCAPE
+import arcade
+from arcade.gui import UIAnchorLayout, UIFlatButton, UIGridLayout, UIView
 
 from ..core.setup import setup
-from ..constants import Constants as c
 
 
-class MainMenuView(View):
+class MainMenuView(UIView):
 
     def __init__(self):
         super().__init__()
@@ -70,5 +67,5 @@ class MainMenuView(View):
         self.window.close()
 
     def on_key_press(self, key, _modifiers):
-        if key == ESCAPE:
+        if key == arcade.key.ESCAPE:
             self.window.close()
