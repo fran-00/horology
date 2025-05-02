@@ -1,5 +1,5 @@
 import arcade
-from arcade import View, MOUSE_BUTTON_LEFT, MOUSE_BUTTON_RIGHT
+from arcade import Camera2D, View, MOUSE_BUTTON_LEFT, MOUSE_BUTTON_RIGHT
 
 from ..ui.hud import Hud
 from ..systems.enemy_ai import EnemyAI
@@ -13,7 +13,6 @@ class GameView(View):
     """Main application class"""
 
     def __init__(self):
-
         super().__init__()
 
         # Show or don't the mouse cursor
@@ -26,6 +25,8 @@ class GameView(View):
         self.combat = Combat(self)
         self.inventory_system = InventorySystem(self)
         self.selected_item = 1
+
+        self.camera_player = Camera2D()
         setup(self)
 
     def on_resize(self, width, height):
@@ -41,6 +42,9 @@ class GameView(View):
         """Render the screen"""
         # Clear the screen to the background color and draw scene
         self.clear()
+
+        self.camera_player.use()
+
         self.scene.draw()
 
         # Draw other stuff
@@ -171,6 +175,8 @@ class GameView(View):
         self.physics_engine.update()
         self.player_list.update_animation()
 
+        self.scroll_to_player()
+
         # USED FOR TEXT IN SCREEN (generic, not the score)
         self.text_angle += 1
         self.time_elapsed += delta_time
@@ -196,3 +202,9 @@ class GameView(View):
         self.enemy_ai.handle_enemies_animation(delta_time)
         self.enemy_ai.handle_enemies_following_behaviour(delta_time)
         self.enemy_ai.handle_enemies_shooting(delta_time)
+
+    def scroll_to_player(self):
+        position = (self.player.center_x, self.player.center_y)
+        self.camera_player.position = arcade.math.lerp_2d(
+            self.camera_player.position, position, 1,
+        )
