@@ -55,35 +55,6 @@ class MainMenuView(View):
         self.v_box.add(quit_button)
         quit_button.on_click = self.on_click_quit
 
-    def on_show_view(self):
-        set_background_color(BLACK)
-        self.manager.enable()
-
-    def on_hide_view(self):
-        self.manager.disable()
-
-    def on_draw(self):
-        self.clear()
-        self.manager.draw()
-        draw_text(
-            "Is this a GAME?",
-            c.SCREEN_WIDTH / 2,
-            c.SCREEN_HEIGHT - 100,
-            WHITE,
-            font_size=70,
-            font_name="Kenney Pixel",
-            anchor_x="center"
-        )
-        draw_text(
-            "Yes, it is!!!",
-            c.SCREEN_WIDTH / 2,
-            c.SCREEN_HEIGHT - 150,
-            RED,
-            font_size=50,
-            font_name="Kenney Pixel",
-            anchor_x="center"
-        )
-
     # Call back methods for buttons:
     def on_click_new_game(self, event):
         self.window.show_view(self.window.views["game"])
