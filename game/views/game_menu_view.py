@@ -25,23 +25,23 @@ class GameMenuView(UIView):
             text="Resume Game",
             width=200,
         )
-        self.v_box.add(resume_button)
         resume_button.on_click = self.on_click_resume
+        self.grid.add(resume_button, row=0, column=0)
 
         # SAVE Button
         save_button = UIFlatButton(
             text="Save",
             width=200,
         )
-        self.v_box.add(save_button)
+        self.grid.add(save_button, row=1, column=0)
         
         # QUIT button
         quit_button = UIFlatButton(
             text="Quit to Main Menu",
             width=200,
         )
-        self.v_box.add(quit_button)
         quit_button.on_click = self.on_click_quit
+        self.grid.add(quit_button, row=2, column=0)
 
     # call back methods for buttons:
     def on_click_resume(self, event):
