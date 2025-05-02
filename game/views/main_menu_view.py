@@ -27,22 +27,22 @@ class MainMenuView(UIView):
             text="New Game",
             width=200,
         )
-        self.v_box.add(new_game_button)
         new_game_button.on_click = self.on_click_new_game
+        self.grid.add(new_game_button, row=0, column=0)
 
         # LOAD Button
         load_button = UIFlatButton(
             text="Load Game",
             width=200,
         )
-        self.v_box.add(load_button)
+        self.grid.add(load_button, row=1, column=0)
 
         # SETTINGS button
         settings_button = UIFlatButton(
             text="Settings",
             width=200,
         )
-        self.v_box.add(settings_button)
+        self.grid.add(settings_button, row=2, column=0)
         settings_button.on_click = self.on_click_settings
 
         # QUIT button
@@ -50,7 +50,7 @@ class MainMenuView(UIView):
             text="Quit",
             width=200,
         )
-        self.v_box.add(quit_button)
+        self.grid.add(quit_button, row=3, column=0)
         quit_button.on_click = self.on_click_quit
 
     # Call back methods for buttons:
