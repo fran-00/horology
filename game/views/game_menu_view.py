@@ -50,16 +50,6 @@ class GameMenuView(UIView):
         self.v_box.add(quit_button)
         quit_button.on_click = self.on_click_quit
 
-    def on_show_view(self):
-        self.manager.enable()
-
-    def on_hide_view(self):
-        self.manager.disable()
-
-    def on_draw(self):
-        self.clear()
-        self.manager.draw()
-
     # call back methods for buttons:
     def on_click_resume(self, event):
         self.window.show_view(self.window.views["game"])
