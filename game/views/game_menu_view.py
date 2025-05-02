@@ -1,9 +1,8 @@
-from arcade import View
-from arcade.gui import UIAnchorLayout, UIManager, UIBoxLayout, UIFlatButton
-from arcade.key import ESCAPE
+import arcade
+from arcade.gui import UIAnchorLayout, UIFlatButton, UIGridLayout, UIView
 
 
-class GameMenuView(View):
+class GameMenuView(UIView):
     """
     Accessed by hitting ESC key.
     """
@@ -72,5 +71,5 @@ class GameMenuView(View):
         self.window.show_view(self.window.views["main_menu"])
 
     def on_key_press(self, key, _modifiers):
-        if key == ESCAPE:
+        if key == arcade.key.ESCAPE:
             self.window.show_view(self.window.views["game"])
