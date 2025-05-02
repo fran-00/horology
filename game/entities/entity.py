@@ -19,4 +19,5 @@ class Entity(Sprite):
         # Load a texture pair, with the second being a mirror image.
         return [
             load_texture(filename),
+            load_texture(filename).flip_left_right()
         ]
