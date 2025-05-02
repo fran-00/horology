@@ -1,5 +1,5 @@
 import arcade
-from arcade import Camera2D, View, MOUSE_BUTTON_LEFT, MOUSE_BUTTON_RIGHT
+from arcade import Camera2D, View
 
 from ..ui.hud import Hud
 from ..systems.enemy_ai import EnemyAI
@@ -59,14 +59,14 @@ class GameView(View):
 
     def on_mouse_press(self, x, y, button, modifiers):
         """Handle mouse buttons pressed"""
-        if button == MOUSE_BUTTON_LEFT:
+        if button == arcade.key.MOUSE_BUTTON_LEFT:
             if not self.player.equipped_melee_weapon:
                 print("You have no melee weapons")
                 return
             self.player.mouse_left_pressed = True
             self.combat.update_melee_attacks()
 
-        if button == MOUSE_BUTTON_RIGHT:
+        if button == arcade.key.MOUSE_BUTTON_RIGHT:
             if not self.player.equipped_ranged_weapon:
                 print("You have no ranged weapons")
                 return
