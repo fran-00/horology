@@ -8,17 +8,18 @@ class MainMenuView(UIView):
 
     def __init__(self):
         super().__init__()
+        self.background_color = arcade.uicolor.BLACK
 
-        self.manager = UIManager()
-        self.v_box = UIBoxLayout()
-        # self.add_buttons()
-        self.manager.add(
-            UIAnchorLayout(
-                anchor_x="center_x",
-                anchor_y="center_y",
-                child=self.v_box
-            )
+        self.grid = UIGridLayout(
+            column_count=1,
+            row_count=4,
+            size_hint=(0, 0),
+            vertical_spacing=10,
+            horizontal_spacing=10,
         )
+
+        self.ui.add(UIAnchorLayout(children=[self.grid]))
+        self.add_buttons()
 
     def add_buttons(self):
         # NEW GAME button
